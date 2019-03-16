@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+       <meta charset="UTF-8">
+       <title>Welcome</title>
+</head>
+
+<body>
+       You are logged in as {{.UserID}}
+       <br />
+       <form method="POST" action="/makePlaylist">
+              <label for="deleteExisting">Delete the existing local shows playlist?</label>
+              <input type="checkbox" id="deleteExisting" name="deleteExisting" />
+              <br />
+
+              <label for="start">Start date:</label>
+              <input type="date" id="start" name="start" value={{.Today}} min={{.Today}} max={{.MaxDate}} />
+              <br />
+              <label for="end">End date:</label>
+
+              <input type="date" id="end" name="end" value={{.Today}} min={{.Today}} max={{.MaxDate}} />
+              <br/>
+              <input type="submit" value="Build Playlist" />
+       </form>
+       <!-- <a href="/makePlaylist">Click here to create a new playlist</a> -->
+</body>
+
+</html>

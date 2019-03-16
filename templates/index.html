@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+         <meta charset="UTF-8">
+
+         <!-- The welcome struct (shown in the main.go code) is received within the HTML and we just need to use the . operator and retrieve the information we want -->
+         <title>Welcome</title>
+   </head>
+   <body>
+      Welcome to my super awesome app.  
+      Click <a href="{{.URL}}" id="login" target="_blank"> here </a> to authorize spotify access and get started
+      <!-- Click <a href="{{.URL}}" target="_blank"> here </a> to get authed -->
+      <br/>
+      <!-- <a href="/makePlaylist">Click here to create a new playlist</a> -->
+   </body>
+   <script>
+     document.querySelector("#login").addEventListener("click", function(e){
+      fetch('/blarg')
+  .then(function(response) {
+    console.log( response);
+    window.location.pathname="/managePlaylist"
+  });
+     })
+   </script>
+</html>
