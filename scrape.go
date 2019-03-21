@@ -58,7 +58,9 @@ func scrape(dateStr string, page int, ch chan []string) {
 
 	c := colly.NewCollector()
 
-	c.OnHTML("h3.calendar-post-title>a", func(e *colly.HTMLElement) {
+	//c.OnHTML("h3.calendar-post-title>a", func(e *colly.HTMLElement) {
+	c.OnHTML("h3.event-row-title>a", func(e *colly.HTMLElement) {
+		log.Println("found a calendar listing")
 		text := strings.Trim(e.Text, "\n ")
 		artists = append(artists, strings.Split(text, ",")...)
 	})
@@ -78,5 +80,8 @@ func scrape(dateStr string, page int, ch chan []string) {
 
 	})
 
-	c.Visit(site)
+	err := c.Visit(site)
+	if err != nil {
+		log.Printf("error visiting the site: %v", err)
+	}
 }
