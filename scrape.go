@@ -60,7 +60,6 @@ func scrape(dateStr string, page int, ch chan []string) {
 
 	//c.OnHTML("h3.calendar-post-title>a", func(e *colly.HTMLElement) {
 	c.OnHTML("h3.event-row-title>a", func(e *colly.HTMLElement) {
-		log.Println("found a calendar listing")
 		text := strings.Trim(e.Text, "\n ")
 		artists = append(artists, strings.Split(text, ",")...)
 	})
@@ -70,7 +69,11 @@ func scrape(dateStr string, page int, ch chan []string) {
 			page = page + 1
 			site = fmt.Sprintf(site+"?page=%v&view_id=events", page)
 			log.Println(site)
-			c.Visit(site)
+			err := c.Visit(site)
+			if err != nil {
+				log.Printf("error visiting the site: %v", err)
+				ch <- artists
+			}
 		} else {
 			//there's not another page, return
 			//this probably isn't quite right, check if there can be a race condition
@@ -83,5 +86,6 @@ func scrape(dateStr string, page int, ch chan []string) {
 	err := c.Visit(site)
 	if err != nil {
 		log.Printf("error visiting the site: %v", err)
+		ch <- artists
 	}
 }

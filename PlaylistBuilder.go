@@ -10,9 +10,9 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"sync"
 	"time"
 
-	"github.com/gocolly/colly"
 	"github.com/recoilme/slowpoke"
 	"github.com/zmb3/spotify"
 	"golang.org/x/oauth2/clientcredentials"
@@ -21,32 +21,42 @@ import (
 const dbFile = "test/example.db"
 
 //const redirectURI = "https://example.com/callback/"
-const redirectURI = "http://localhost:8080/callback"
-const configFilePath = "C:\\Users\\lizga\\repos\\PlaylistBuilder\\config.ini"
+//const redirectURI = "http://localhost:" + port + "/callback"
+const configFilePath = "config.ini"
 
 var (
 	scopes  = []string{spotify.ScopePlaylistReadCollaborative, spotify.ScopePlaylistReadPrivate, spotify.ScopeUserReadPrivate, spotify.ScopePlaylistModifyPrivate}
-	auth    = spotify.NewAuthenticator(redirectURI, scopes...)
 	ch      = make(chan *spotify.Client)
 	clients = make(map[string]spotify.Client) //really this should be a cache or something
 	state   = "abc123"                        //this is a security thing to validate the request actually originated with me.  Do something with it later.
 )
 
 var (
-	clientID, clientSecret string
+	clientID, clientSecret, port string
 )
+var auth spotify.Authenticator
 
 var artists []string
 
-func main() {
+func init() {
+	port = os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	redirectURI := "http://localhost:" + port + "/callback"
+	auth = spotify.NewAuthenticator(redirectURI, scopes...)
+}
 
+func main() {
 	//set up our log file
-	f, err := os.OpenFile("testlogfile.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile("lasso.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
 	defer f.Close()
 	log.SetOutput(f)
+	log.Printf("using port %v", port)
+	log.Printf("using redirect url %v", "http://localhost:"+port+"/callback")
 	setupCredentials()
 	setupDB()
 
@@ -57,16 +67,12 @@ func main() {
 
 	http.HandleFunc("/callback", func(w http.ResponseWriter, r *http.Request) {
 		ctx := context.Background()
-		log.Printf("callback request: %v", r)
 		client := completeAuth(ctx, w, r)
-		log.Println("callback got the client")
 		ch <- client
 	})
 
 	http.HandleFunc("/managePlaylist", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Got a request to maange the playlist")
-		//t, _ := template.ParseFiles("templates/manage.html")
-		//t.Execute(w, nil)
 		manageHandler(w, r)
 	})
 
@@ -77,36 +83,15 @@ func main() {
 			return
 		}
 		log.Println("Got a request to build the playlist")
-		userIDCookie, cookieErr := r.Cookie("user_id")
-		if cookieErr != nil {
-			log.Printf("Failed to get user id cookie: %v", cookieErr)
-			fmt.Fprintf(w, "failed to get user") //really redirect to login here
-		}
-		log.Printf("Got userID from cookie: %v", userIDCookie.Value)
-		userClient, err := getUserClient(userIDCookie.Value)
-		if err != nil {
-			log.Fatalf("no client for the user") //really redirect to login
-		}
-		//get the form data
-		deleteExisting := r.FormValue("deleteExisting")
-		startStr := r.FormValue("start")
-		endStr := r.FormValue("end")
-		startDate, _ := time.Parse("2006-01-02", startStr)
-		endDate, _ := time.Parse("2006-01-02", endStr)
-
-		playlistID := setupPlaylist(&userClient, userIDCookie.Value, startStr, endStr, deleteExisting == "on")
-		//ScrapeMerc("", 0)
-		artists = scrapeDates(startDate, endDate)
-		SpotifySearch(&userClient, artists, playlistID)
+		makePlaylistHandler(w, r)
 	})
+
 	http.HandleFunc("/blarg", func(w http.ResponseWriter, r *http.Request) {
 		client := <-ch
 		user, _ := client.CurrentUser()
 		fmt.Fprintf(w, "hello %v", user.ID)
 	})
-
-	http.ListenAndServe(":8080", nil)
-
+	http.ListenAndServe(":"+port, nil)
 }
 
 func manageHandler(w http.ResponseWriter, r *http.Request) {
@@ -118,6 +103,8 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 			t, err := template.ParseFiles("templates/manage.html")
 			if err != nil {
 				log.Printf("err parsing template: %v", err)
+				w.WriteHeader(500)
+				fmt.Fprint(w, "there was an error, please try your request again")
 			}
 			t.Execute(w, struct {
 				UserID  string
@@ -133,27 +120,19 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	// userIDCookie, _ := r.Cookie("user_id")
-	// if userIDCookie != nil {
-	// 	client := clients[userIDCookie.Value]
-	// }
 	if userIDCookie, _ := r.Cookie("user_id"); userIDCookie != nil {
 
 		if _, ok := clients[userIDCookie.Value]; ok {
 			http.Redirect(w, r, "/managePlaylist", 302)
 			return
-			//manageHandler(w, r)
-
-		} else {
-			log.Printf("no client found for this user: %v", userIDCookie.Value)
 		}
+		log.Printf("no client found for this user: %v", userIDCookie.Value)
 	} else {
 		log.Print("no userId cookie on this request")
 	}
 	url := auth.AuthURL(state)
 	t, _ := template.ParseFiles("templates/index.html")
 	t.Execute(w, struct{ URL string }{url})
-
 }
 
 func setupPlaylist(client *spotify.Client, userID string, startDate string, endDate string, deleteExisting bool) spotify.ID {
@@ -167,10 +146,9 @@ func setupPlaylist(client *spotify.Client, userID string, startDate string, endD
 	for _, p := range myPlaylists.Playlists {
 		if p.Name == "local shows" {
 			if deleteExisting {
-				log.Println(p.Name, p.Owner, p.ID)
 				unfollowErr := client.UnfollowPlaylist(spotify.ID(p.Owner.ID), p.ID)
 				if unfollowErr != nil {
-					fmt.Printf("failed to unfollow: %v", unfollowErr)
+					log.Printf("failed to unfollow: %v", unfollowErr)
 				} else {
 					log.Println("unfollowed the existing playlist")
 				}
@@ -205,6 +183,7 @@ func completeAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *
 	}
 	// use the token to get an authenticated client
 	client := auth.NewClient(tok)
+	client.AutoRetry = true
 	user, _ := client.CurrentUser()
 	log.Printf("user id is %v", user.ID)
 	http.SetCookie(w, &http.Cookie{
@@ -217,6 +196,8 @@ func completeAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *
 	return &client
 }
 
+//this isn't used right now but I'm going to leave it in case
+//we want to do some non-user specific lookups at some point
 func doClientCredsAuth() spotify.Client {
 	config := &clientcredentials.Config{
 		ClientID:     clientID,
@@ -255,93 +236,72 @@ func setupCredentials() {
 	auth.SetAuthInfo(clientID, clientSecret)
 }
 
-//ScrapeMerc scrapes the Portland Mercury music listings for shows on the specifed date.
-func ScrapeMerc(dateReq string, page int) {
-	//Mon Jan 2 15:04:05 MST 2006
-	if page <= 1 {
-		page = 1
-	}
-	var date string
-	if len(dateReq) == 0 {
-		date = time.Now().Format("2006-01-02")
-	} else {
-		_, err := time.Parse("2006-01-02", dateReq) //validate the requested date by parsing it
-		if err == nil {
-			date = dateReq
-		} else {
-			log.Fatalf("Could not parse requested date %v: ", dateReq)
-			return
-		}
-
-	}
-
-	site := "https://www.portlandmercury.com/events/music/" + date
-
-	c := colly.NewCollector()
-
-	c.OnHTML("h3.calendar-post-title>a", func(e *colly.HTMLElement) {
-		text := strings.Trim(e.Text, "\n ")
-		//log.Println(text)
-
-		artists = append(artists, strings.Split(text, ",")...)
-	})
-	c.OnHTML("li.next>a", func(e *colly.HTMLElement) {
-		if strings.Contains(e.Text, "Next on") {
-			log.Println("there's another page")
-			page = page + 1
-			site = fmt.Sprintf(site+"?page=%v&view_id=events", page)
-
-			log.Println(site)
-			c.Visit(site)
-		}
-
-	})
-
-	c.Visit(site)
-	return
-}
-
 //SpotifySearch searches for a list of artists on Spotify, and if a sufficient match is
 //found, then that artist's top tracks are added to the playlist using the AddTopArtistTracks method.
-func SpotifySearch(client *spotify.Client, artists []string, playlistID spotify.ID) {
-	for _, artist := range artists {
-		artist = strings.TrimSpace(artist)
-		result, err := client.Search(artist, spotify.SearchTypeArtist)
-		if err != nil {
-			log.Printf("Encountered an error search for artist %v: %v", artist, err)
-		} else if result.Artists.Total > 1 {
-			log.Printf("Found multiple matches for artist %v", artist)
-			for i, match := range result.Artists.Artists {
-				//log.Println(match.Name)
-				if match.Name == artist {
-					log.Printf("Using exact match %v for artist %v", match.Name, artist)
-					//tracks, err := client.GetArtistsTopTracks(result.Artists.Artists[i].ID, spotify.CountryUSA)
-					AddTopArtistTracks(client, playlistID, result.Artists.Artists[i].ID)
-					break
-				} else {
-					log.Printf("Rejecting potential match %v for artist %v", match.Name, artist)
-				}
+func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, playlistID spotify.ID) {
+	defer wg.Done()
+	var artistID spotify.ID
+	result, err := client.Search(artist, spotify.SearchTypeArtist)
+	if err != nil {
+		log.Printf("Encountered an error searching for artist %v: %v", artist, err)
+		return
+	} else if result.Artists.Total > 1 {
+		for i, match := range result.Artists.Artists {
+			if match.Name == artist {
+				artistID = result.Artists.Artists[i].ID
+				break
 			}
-		} else if result.Artists.Total == 0 {
-			log.Printf("Could not locate artist %v ", artist)
+		}
+	} else if result.Artists.Total == 0 {
+		log.Printf("Could not locate artist %v ", artist)
+		return
+	} else {
+		artistID = result.Artists.Artists[0].ID
+	}
+	if artistID != "" {
+		tracks, err := client.GetArtistsTopTracks(artistID, spotify.CountryUSA)
+		if err != nil {
+			log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
+
 		} else {
-			//log.Printf("adding tracks to playlist for artist %v", artist)
-			AddTopArtistTracks(client, playlistID, result.Artists.Artists[0].ID)
+			trackIds := make([]spotify.ID, len(tracks))
+			for i, track := range tracks {
+				trackIds[i] = track.SimpleTrack.ID
+			}
+			client.AddTracksToPlaylist(playlistID, trackIds...)
 		}
 	}
 }
 
-//AddTopArtistTracks adds the top tracks for the specified artist to the specified playlist.
-func AddTopArtistTracks(client *spotify.Client, playlistID spotify.ID, artistID spotify.ID) {
-	tracks, err := client.GetArtistsTopTracks(artistID, spotify.CountryUSA)
+func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
+	userIDCookie, cookieErr := r.Cookie("user_id")
+	if cookieErr != nil {
+		log.Printf("Failed to get user id cookie: %v", cookieErr)
+		fmt.Fprintf(w, "failed to get user") //really redirect to login here
+	}
+	log.Printf("Got userID from cookie: %v", userIDCookie.Value)
+	userClient, err := getUserClient(userIDCookie.Value)
 	if err != nil {
-		log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
+		log.Fatalf("no client for the user") //really redirect to login
 	}
-	for i := 0; i < len(tracks); i++ {
+	//get the form data
+	deleteExisting := r.FormValue("deleteExisting")
+	startStr := r.FormValue("start")
+	endStr := r.FormValue("end")
+	startDate, _ := time.Parse("2006-01-02", startStr)
+	endDate, _ := time.Parse("2006-01-02", endStr)
 
-		//trackIds[i] = tracks[i].SimpleTrack.ID
-		client.AddTracksToPlaylist(playlistID, tracks[i].SimpleTrack.ID)
+	playlistID := setupPlaylist(&userClient, userIDCookie.Value, startStr, endStr, deleteExisting == "on")
+	artists = scrapeDates(startDate, endDate)
+	var wg sync.WaitGroup
+	log.Printf("found %v artists", len(artists))
+	for _, artist := range artists {
+		artist = strings.TrimSpace(artist)
+		wg.Add(1)
+		go spotifySearch(&wg, &userClient, artist, playlistID)
 	}
+	wg.Wait()
+	fmt.Fprint(w, "Done, go check out your cool new playlist")
 }
 
 func getUserClient(userID string) (spotify.Client, error) {
