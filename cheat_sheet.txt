@@ -1,0 +1,8 @@
+docker build -t lasso .
+docker run -p 8080:8080 -d lasso
+docker exec -it name /bin/bash
+docker image ls
+docker login
+ssh -i ~/DockerEc2.pem ec2-user@ec2-52-11-117-0.us-west-2.compute.amazonaws.com
+docker pull lizzyg/lasso:latest
+docker push lizzg/lasso:latest

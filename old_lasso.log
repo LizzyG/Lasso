@@ -1,0 +1,2490 @@
+2019/03/18 14:31:07 Got request for: /
+2019/03/18 14:31:07 no client found for this user: 126154079
+2019/03/18 14:31:08 Got request for: /favicon.ico
+2019/03/18 14:31:08 no client found for this user: 126154079
+2019/03/18 14:31:10 callback request: &{GET /callback?code=AQBKjhYX8H-cpMRbu_FFnp5nwHUXbDFEwMufDOkDD_L9lky64XMDR0yYgX0WRva9hhQGkpEE0mn1a-8GhNj-1jKgdUFD9G3K1RtKXdG_Zhu0cZ_4Qrvi3n9tpU9XwrHIvfnwfEd2MErs0YJVDXmzMPAfekKR7THn5tlbqS3KRTjyTifRqJXTFuD5oBJRqgGhj_Im6ddWcT78AsW5s4VfoP8tmLZBjfI8mwIE8coQJ0uSEdqYxnR1vB48AvhC5pavcVhWQZS-f1QfrKG97vtsIH5go9AxpfQG9rYv0XFKu9uzg4CrtT2P-vnwQLYeGZOb-6XwbhTY&state=abc123 HTTP/1.1 1 1 map[Upgrade-Insecure-Requests:[1] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Referer:[http://localhost:8080/] Connection:[keep-alive] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36] Accept-Encoding:[gzip, deflate, br] Accept-Language:[en-US,en;q=0.9] Cookie:[user_id=126154079]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:57098 /callback?code=AQBKjhYX8H-cpMRbu_FFnp5nwHUXbDFEwMufDOkDD_L9lky64XMDR0yYgX0WRva9hhQGkpEE0mn1a-8GhNj-1jKgdUFD9G3K1RtKXdG_Zhu0cZ_4Qrvi3n9tpU9XwrHIvfnwfEd2MErs0YJVDXmzMPAfekKR7THn5tlbqS3KRTjyTifRqJXTFuD5oBJRqgGhj_Im6ddWcT78AsW5s4VfoP8tmLZBjfI8mwIE8coQJ0uSEdqYxnR1vB48AvhC5pavcVhWQZS-f1QfrKG97vtsIH5go9AxpfQG9rYv0XFKu9uzg4CrtT2P-vnwQLYeGZOb-6XwbhTY&state=abc123 <nil> <nil> <nil> 0xc0001a81c0}
+2019/03/18 14:31:11 user id is 126154079
+2019/03/18 14:31:11 callback got the client
+2019/03/18 14:31:11 Got a request to maange the playlist
+2019/03/18 14:31:12 Got request for: /favicon.ico
+2019/03/18 14:31:12 Got a request to maange the playlist
+2019/03/18 14:31:12 Got request for: /favicon.ico
+2019/03/18 14:31:12 Got a request to maange the playlist
+2019/03/18 14:31:27 Got a request to build the playlist
+2019/03/18 14:31:27 Got userID from cookie: 126154079
+2019/03/18 14:31:27 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 32kRiBO7leyaERYsNo1tc2
+2019/03/18 14:31:27 unfollowed the existing playlist
+2019/03/18 14:31:27 Created playlist
+2019/03/18 14:31:27 diff: 0
+2019/03/18 14:31:27 waiting for channel response 0
+2019/03/18 14:31:28 end of listings for date 2019-03-18
+2019/03/18 14:31:28 scrapeDates got one channel response
+2019/03/18 14:31:28 Could not locate artist The Show Must Go On 
+2019/03/18 14:31:28 Could not locate artist Legendary Mondays 
+2019/03/18 14:31:28 Could not locate artist Ron Steen Jam 
+2019/03/18 14:31:28 Could not locate artist Mandelring Quartet 
+2019/03/18 14:31:28 Could not locate artist Metal Monday 
+2019/03/18 14:31:28 Could not locate artist Karaoke from Hell 
+2019/03/18 14:31:28 Could not locate artist Mesi & Bradley 
+2019/03/18 14:31:31 Got request for: /favicon.ico
+2019/03/18 14:31:31 Got a request to maange the playlist
+2019/03/18 21:59:48 Got request for: /
+2019/03/18 21:59:48 no userId cookie on this request
+2019/03/18 21:59:49 Got request for: /favicon.ico
+2019/03/18 21:59:49 no userId cookie on this request
+2019/03/18 21:59:52 callback request: &{GET /callback?code=AQCg_aEfuuC7bM2MlYZex8W4YE0IQWMt0DNNMfWKuO3IQUHTGViRbQa3CFYQNHe013LXtCi247xD1Q0QqZso7UOwIoh8cLi6JrzrHO4uct149sDIApH2cx1tShHhzlAzFEPxw8wtLaahiWM2RZxtOUdBuo8SOfQajDRNdezro3JHGlyA5qEMMQGmr-jOXtn5m7FaHf7tOhJKO-DsmBxxRZ9Xeb1M7tiHPD9t_yHkAeYNb6QhbJxpXGdoBYDUCZxwSHfUYiRojHjeSKz9X2z0Uq5YC30ua4BrIphagQ_0ySAUy0slrgTTmGWAgP0f5Xx-M_wtnqRP&state=abc123 HTTP/1.1 1 1 map[Accept-Language:[en-US,en;q=0.9] Connection:[keep-alive] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Referer:[http://localhost:8080/] Accept-Encoding:[gzip, deflate, br]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:58525 /callback?code=AQCg_aEfuuC7bM2MlYZex8W4YE0IQWMt0DNNMfWKuO3IQUHTGViRbQa3CFYQNHe013LXtCi247xD1Q0QqZso7UOwIoh8cLi6JrzrHO4uct149sDIApH2cx1tShHhzlAzFEPxw8wtLaahiWM2RZxtOUdBuo8SOfQajDRNdezro3JHGlyA5qEMMQGmr-jOXtn5m7FaHf7tOhJKO-DsmBxxRZ9Xeb1M7tiHPD9t_yHkAeYNb6QhbJxpXGdoBYDUCZxwSHfUYiRojHjeSKz9X2z0Uq5YC30ua4BrIphagQ_0ySAUy0slrgTTmGWAgP0f5Xx-M_wtnqRP&state=abc123 <nil> <nil> <nil> 0xc00069c240}
+2019/03/18 21:59:52 user id is 126154079
+2019/03/18 21:59:52 callback got the client
+2019/03/18 21:59:53 Got request for: /favicon.ico
+2019/03/18 21:59:53 Got a request to maange the playlist
+2019/03/18 21:59:53 Got a request to maange the playlist
+2019/03/18 21:59:54 Got request for: /favicon.ico
+2019/03/18 21:59:54 Got a request to maange the playlist
+2019/03/18 22:00:08 Got a request to build the playlist
+2019/03/18 22:00:08 Got userID from cookie: 126154079
+2019/03/18 22:00:08 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 6CYNzJ0AjvCaLIuIz0Tg19
+2019/03/18 22:00:08 unfollowed the existing playlist
+2019/03/18 22:00:09 Created playlist
+2019/03/18 22:00:09 diff: 1
+2019/03/18 22:00:09 waiting for channel response 0
+2019/03/18 22:00:13 end of listings for date 2019-03-19
+2019/03/18 22:00:13 scrapeDates got one channel response
+2019/03/18 22:00:13 waiting for channel response 1
+2019/03/18 22:00:16 end of listings for date 2019-03-20
+2019/03/18 22:00:16 scrapeDates got one channel response
+2019/03/18 22:00:16 Could not locate artist Mandelring Quartet 
+2019/03/18 22:00:16 Could not locate artist Galaxy Research 
+2019/03/18 22:00:16 Could not locate artist The Damn Straight 
+2019/03/18 22:00:16 Could not locate artist Rob Scheps & the Seattleites 
+2019/03/18 22:00:16 Could not locate artist Satanaraoke 
+2019/03/18 22:00:16 Could not locate artist Christopher Brown Quartet 
+2019/03/18 22:00:16 Could not locate artist KPSU DJs 
+2019/03/18 22:00:16 Could not locate artist Tubesday 
+2019/03/18 22:00:16 Could not locate artist Bazooka Sharkz 
+2019/03/18 22:00:16 Could not locate artist Atlantis Underground: Songwriter Sessions 
+2019/03/18 22:00:16 Could not locate artist Rainbow Face 
+2019/03/18 22:00:16 Could not locate artist Wednesday Night Zydeco 
+2019/03/18 22:00:16 Could not locate artist DJ Leroy 
+2019/03/18 22:00:16 Could not locate artist Ad-Noids 
+2019/03/18 22:00:16 Could not locate artist TRONix: Proqxis 
+2019/03/18 22:00:16 Could not locate artist Party Damage DJs 
+2019/03/18 22:00:16 Could not locate artist CuddiE Whompus 
+2019/03/18 22:00:16 Could not locate artist Pagan Jug Band 
+2019/03/18 22:00:16 Could not locate artist Honky Tonk Tuesdays 
+2019/03/18 22:00:16 Could not locate artist Basso Profondo 
+2019/03/18 22:00:16 Could not locate artist Tuesday Blues Dance Night 
+2019/03/18 22:00:16 Could not locate artist Total Request Nite 
+2019/03/18 22:00:16 Could not locate artist Hot Tea Cold 
+2019/03/18 22:00:16 Could not locate artist Takahiro Yamamoto 
+2019/03/18 22:00:17 Could not locate artist The Fenix Project 
+2019/03/18 22:00:17 Could not locate artist King Fader Laser Vision 
+2019/03/18 22:00:17 Could not locate artist Shrista Tyree 
+2019/03/18 22:00:17 Could not locate artist Dubblife 
+2019/03/18 22:00:17 Could not locate artist Anson Wright Duo 
+2019/03/18 22:00:17 Encountered an error search for artist Mr. Wrong: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error search for artist DJ Deena Bee: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error search for artist Tapes-One2: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error search for artist Band of Comerados: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 2fixd2SK0VpJfHW0SUWFY9: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error search for artist Dre360: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 2POpViMja11zcUuVMAYe33: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 1dz0ot7IYEIRMswndn28ju: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 2tq7VAShxJxWxdxVHblcwn: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 16PcI6JjJuUfPlsX8Ffvfl: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 6psFAaYpL2CYtaCCOvwIRF: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 0hU5urLse5h1Z0b4zQkovL: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 5vcAEQeOvdo4TOoWcgzwap: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 6FQqZYVfTNQ1pCqfkwVFEa: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 4P0dddbxPil35MNN9G2MEX: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 1gAOb8pUMh75KJuZ2MMS28: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 1tDQd4CIJM6ttVNFJBnopB: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 7CoMFVivBVRoaf3UrMFMKf: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 2hI2HclB5dgv3Qks0jjXaV: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 6Av6GMCOznZIlHuNcBWgf4: API rate limit exceeded
+2019/03/18 22:00:17 Encountered an error getting tracks for artist 3NqV2DJoAWsjl787bWaHW7: API rate limit exceeded
+2019/03/18 22:00:18 Got request for: /favicon.ico
+2019/03/18 22:00:18 Got a request to maange the playlist
+2019/03/18 22:24:22 Got request for: /
+2019/03/18 22:24:22 no client found for this user: 126154079
+2019/03/18 22:24:23 Got request for: /favicon.ico
+2019/03/18 22:24:23 no client found for this user: 126154079
+2019/03/18 22:25:14 Got request for: /
+2019/03/18 22:25:14 no client found for this user: 126154079
+2019/03/18 22:25:15 Got request for: /favicon.ico
+2019/03/18 22:25:15 no client found for this user: 126154079
+2019/03/18 22:28:08 Got request for: /
+2019/03/18 22:28:08 no client found for this user: 126154079
+2019/03/18 22:28:08 Got request for: /favicon.ico
+2019/03/18 22:28:08 no client found for this user: 126154079
+2019/03/18 22:36:44 Got request for: /
+2019/03/18 22:36:44 no client found for this user: 126154079
+2019/03/18 22:36:44 Got request for: /favicon.ico
+2019/03/18 22:36:44 no client found for this user: 126154079
+2019/03/18 23:01:43 Got request for: /
+2019/03/18 23:01:43 no client found for this user: 126154079
+2019/03/18 23:01:43 Got request for: /favicon.ico
+2019/03/18 23:01:43 no client found for this user: 126154079
+2019/03/18 23:01:48 Got request for: /
+2019/03/18 23:01:48 no client found for this user: 126154079
+2019/03/18 23:01:48 Got request for: /favicon.ico
+2019/03/18 23:01:48 no client found for this user: 126154079
+2019/03/18 23:01:50 callback request: &{GET /callback?code=AQDv_n3MaTJEM1VbVVI2rS8PCY89mPFUpCErK0dH0H6_Lk6FxRdihq_TDKtXOh4xa_VTwPBul52_cKNJpKtoOfhWuc0MrQbu8I_USk8C4hittEz8iYbCiUl67iVXjx1h1Puh6ysaaZFm6Ab7Z8R3mkggyi23BoBZdoJAkpDBBXLksNAdglcPByaNUKqnmMSUUFALhviR4Vat-OklzXIbHdTJNl--sxS0_AfMQVco8LsuMIlRFotYSjiKnneatXJ_tWLZTb8UKiEJjNB5dli0mWYdMKxTI6MZjXZb77eHz7rQwyyb71DOeT04gPg-uB-90XVfxhsk&state=abc123 HTTP/1.1 1 1 map[Connection:[keep-alive] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Accept-Encoding:[gzip, deflate, br] Referer:[http://localhost:8080/] Accept-Language:[en-US,en;q=0.9] Cookie:[user_id=126154079] Upgrade-Insecure-Requests:[1]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:62694 /callback?code=AQDv_n3MaTJEM1VbVVI2rS8PCY89mPFUpCErK0dH0H6_Lk6FxRdihq_TDKtXOh4xa_VTwPBul52_cKNJpKtoOfhWuc0MrQbu8I_USk8C4hittEz8iYbCiUl67iVXjx1h1Puh6ysaaZFm6Ab7Z8R3mkggyi23BoBZdoJAkpDBBXLksNAdglcPByaNUKqnmMSUUFALhviR4Vat-OklzXIbHdTJNl--sxS0_AfMQVco8LsuMIlRFotYSjiKnneatXJ_tWLZTb8UKiEJjNB5dli0mWYdMKxTI6MZjXZb77eHz7rQwyyb71DOeT04gPg-uB-90XVfxhsk&state=abc123 <nil> <nil> <nil> 0xc0001cc380}
+2019/03/18 23:01:51 user id is 126154079
+2019/03/18 23:01:51 callback got the client
+2019/03/18 23:01:51 Got a request to maange the playlist
+2019/03/18 23:01:51 Got request for: /favicon.ico
+2019/03/18 23:01:51 Got a request to maange the playlist
+2019/03/18 23:01:52 Got request for: /favicon.ico
+2019/03/18 23:01:52 Got a request to maange the playlist
+2019/03/18 23:19:51 Got request for: /
+2019/03/18 23:19:51 no client found for this user: 126154079
+2019/03/18 23:19:53 Got request for: /favicon.ico
+2019/03/18 23:19:53 no client found for this user: 126154079
+2019/03/18 23:22:26 Got request for: /
+2019/03/18 23:22:26 no client found for this user: 126154079
+2019/03/18 23:22:26 Got request for: /favicon.ico
+2019/03/18 23:22:26 no client found for this user: 126154079
+2019/03/18 23:25:08 Got request for: /
+2019/03/18 23:25:08 no client found for this user: 126154079
+2019/03/19 12:18:02 Got request for: /
+2019/03/19 12:18:02 no userId cookie on this request
+2019/03/19 12:18:02 Got request for: /favicon.ico
+2019/03/19 12:18:02 no userId cookie on this request
+2019/03/19 12:18:04 callback request: &{GET /callback?code=AQA1tP-zD0BR9rG6QknniVpgyS2b0lNliEuLLUTlo9zCpoWOfggmTiHUXx9_wDR5VPkTN8mxIa_bQqiC2-tL-QQVDzXiAyciJaStIkzWnOPZm8O8eqHtbL-bDcPe6_imQr46xPmPee1Tjf1-HB-u01MQ4dQg7xFfOx6thd5zR3373EmpDpGy-_k4fUiorZuL-slA_52caQlokLlYjYt6DLVdveFXBUOtJ50u89ekNz0bwlWVBOyGeBvEYbQoWDJBENNIYhk5r-6iDzF4aCYVEw__guDxNpZfL7Ck1a5c65wKgMnl_BVQJ8qTHZCM0xpWiFUPWo7Y&state=abc123 HTTP/1.1 1 1 map[Accept-Encoding:[gzip, deflate, br] Accept-Language:[en-US,en;q=0.9] Connection:[keep-alive] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Referer:[http://localhost:8080/]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:50250 /callback?code=AQA1tP-zD0BR9rG6QknniVpgyS2b0lNliEuLLUTlo9zCpoWOfggmTiHUXx9_wDR5VPkTN8mxIa_bQqiC2-tL-QQVDzXiAyciJaStIkzWnOPZm8O8eqHtbL-bDcPe6_imQr46xPmPee1Tjf1-HB-u01MQ4dQg7xFfOx6thd5zR3373EmpDpGy-_k4fUiorZuL-slA_52caQlokLlYjYt6DLVdveFXBUOtJ50u89ekNz0bwlWVBOyGeBvEYbQoWDJBENNIYhk5r-6iDzF4aCYVEw__guDxNpZfL7Ck1a5c65wKgMnl_BVQJ8qTHZCM0xpWiFUPWo7Y&state=abc123 <nil> <nil> <nil> 0xc000026440}
+2019/03/19 12:18:05 user id is 126154079
+2019/03/19 12:18:05 callback got the client
+2019/03/19 12:18:06 Got a request to maange the playlist
+2019/03/19 12:18:06 Got request for: /favicon.ico
+2019/03/19 12:18:06 Got a request to maange the playlist
+2019/03/19 12:18:07 Got request for: /favicon.ico
+2019/03/19 12:18:07 Got a request to maange the playlist
+2019/03/21 17:30:34 using port 8080
+2019/03/21 17:30:34 using redirect url http://localhost:8080/callback
+2019/03/21 17:30:36 Got request for: /
+2019/03/21 17:30:36 no userId cookie on this request
+2019/03/21 17:30:36 Got request for: /favicon.ico
+2019/03/21 17:30:36 no userId cookie on this request
+2019/03/21 17:33:52 callback request: &{GET /callback?code=AQBj0kfr47G7BYu-NDarv0XJC36D7OEKHJHR9_pMUl2d3RKIJPshmAuUkmgu0lib8zRDy0tfWiaDY00iaZj8ZR92KjwV91quLgAwTpGuFnv6Gcu0cQdUO3mLjJq-UpRcXwopAfMaXa88tDoUdb1td-A-3ZeTcNyDfAGXOXUxqT-O6hRrD112enj8oJ99KU4B81Pb9XKqVU5lyKQUS1DLMeaN1aTn9nN5REbfya24z8ox-MspQFB2UP9cILOXznmDc2zYu1YvICQzW_lymi_nLyprsMcOHfMfKm57l1C9cUkUk1qTmCfnWdr4ZF9XDbIt0WWfT2fd&state=abc123 HTTP/1.1 1 1 map[Referer:[http://localhost:8080/] Accept-Encoding:[gzip, deflate, br] Accept-Language:[en-US,en;q=0.9] Connection:[keep-alive] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:60032 /callback?code=AQBj0kfr47G7BYu-NDarv0XJC36D7OEKHJHR9_pMUl2d3RKIJPshmAuUkmgu0lib8zRDy0tfWiaDY00iaZj8ZR92KjwV91quLgAwTpGuFnv6Gcu0cQdUO3mLjJq-UpRcXwopAfMaXa88tDoUdb1td-A-3ZeTcNyDfAGXOXUxqT-O6hRrD112enj8oJ99KU4B81Pb9XKqVU5lyKQUS1DLMeaN1aTn9nN5REbfya24z8ox-MspQFB2UP9cILOXznmDc2zYu1YvICQzW_lymi_nLyprsMcOHfMfKm57l1C9cUkUk1qTmCfnWdr4ZF9XDbIt0WWfT2fd&state=abc123 <nil> <nil> <nil> 0xc000026440}
+2019/03/21 17:33:52 user id is 126154079
+2019/03/21 17:33:52 callback got the client
+2019/03/21 17:33:52 blarg triggering the redirect
+2019/03/21 17:33:53 Got a request to maange the playlist
+2019/03/21 17:33:53 Got request for: /favicon.ico
+2019/03/21 17:33:53 Got a request to maange the playlist
+2019/03/21 17:33:53 Got request for: /favicon.ico
+2019/03/21 17:33:53 Got a request to maange the playlist
+2019/03/21 17:34:02 Got a request to build the playlist
+2019/03/21 17:34:02 Got userID from cookie: 126154079
+2019/03/21 17:34:02 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 6CVd6Hlzx3UTpaVATy3Ih2
+2019/03/21 17:34:02 unfollowed the existing playlist
+2019/03/21 17:34:02 Created playlist
+2019/03/21 17:34:02 diff: 0
+2019/03/21 17:34:02 waiting for channel response 0
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 found a calendar listing
+2019/03/21 17:34:13 end of listings for date 2019-03-21
+2019/03/21 17:34:13 scrapeDates got one channel response
+2019/03/21 17:34:13 Could not locate artist A Beat Happening 
+2019/03/21 17:34:13 Could not locate artist Strange Passage 
+2019/03/21 17:34:13 Could not locate artist Rad Habits 
+2019/03/21 17:34:13 Could not locate artist Derek Moneypeny 
+2019/03/21 17:34:13 Could not locate artist Noche Libre 
+2019/03/21 17:34:13 Could not locate artist Sleepy Eyed Johns 
+2019/03/21 17:34:13 Could not locate artist The Garcia Project 
+2019/03/21 17:34:13 Could not locate artist Supper Set 
+2019/03/21 17:34:13 Could not locate artist Thursday Swing! 
+2019/03/21 17:34:13 Could not locate artist T.V.U. 
+2019/03/21 17:34:13 Could not locate artist Multiverse Ensemble 
+2019/03/21 17:34:13 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/21 17:34:13 Could not locate artist Nik Nice & Brother Charlie 
+2019/03/21 17:34:13 Could not locate artist Bossin’ Up 
+2019/03/21 17:34:13 Could not locate artist Damian Driscoll 
+2019/03/21 17:34:13 Could not locate artist Internet Beef 
+2019/03/21 17:34:13 Could not locate artist Sahba Sizdahkhani 
+2019/03/21 17:34:13 Could not locate artist Satanaraoke 
+2019/03/21 17:34:16 Encountered an error search for artist Drooler: Server error.
+2019/03/21 17:39:30 Got a request to maange the playlist
+2019/03/21 17:39:30 Got request for: /favicon.ico
+2019/03/21 17:39:30 Got a request to maange the playlist
+2019/03/21 17:39:34 Got a request to build the playlist
+2019/03/21 17:39:34 Got userID from cookie: 126154079
+2019/03/21 17:39:34 diff: 0
+2019/03/21 17:39:34 waiting for channel response 0
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 found a calendar listing
+2019/03/21 17:39:36 end of listings for date 2019-03-21
+2019/03/21 17:39:36 scrapeDates got one channel response
+2019/03/21 17:39:37 Could not locate artist Multiverse Ensemble 
+2019/03/21 17:39:37 Could not locate artist The Garcia Project 
+2019/03/21 17:39:37 Could not locate artist Derek Moneypeny 
+2019/03/21 17:39:37 Could not locate artist Supper Set 
+2019/03/21 17:39:37 Could not locate artist A Beat Happening 
+2019/03/21 17:39:37 Could not locate artist Sahba Sizdahkhani 
+2019/03/21 17:39:37 Could not locate artist T.V.U. 
+2019/03/21 17:39:37 Could not locate artist Bossin’ Up 
+2019/03/21 17:39:37 Could not locate artist Sleepy Eyed Johns 
+2019/03/21 17:39:37 Could not locate artist Strange Passage 
+2019/03/21 17:39:37 Could not locate artist Nik Nice & Brother Charlie 
+2019/03/21 17:39:37 Could not locate artist Satanaraoke 
+2019/03/21 17:39:37 Could not locate artist Noche Libre 
+2019/03/21 17:39:37 Could not locate artist Damian Driscoll 
+2019/03/21 17:39:37 Could not locate artist Thursday Swing! 
+2019/03/21 17:39:37 Could not locate artist Rad Habits 
+2019/03/21 17:39:37 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/21 17:39:37 Could not locate artist Internet Beef 
+2019/03/21 17:51:10 using port 8080
+2019/03/21 17:51:10 using redirect url http://localhost:8080/callback
+2019/03/21 17:51:38 Got request for: /
+2019/03/21 17:51:38 no client found for this user: 126154079
+2019/03/21 17:51:38 Got request for: /favicon.ico
+2019/03/21 17:51:38 no client found for this user: 126154079
+2019/03/21 17:51:42 callback request: &{GET /callback?code=AQBBocIpribyWCOpXcBjVP8yU189r3XpVty_G184uR1z1JDifulGxpb4uCGmibzI6DnxsClb5lv_tyCjvUkgg3U31w4_lUPxE5yCa5VXCkuOG__kaXOo1FyjF4tpEEohUdvwUGJ0yYa0AIE4tqnqYkW6nZGcCDkO9Z_YIqeSZnJiEeg7zeACGsbyFvq0cJ23qAaZ4qe0d6WuOnXPf-JctkXTdFEsSLg_kvNrVDyZiR84bh-3VdwvzNeeW6vUDXOJUV-9f1_yZIRs3uBZ0uXizdnMdHM22dbvluKD6M53WSYps7mafMjsyBaqwu1opFqdqugT4o1M&state=abc123 HTTP/1.1 1 1 map[Connection:[keep-alive] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Accept-Encoding:[gzip, deflate, br] Accept-Language:[en-US,en;q=0.9] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Referer:[http://localhost:8080/] Cookie:[user_id=126154079]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:61166 /callback?code=AQBBocIpribyWCOpXcBjVP8yU189r3XpVty_G184uR1z1JDifulGxpb4uCGmibzI6DnxsClb5lv_tyCjvUkgg3U31w4_lUPxE5yCa5VXCkuOG__kaXOo1FyjF4tpEEohUdvwUGJ0yYa0AIE4tqnqYkW6nZGcCDkO9Z_YIqeSZnJiEeg7zeACGsbyFvq0cJ23qAaZ4qe0d6WuOnXPf-JctkXTdFEsSLg_kvNrVDyZiR84bh-3VdwvzNeeW6vUDXOJUV-9f1_yZIRs3uBZ0uXizdnMdHM22dbvluKD6M53WSYps7mafMjsyBaqwu1opFqdqugT4o1M&state=abc123 <nil> <nil> <nil> 0xc0001aa380}
+2019/03/21 17:51:43 user id is 126154079
+2019/03/21 17:51:43 callback got the client
+2019/03/21 17:51:44 blarg triggering the redirect
+2019/03/21 17:51:44 Got a request to maange the playlist
+2019/03/21 17:51:44 Got request for: /favicon.ico
+2019/03/21 17:51:44 Got a request to maange the playlist
+2019/03/21 17:51:45 Got request for: /favicon.ico
+2019/03/21 17:51:45 Got a request to maange the playlist
+2019/03/21 17:51:51 Got a request to build the playlist
+2019/03/21 17:51:51 Got userID from cookie: 126154079
+2019/03/21 17:51:51 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 1rjVjfIElkcaKNMBVI51AZ
+2019/03/21 17:51:51 unfollowed the existing playlist
+2019/03/21 17:51:51 Created playlist
+2019/03/21 17:51:51 diff: 0
+2019/03/21 17:51:51 waiting for channel response 0
+2019/03/21 17:51:52 end of listings for date 2019-03-21
+2019/03/21 17:51:52 scrapeDates got one channel response
+2019/03/21 17:51:52 Could not locate artist Damian Driscoll 
+2019/03/21 17:51:52 Could not locate artist Strange Passage 
+2019/03/21 17:51:52 Could not locate artist Nik Nice & Brother Charlie 
+2019/03/21 17:51:52 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/21 17:51:52 Could not locate artist Multiverse Ensemble 
+2019/03/21 17:51:53 Could not locate artist Bossin’ Up 
+2019/03/21 17:51:53 Could not locate artist Sahba Sizdahkhani 
+2019/03/21 17:51:53 Could not locate artist Rad Habits 
+2019/03/21 17:51:53 Could not locate artist Noche Libre 
+2019/03/21 17:51:53 Could not locate artist The Garcia Project 
+2019/03/21 17:51:53 Could not locate artist Internet Beef 
+2019/03/21 17:51:53 Could not locate artist Satanaraoke 
+2019/03/21 17:51:53 Could not locate artist Sleepy Eyed Johns 
+2019/03/21 17:51:53 Could not locate artist T.V.U. 
+2019/03/21 17:51:53 Could not locate artist Thursday Swing! 
+2019/03/21 17:51:53 Could not locate artist A Beat Happening 
+2019/03/21 17:51:53 Could not locate artist Supper Set 
+2019/03/21 17:51:53 Could not locate artist Derek Moneypeny 
+2019/03/22 12:52:54 using port 8080
+2019/03/22 12:52:54 using redirect url http://localhost:8080/callback
+2019/03/22 12:52:59 Got request for: /
+2019/03/22 12:52:59 no userId cookie on this request
+2019/03/22 12:53:00 Got request for: /favicon.ico
+2019/03/22 12:53:00 no userId cookie on this request
+2019/03/22 12:53:02 callback request: &{GET /callback?code=AQAdjTTtSkZ4taWdaEcE7GiFJrCv7Qsrbmu2Wd4LI7BVRCOO9fo4ImXHdemGeitDNY1-6WNlVluw70omoKLjN3CFVaOXgnnx7ld1uYqriP2DxTf7Ai6kE0CMPd-3iztwhaiOMUCOZ5Id7JXQ3WQVqIQRMR0Ovfcuic8qYTr8Ly7V_bhnqIxmiZoqFEA1KY1yyuH9RkZgWgnhdr177lzSOv3CqARBDsxyEZSjHrukP5repBQ_eSOj6n5-gjEeHOaJgbrNb6cYfZEF-OVZyncmDlDVoiH1vdzfRqiiWrUQ4hIXv9H9JyzKh8h3B26UXNa-EojvfMx7&state=abc123 HTTP/1.1 1 1 map[User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Referer:[http://localhost:8080/] Accept-Encoding:[gzip, deflate, br] Accept-Language:[en-US,en;q=0.9] Connection:[keep-alive] Upgrade-Insecure-Requests:[1]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:50330 /callback?code=AQAdjTTtSkZ4taWdaEcE7GiFJrCv7Qsrbmu2Wd4LI7BVRCOO9fo4ImXHdemGeitDNY1-6WNlVluw70omoKLjN3CFVaOXgnnx7ld1uYqriP2DxTf7Ai6kE0CMPd-3iztwhaiOMUCOZ5Id7JXQ3WQVqIQRMR0Ovfcuic8qYTr8Ly7V_bhnqIxmiZoqFEA1KY1yyuH9RkZgWgnhdr177lzSOv3CqARBDsxyEZSjHrukP5repBQ_eSOj6n5-gjEeHOaJgbrNb6cYfZEF-OVZyncmDlDVoiH1vdzfRqiiWrUQ4hIXv9H9JyzKh8h3B26UXNa-EojvfMx7&state=abc123 <nil> <nil> <nil> 0xc000027e80}
+2019/03/22 12:53:03 user id is 126154079
+2019/03/22 12:53:03 callback got the client
+2019/03/22 12:53:03 Got request for: /favicon.ico
+2019/03/22 12:53:03 Got a request to maange the playlist
+2019/03/22 12:53:03 blarg triggering the redirect
+2019/03/22 12:53:03 Got a request to maange the playlist
+2019/03/22 12:53:03 Got request for: /favicon.ico
+2019/03/22 12:53:03 Got a request to maange the playlist
+2019/03/22 12:53:09 Got a request to build the playlist
+2019/03/22 12:53:09 Got userID from cookie: 126154079
+2019/03/22 12:53:09 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 1ab8vk7kxzCy4JGeP6vGSY
+2019/03/22 12:53:09 unfollowed the existing playlist
+2019/03/22 12:53:09 Created playlist
+2019/03/22 12:53:09 diff: 0
+2019/03/22 12:53:09 waiting for channel response 0
+2019/03/22 12:53:10 there's another page for date 2019-03-22
+2019/03/22 12:53:10 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:02:29 using port 8080
+2019/03/22 13:02:29 using redirect url http://localhost:8080/callback
+2019/03/22 13:02:33 Got request for: /
+2019/03/22 13:02:33 no client found for this user: 126154079
+2019/03/22 13:02:33 Got request for: /favicon.ico
+2019/03/22 13:02:33 no client found for this user: 126154079
+2019/03/22 13:02:36 callback request: &{GET /callback?code=AQAILQHYUbia3sSeXy3QjCLmYALU8Oc2BP6K2OQLPNmTMJqRgzq7uIVoaZ_dRg0TEcZ1QOAIyOal_0MibVHHEu0s3CSpFaQeATTPHWQVl5u81jJUwtsY8H9h062k06GeAEkzS0G2t5_jagdidx6c2TBYvPLg9HRAcJtxZeSn39ceWcBXp5VpNtTlM4vEeBmuR5fEt9wFFt7vqLLQmep57fkNf8bon1z9DkatS76NbEygCp3ujTIsfzsY2ji82uf1h_wiAU-8Ge_zGtPNRlCDl1qBKkCBw4pR1TuX6_hEbgqvQoMi9SrI4PtgkEV6FPCCdkx-qaN-&state=abc123 HTTP/1.1 1 1 map[Cookie:[user_id=126154079] Connection:[keep-alive] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept-Encoding:[gzip, deflate, br] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Referer:[http://localhost:8080/] Accept-Language:[en-US,en;q=0.9]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:51097 /callback?code=AQAILQHYUbia3sSeXy3QjCLmYALU8Oc2BP6K2OQLPNmTMJqRgzq7uIVoaZ_dRg0TEcZ1QOAIyOal_0MibVHHEu0s3CSpFaQeATTPHWQVl5u81jJUwtsY8H9h062k06GeAEkzS0G2t5_jagdidx6c2TBYvPLg9HRAcJtxZeSn39ceWcBXp5VpNtTlM4vEeBmuR5fEt9wFFt7vqLLQmep57fkNf8bon1z9DkatS76NbEygCp3ujTIsfzsY2ji82uf1h_wiAU-8Ge_zGtPNRlCDl1qBKkCBw4pR1TuX6_hEbgqvQoMi9SrI4PtgkEV6FPCCdkx-qaN-&state=abc123 <nil> <nil> <nil> 0xc000026500}
+2019/03/22 13:02:36 user id is 126154079
+2019/03/22 13:02:36 callback got the client
+2019/03/22 13:02:36 Got request for: /favicon.ico
+2019/03/22 13:02:36 Got a request to maange the playlist
+2019/03/22 13:02:36 blarg triggering the redirect
+2019/03/22 13:02:36 Got a request to maange the playlist
+2019/03/22 13:02:37 Got request for: /favicon.ico
+2019/03/22 13:02:37 Got a request to maange the playlist
+2019/03/22 13:02:42 Got a request to build the playlist
+2019/03/22 13:02:42 Got userID from cookie: 126154079
+2019/03/22 13:02:42 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 0IxPhHGiguJxIHAeRuoaOn
+2019/03/22 13:02:43 unfollowed the existing playlist
+2019/03/22 13:02:43 Created playlist
+2019/03/22 13:02:43 diff: 0
+2019/03/22 13:02:43 waiting for channel response 0
+2019/03/22 13:02:44 there's another page for date 2019-03-22
+2019/03/22 13:02:44 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:02:54 end of listings for date 2019-03-22
+2019/03/22 13:02:54 scrapeDates got one channel response
+2019/03/22 13:02:54 waiting for searches to finish
+2019/03/22 13:02:54 Could not locate artist Weekend Spin 
+2019/03/22 13:02:54 Could not locate artist The Sportin' Lifers 
+2019/03/22 13:02:54 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 13:02:54 Could not locate artist Valouria 
+2019/03/22 13:02:54 Could not locate artist Neighborhood Superfriends 
+2019/03/22 13:02:54 Could not locate artist This is How We Do It 
+2019/03/22 13:02:54 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 13:02:54 Could not locate artist Natural Beavers 
+2019/03/22 13:02:54 Could not locate artist Space Bass After-Party 
+2019/03/22 13:02:54 Could not locate artist DJ Aquamarine 
+2019/03/22 13:02:54 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 13:02:54 Could not locate artist UnDude 
+2019/03/22 13:02:54 Could not locate artist Cosmonox 
+2019/03/22 13:02:54 Could not locate artist Dead Dives 
+2019/03/22 13:02:54 Could not locate artist Zazzy Zoe 
+2019/03/22 13:02:54 Could not locate artist Treneti Brown 
+2019/03/22 13:02:54 Could not locate artist Wet & Kilo Kish 
+2019/03/22 13:02:54 Could not locate artist MedEvil Madness III 
+2019/03/22 13:02:54 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 13:02:54 Could not locate artist DJ Nate C 
+2019/03/22 13:02:54 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 13:02:54 Could not locate artist Coraline in Concert 
+2019/03/22 13:02:54 Could not locate artist DJ Major Sean 
+2019/03/22 13:02:54 Could not locate artist Way Worse 
+2019/03/22 13:02:54 Could not locate artist Draves 
+2019/03/22 13:02:54 Could not locate artist Dubblife 
+2019/03/22 13:02:57 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 13:02:57 Could not locate artist Garden Chat 
+2019/03/22 13:02:57 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:02:57 Could not locate artist Ghost Town Cinema 
+2019/03/22 13:02:57 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:02:57 Could not locate artist DJ Isaiah Summers 
+2019/03/22 13:09:18 using port 8080
+2019/03/22 13:09:18 using redirect url http://localhost:8080/callback
+2019/03/22 13:09:21 Got request for: /
+2019/03/22 13:09:21 no client found for this user: 126154079
+2019/03/22 13:09:22 Got request for: /favicon.ico
+2019/03/22 13:09:22 no client found for this user: 126154079
+2019/03/22 13:09:23 callback request: &{GET /callback?code=AQBwQBWfk_ZSo1U41LXKjt_hPsMA0MPCGkRE6yaCvXuR8ny0jJEbVTzGuX73eAxkp2JJBxA0I0-pRD9VZMjDd_fMb4_vtyKbYa-k4YdvaaqnSFh73y7938QXurl8_3UUoWs_JaAdaBaFTmdxPIXss_JAcn0QzVxlLWqOW4yqilKnbWVHj9I5hQLxJvvV6gZpQWmPy8ptEUJ5se5WtDIJbZSmH6iH4ISBCVmzLYT49kKDFF_x0waXpLpbXjNl4Xt3oydGUTIZoL5HqlVSFwrqimFYXhXeATd4-9Q9ZbVHWesBizk21kxC7MO4mADtsGs6gjPpqTqg&state=abc123 HTTP/1.1 1 1 map[Accept-Language:[en-US,en;q=0.9] Cookie:[user_id=126154079] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Referer:[http://localhost:8080/] Accept-Encoding:[gzip, deflate, br] Connection:[keep-alive] Upgrade-Insecure-Requests:[1]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:51785 /callback?code=AQBwQBWfk_ZSo1U41LXKjt_hPsMA0MPCGkRE6yaCvXuR8ny0jJEbVTzGuX73eAxkp2JJBxA0I0-pRD9VZMjDd_fMb4_vtyKbYa-k4YdvaaqnSFh73y7938QXurl8_3UUoWs_JaAdaBaFTmdxPIXss_JAcn0QzVxlLWqOW4yqilKnbWVHj9I5hQLxJvvV6gZpQWmPy8ptEUJ5se5WtDIJbZSmH6iH4ISBCVmzLYT49kKDFF_x0waXpLpbXjNl4Xt3oydGUTIZoL5HqlVSFwrqimFYXhXeATd4-9Q9ZbVHWesBizk21kxC7MO4mADtsGs6gjPpqTqg&state=abc123 <nil> <nil> <nil> 0xc000026400}
+2019/03/22 13:09:24 user id is 126154079
+2019/03/22 13:09:24 callback got the client
+2019/03/22 13:09:24 Got request for: /favicon.ico
+2019/03/22 13:09:24 Got a request to maange the playlist
+2019/03/22 13:09:25 blarg triggering the redirect
+2019/03/22 13:09:25 Got a request to maange the playlist
+2019/03/22 13:09:25 Got request for: /favicon.ico
+2019/03/22 13:09:25 Got a request to maange the playlist
+2019/03/22 13:09:31 Got a request to build the playlist
+2019/03/22 13:09:31 Got userID from cookie: 126154079
+2019/03/22 13:09:32 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 6tL2Iy7wX7jiqiG0wnrfeb
+2019/03/22 13:09:32 unfollowed the existing playlist
+2019/03/22 13:09:32 Created playlist
+2019/03/22 13:09:32 diff: 0
+2019/03/22 13:09:32 waiting for channel response 0
+2019/03/22 13:09:34 there's another page for date 2019-03-22
+2019/03/22 13:09:34 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:09:34 end of listings for date 2019-03-22
+2019/03/22 13:09:34 scrapeDates got one channel response
+2019/03/22 13:09:34 waiting for searches to finish
+2019/03/22 13:09:35 Could not locate artist The Sportin' Lifers 
+2019/03/22 13:09:35 Could not locate artist Garden Chat 
+2019/03/22 13:09:35 0KIHfZb5U5sGvGraLcFCfq
+2019/03/22 13:09:35 Could not locate artist Dead Dives 
+2019/03/22 13:09:35 Could not locate artist This is How We Do It 
+2019/03/22 13:09:35 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 13:09:35 6fvomrMGmmxlYUcSzpD6e5
+2019/03/22 13:09:35 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:09:35 55WXqChRBMUv94ECDANR0q
+2019/03/22 13:09:35 1qqdO7xMptucPDMopsOdkr
+2019/03/22 13:09:35 Could not locate artist Neighborhood Superfriends 
+2019/03/22 13:09:35 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 13:09:35 3CNBP1cVu6zsLl4rLnOeDc
+2019/03/22 13:09:35 0FioeNTkayAIuSJ5laRB0x
+2019/03/22 13:09:35 0Zo7GuvEKvMATRcZ0YLQG0
+2019/03/22 13:09:35 Could not locate artist Cosmonox 
+2019/03/22 13:09:35 Could not locate artist Space Bass After-Party 
+2019/03/22 13:09:35 Could not locate artist DJ Major Sean 
+2019/03/22 13:09:35 4ZLxZbDrcqMAe9Me3S8lY6
+2019/03/22 13:09:35 0LpYrjDBCwmG55FdEXjDqU
+2019/03/22 13:09:35 00YTqRClk82aMchQQpYMd5
+2019/03/22 13:09:35 6zak5MvdHd7nblk39GO2Qm
+2019/03/22 13:09:35 6F5SDsjkFxMY0i58IBjq7R
+2019/03/22 13:09:35 1l2zA17WLSKIdsIZSo9I82
+2019/03/22 13:09:35 2OmMFOTpvehj0yvuDfi23D
+2019/03/22 13:09:35 67xUUajI1dXaeY4e4ouwEN
+2019/03/22 13:09:35 3rBZvqEBzqGXTOdT6aHpZR
+2019/03/22 13:09:35 Could not locate artist Valouria 
+2019/03/22 13:09:35 0iMnpaEHXkgMT956CmP1kj
+2019/03/22 13:09:35 29eSZhw9x4dljAvBPV4M87
+2019/03/22 13:09:35 1YKwlHGdnePMBjvgN1rD3W
+2019/03/22 13:09:35 Could not locate artist Natural Beavers 
+2019/03/22 13:09:35 Could not locate artist DJ Isaiah Summers 
+2019/03/22 13:09:35 Could not locate artist Coraline in Concert 
+2019/03/22 13:09:35 Could not locate artist Dubblife 
+2019/03/22 13:09:35 Could not locate artist DJ Nate C 
+2019/03/22 13:09:35 Could not locate artist Zazzy Zoe 
+2019/03/22 13:09:35 Could not locate artist Draves 
+2019/03/22 13:09:35 6jJQn7pVoRZF4SOhpDz85q
+2019/03/22 13:09:35 2QaSK5qHaivrIOiIgidzW3
+2019/03/22 13:09:35 Could not locate artist Ghost Town Cinema 
+2019/03/22 13:09:35 7ABtDYul6TTXrSzCpcSvGr
+2019/03/22 13:09:35 0086bMfxpbmgwyAHxbmPy0
+2019/03/22 13:09:35 Could not locate artist DJ Aquamarine 
+2019/03/22 13:09:35 5gLOxgCfZCqqsnXLzM6SyP
+2019/03/22 13:09:35 3I3Fz1DeUY0icXFvOjbXm7
+2019/03/22 13:09:35 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 13:09:35 3dvya4Ao4NtlsK2j2XZWqV
+2019/03/22 13:09:35 5cP5AByXG70KVZlVQsAMOD
+2019/03/22 13:09:35 2WZEhzNzkOS4171A2Nk983
+2019/03/22 13:09:35 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 13:09:35 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 13:09:35 1Md43tDItXhquLZPaxsEOO
+2019/03/22 13:09:35 0w2QFhEnPG6tLIvkogHbUi
+2019/03/22 13:09:35 5oBpxK3bSEGeENPP6C5QMO
+2019/03/22 13:09:35 0yyD1fpbYeADcyqm72wq2e
+2019/03/22 13:09:35 5lmjBqpSrnLiV2gZPgD4Qq
+2019/03/22 13:09:35 5AoXSiM511L4To0AN5oZVB
+2019/03/22 13:09:35 Could not locate artist UnDude 
+2019/03/22 13:09:35 7CRpy07kg1GkKKpjoiXPiO
+2019/03/22 13:09:35 6r96y5vkbVOJI5JgnK2JBd
+2019/03/22 13:09:35 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:09:35 Could not locate artist Treneti Brown 
+2019/03/22 13:09:35 Could not locate artist Wet & Kilo Kish 
+2019/03/22 13:09:38 6Xq9CIMYWK4RCrMVtfEOM0
+2019/03/22 13:09:38 Could not locate artist Weekend Spin 
+2019/03/22 13:09:38 5fLQeMgQB5lG5MKweYVjN5
+2019/03/22 13:09:38 602xS9y5WOsfwZz0llRsXu
+2019/03/22 13:09:38 675tsBPpaZtqyiBwEf3ZEP
+2019/03/22 13:09:38 0BJeP79i5wKgCqsEEiQ7G0
+2019/03/22 13:09:38 1QsfhlGvu9tLL2PSmEr8TM
+2019/03/22 13:09:38 0jFXLmYqujAAqWWkq0q3RR
+2019/03/22 13:09:38 132sZpCaM8ie6byAEcOcRs
+2019/03/22 13:09:38 3m8XkZz5AmCii0rrte2IM6
+2019/03/22 13:09:38 4G5ZJny3HvX6Il7eHVfnNC
+2019/03/22 13:09:38 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 13:09:38 
+2019/03/22 13:09:38 6VVG93SFF6JwkRgD7FYpZg
+2019/03/22 13:09:38 1i2itLb6J1UUShnmfoa2BB
+2019/03/22 13:09:38 Could not locate artist Way Worse 
+2019/03/22 13:09:38 Could not locate artist MedEvil Madness III 
+2019/03/22 13:09:38 
+2019/03/22 13:09:38 finished search
+2019/03/22 13:09:38 channel length to add: 0
+2019/03/22 13:09:38 Got request for: /favicon.ico
+2019/03/22 13:09:38 Got a request to maange the playlist
+2019/03/22 13:11:13 using port 8080
+2019/03/22 13:11:13 using redirect url http://localhost:8080/callback
+2019/03/22 13:11:15 Got request for: /
+2019/03/22 13:11:15 no client found for this user: 126154079
+2019/03/22 13:11:15 Got request for: /favicon.ico
+2019/03/22 13:11:15 no client found for this user: 126154079
+2019/03/22 13:11:17 callback request: &{GET /callback?code=AQAMy3YpO5ArjLVBlsmr_UEDlS3a6GbkyvxCwZVaJjpXtiuLWhA3TNKyzV_9EtbsgQFIojirfh1zdoHkGUtLjTyzlMbNT45AaK0hpN9AAYQgC_4gzMpiDo6Xr9NZUGc63Dny6OYrzuhwv9BR4_xa8jSiI8JuPWYgNjsuFD4tn-QBGLYbxDY1f0_cZOfdwy53S6duKEhCm7SxXhPjlImI7vJUs6nJzH3jLiEEWoAOhPhpiGT2Yn7QRIZGNQGGoPRtkYCJSTyyoPds4n7dxXJTlJ52uM0yeoWfgqE3QKnxLvs92MAy468vOJHYneUJvhYfeRyAe6RP&state=abc123 HTTP/1.1 1 1 map[Accept-Encoding:[gzip, deflate, br] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Referer:[http://localhost:8080/] Accept-Language:[en-US,en;q=0.9] Cookie:[user_id=126154079] Connection:[keep-alive] Upgrade-Insecure-Requests:[1]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:52014 /callback?code=AQAMy3YpO5ArjLVBlsmr_UEDlS3a6GbkyvxCwZVaJjpXtiuLWhA3TNKyzV_9EtbsgQFIojirfh1zdoHkGUtLjTyzlMbNT45AaK0hpN9AAYQgC_4gzMpiDo6Xr9NZUGc63Dny6OYrzuhwv9BR4_xa8jSiI8JuPWYgNjsuFD4tn-QBGLYbxDY1f0_cZOfdwy53S6duKEhCm7SxXhPjlImI7vJUs6nJzH3jLiEEWoAOhPhpiGT2Yn7QRIZGNQGGoPRtkYCJSTyyoPds4n7dxXJTlJ52uM0yeoWfgqE3QKnxLvs92MAy468vOJHYneUJvhYfeRyAe6RP&state=abc123 <nil> <nil> <nil> 0xc0001c0080}
+2019/03/22 13:11:18 user id is 126154079
+2019/03/22 13:11:18 callback got the client
+2019/03/22 13:11:18 Got request for: /favicon.ico
+2019/03/22 13:11:18 Got a request to maange the playlist
+2019/03/22 13:11:18 blarg triggering the redirect
+2019/03/22 13:11:18 Got a request to maange the playlist
+2019/03/22 13:11:18 Got request for: /favicon.ico
+2019/03/22 13:11:18 Got a request to maange the playlist
+2019/03/22 13:11:21 Got a request to build the playlist
+2019/03/22 13:11:21 Got userID from cookie: 126154079
+2019/03/22 13:11:21 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 6ak9D92LY0LOfihVkTIY0L
+2019/03/22 13:11:21 unfollowed the existing playlist
+2019/03/22 13:11:21 Created playlist
+2019/03/22 13:11:21 diff: 0
+2019/03/22 13:11:21 waiting for channel response 0
+2019/03/22 13:11:22 there's another page for date 2019-03-22
+2019/03/22 13:11:22 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:11:23 end of listings for date 2019-03-22
+2019/03/22 13:11:23 scrapeDates got one channel response
+2019/03/22 13:11:23 waiting for searches to finish
+2019/03/22 13:11:23 Could not locate artist DJ Aquamarine 
+2019/03/22 13:11:23 Could not locate artist MedEvil Madness III 
+2019/03/22 13:11:23 Could not locate artist Weekend Spin 
+2019/03/22 13:11:23 Could not locate artist Wet & Kilo Kish 
+2019/03/22 13:11:23 Could not locate artist The Sportin' Lifers 
+2019/03/22 13:11:23 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 13:11:23 Could not locate artist This is How We Do It 
+2019/03/22 13:11:23 Could not locate artist UnDude 
+2019/03/22 13:11:23 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 13:11:23 Could not locate artist Dead Dives 
+2019/03/22 13:11:23 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:11:23 Could not locate artist Coraline in Concert 
+2019/03/22 13:11:23 Could not locate artist DJ Nate C 
+2019/03/22 13:11:23 Could not locate artist Draves 
+2019/03/22 13:11:23 Could not locate artist Treneti Brown 
+2019/03/22 13:11:23 Could not locate artist Ghost Town Cinema 
+2019/03/22 13:11:23 Could not locate artist Way Worse 
+2019/03/22 13:11:23 Could not locate artist Zazzy Zoe 
+2019/03/22 13:11:23 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 13:11:23 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 13:11:23 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:11:23 Could not locate artist Dubblife 
+2019/03/22 13:11:23 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 13:11:23 Could not locate artist Space Bass After-Party 
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 1
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 5
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 4
+2019/03/22 13:11:24 got %v tracks 5
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 4
+2019/03/22 13:11:24 got %v tracks 9
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 6
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 7
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 Could not locate artist Natural Beavers 
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 Could not locate artist Cosmonox 
+2019/03/22 13:11:24 got %v tracks 6
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 5
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 Could not locate artist Valouria 
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 5
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 Could not locate artist Garden Chat 
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 4
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:24 got %v tracks 10
+2019/03/22 13:11:26 Could not locate artist DJ Isaiah Summers 
+2019/03/22 13:11:26 Could not locate artist Neighborhood Superfriends 
+2019/03/22 13:11:26 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 13:11:26 Could not locate artist DJ Major Sean 
+2019/03/22 13:11:26 got %v tracks 9
+2019/03/22 13:11:26 got %v tracks 10
+2019/03/22 13:11:26 got %v tracks 5
+2019/03/22 13:11:26 got %v tracks 9
+2019/03/22 13:11:27 got %v tracks 10
+2019/03/22 13:11:27 got %v tracks 10
+2019/03/22 13:11:27 finished search
+2019/03/22 13:11:27 channel length to add: 0
+2019/03/22 13:11:27 Got request for: /favicon.ico
+2019/03/22 13:11:27 Got a request to maange the playlist
+2019/03/22 13:23:22 using port 8080
+2019/03/22 13:23:22 using redirect url http://localhost:8080/callback
+2019/03/22 13:23:26 Got request for: /
+2019/03/22 13:23:26 no client found for this user: 126154079
+2019/03/22 13:23:26 Got request for: /favicon.ico
+2019/03/22 13:23:26 no client found for this user: 126154079
+2019/03/22 13:23:28 callback request: &{GET /callback?code=AQAal6vCQvjYvTryIGPJh-B5tlAXbnHP5n3e1Ieaxg6_tAkgoOgdbFQLrs8vlPemQf_8_nGBVzcrdEaxadPIXILh88q9vbNif5mNuWIZfJ760i7HZ392e3-dIszSr0E9qjZgr9iEUqa5bVBtiS9ukEKMFyaiemMKHmjEo2v5ZhjTwl-3aFkBw_9BGBVygelhkKjNL7jrYobXhCkOXFFD85VaQhmhHKFsjUracECS521xalLSoLDWifqvk5B-4FbpyYUu6hBFBXKnHzWRmQXVoONTeKnYMePlKXKSBdnitu4nTYoV7pObvUBU26E7q5BhUuxBz4_Y&state=abc123 HTTP/1.1 1 1 map[Connection:[keep-alive] Referer:[http://localhost:8080/] Accept-Encoding:[gzip, deflate, br] Cookie:[user_id=126154079] Upgrade-Insecure-Requests:[1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Accept-Language:[en-US,en;q=0.9]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:52953 /callback?code=AQAal6vCQvjYvTryIGPJh-B5tlAXbnHP5n3e1Ieaxg6_tAkgoOgdbFQLrs8vlPemQf_8_nGBVzcrdEaxadPIXILh88q9vbNif5mNuWIZfJ760i7HZ392e3-dIszSr0E9qjZgr9iEUqa5bVBtiS9ukEKMFyaiemMKHmjEo2v5ZhjTwl-3aFkBw_9BGBVygelhkKjNL7jrYobXhCkOXFFD85VaQhmhHKFsjUracECS521xalLSoLDWifqvk5B-4FbpyYUu6hBFBXKnHzWRmQXVoONTeKnYMePlKXKSBdnitu4nTYoV7pObvUBU26E7q5BhUuxBz4_Y&state=abc123 <nil> <nil> <nil> 0xc000182380}
+2019/03/22 13:23:28 user id is 126154079
+2019/03/22 13:23:28 callback got the client
+2019/03/22 13:23:29 Got request for: /favicon.ico
+2019/03/22 13:23:29 Got a request to maange the playlist
+2019/03/22 13:23:29 blarg triggering the redirect
+2019/03/22 13:23:29 Got a request to maange the playlist
+2019/03/22 13:23:29 Got request for: /favicon.ico
+2019/03/22 13:23:29 Got a request to maange the playlist
+2019/03/22 13:23:36 Got a request to build the playlist
+2019/03/22 13:23:36 Got userID from cookie: 126154079
+2019/03/22 13:23:36 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 5o2hx6FCAzGfueTBxAP96I
+2019/03/22 13:23:36 unfollowed the existing playlist
+2019/03/22 13:23:37 Created playlist
+2019/03/22 13:23:37 diff: 0
+2019/03/22 13:23:37 waiting for channel response 0
+2019/03/22 13:23:37 there's another page for date 2019-03-22
+2019/03/22 13:23:37 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:23:38 end of listings for date 2019-03-22
+2019/03/22 13:23:38 scrapeDates got one channel response
+2019/03/22 13:23:38 waiting for searches to finish
+2019/03/22 13:23:39 Could not locate artist DJ Nate C 
+2019/03/22 13:23:39 Could not locate artist Weekend Spin 
+2019/03/22 13:23:39 Could not locate artist Neighborhood Superfriends 
+2019/03/22 13:23:39 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 13:23:39 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 13:23:39 Could not locate artist Cosmonox 
+2019/03/22 13:23:39 Could not locate artist Garden Chat 
+2019/03/22 13:23:39 Could not locate artist Zazzy Zoe 
+2019/03/22 13:23:39 Could not locate artist UnDude 
+2019/03/22 13:23:39 Could not locate artist Valouria 
+2019/03/22 13:23:39 Could not locate artist Space Bass After-Party 
+2019/03/22 13:23:39 Could not locate artist DJ Aquamarine 
+2019/03/22 13:23:39 Could not locate artist Dead Dives 
+2019/03/22 13:23:39 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:23:39 Could not locate artist MedEvil Madness III 
+2019/03/22 13:23:39 Could not locate artist Coraline in Concert 
+2019/03/22 13:23:39 Could not locate artist Dubblife 
+2019/03/22 13:23:39 Could not locate artist Way Worse 
+2019/03/22 13:23:39 Could not locate artist The Sportin' Lifers 
+2019/03/22 13:23:39 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 13:23:39 Could not locate artist DJ Major Sean 
+2019/03/22 13:23:39 Could not locate artist Draves 
+2019/03/22 13:23:39 Could not locate artist Treneti Brown 
+2019/03/22 13:23:39 Could not locate artist Natural Beavers 
+2019/03/22 13:23:39 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 13:23:39 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:23:39 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 13:23:39 i: 0, trackId: 5BpmzYVYP3nJC2t6apHpey
+2019/03/22 13:23:39 i: 1, trackId: 1H7T8Ar8j8382fTGblaMzM
+2019/03/22 13:23:39 i: 2, trackId: 4ZE2BUSkNLVoeO5SwPMu3B
+2019/03/22 13:23:39 i: 3, trackId: 2oPL342hQuvZvpXSmLVsvR
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 60aOdawKshK1WDygcrQA5p
+2019/03/22 13:23:39 i: 1, trackId: 3whb9ouqzV3Y7F6eCDh9x2
+2019/03/22 13:23:39 i: 2, trackId: 7t6575j9A0SWKqixFLkBis
+2019/03/22 13:23:39 i: 3, trackId: 4LUjkLiCGdBzY2VfrlQMTC
+2019/03/22 13:23:39 i: 4, trackId: 1FWevvcTt6DY4GTJD7u29q
+2019/03/22 13:23:39 i: 5, trackId: 7hPW1ddhC85t2Pldxx2Ugm
+2019/03/22 13:23:39 i: 6, trackId: 592NxFgsjU1OegBaEvDNGZ
+2019/03/22 13:23:39 i: 7, trackId: 3CUf1W4KJVaw2KmPwlhNaN
+2019/03/22 13:23:39 i: 8, trackId: 00Y4jddHHQ5WLjBmVjJnx3
+2019/03/22 13:23:39 i: 9, trackId: 2ZnklxeyX0lQqmzFbv3ABi
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 4fqnFHp2RbVr8EIAB5nG5Z
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 2RYHH3AkPQq4ovQ09v37Qy
+2019/03/22 13:23:39 i: 1, trackId: 5sYB4UwzFOJb3cwKObCm1S
+2019/03/22 13:23:39 i: 2, trackId: 2WD6AkEByRV1TA2TxE5jLd
+2019/03/22 13:23:39 i: 3, trackId: 1JOFepyd0MwqpQ0OenpWnn
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 0tFDXbxXw9ZHG0Nb4x42em
+2019/03/22 13:23:39 i: 1, trackId: 7jMEbdDWk1n0xhsqPNXArc
+2019/03/22 13:23:39 i: 2, trackId: 1vh68YJOZrdxPDkjDEjY8f
+2019/03/22 13:23:39 i: 3, trackId: 2aJ2IFBtx6iftGMjbensm2
+2019/03/22 13:23:39 i: 4, trackId: 5zWJira8n8CqvnnOFhHyWt
+2019/03/22 13:23:39 i: 5, trackId: 76ZWS4bZJguprloCshlXG5
+2019/03/22 13:23:39 i: 6, trackId: 2RCPbG86R0omEEKlMQDaup
+2019/03/22 13:23:39 i: 7, trackId: 1qPuQCHmCZzbWcJNV63Ini
+2019/03/22 13:23:39 i: 8, trackId: 3hskMKu4n3hnO1NwmDTPxq
+2019/03/22 13:23:39 i: 9, trackId: 3gRjXUOy5FQRBefGM03Fl4
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 32uqAtuqbrhBXBbSrjiApV
+2019/03/22 13:23:39 i: 1, trackId: 0zVkEotdeXecCurYYXBppY
+2019/03/22 13:23:39 i: 2, trackId: 767xm3TQ2zyNOcZsjJvtde
+2019/03/22 13:23:39 i: 3, trackId: 63qRpkrCqRGIocD1mrSsDV
+2019/03/22 13:23:39 i: 4, trackId: 2JQCciXn5Z47kpGo55po4c
+2019/03/22 13:23:39 i: 5, trackId: 6DYea73AuxkL3wlk5PZvYT
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 0Li0iXtNW9G88msPDy24bB
+2019/03/22 13:23:39 i: 1, trackId: 5gAFOZ6P1e8uxGwrqHBfOo
+2019/03/22 13:23:39 i: 2, trackId: 6z7sDSXIqtHnrXXEnet5vp
+2019/03/22 13:23:39 i: 3, trackId: 4D1R5aI2ihqGqnJmQuvvOr
+2019/03/22 13:23:39 i: 4, trackId: 1mXKhtMZyit3HEqgpdKDqE
+2019/03/22 13:23:39 i: 5, trackId: 7L8tJTCuNhbBfQIjLMnYl0
+2019/03/22 13:23:39 i: 6, trackId: 5Zus4evEzc7xlIO1BoCM8w
+2019/03/22 13:23:39 i: 7, trackId: 0rGJzz12XdkFM2mnHPrKWm
+2019/03/22 13:23:39 i: 8, trackId: 6cFrDOns1yTj8cQDEv7czu
+2019/03/22 13:23:39 i: 9, trackId: 6UU0ODfLLvXWxVvfEqR4Ka
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 0osktpHbjYekkM80pQkzbd
+2019/03/22 13:23:39 i: 1, trackId: 0aLrHZKT7pcszo0e5SiMIG
+2019/03/22 13:23:39 i: 2, trackId: 1wp1aHirvZihTdrtdFuFv0
+2019/03/22 13:23:39 i: 3, trackId: 3le4ECmJTUNXYLsGjQYSXi
+2019/03/22 13:23:39 i: 4, trackId: 1tbjeelOKIjolYNUNnPMAD
+2019/03/22 13:23:39 i: 5, trackId: 5cA5uzhbAQ3P8ZRnyeCnGV
+2019/03/22 13:23:39 i: 6, trackId: 7hH4dSp71EOv3XS57e8CYu
+2019/03/22 13:23:39 i: 7, trackId: 3xoQ3tTYJffg1xnxq6DUeX
+2019/03/22 13:23:39 i: 8, trackId: 3tIbU5qAn8Ppe5XRGI294e
+2019/03/22 13:23:39 i: 9, trackId: 0yHvGDYWns43XQNVhUwGcG
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 3aTyz9Yur7YRSXXXlyjKUD
+2019/03/22 13:23:39 i: 1, trackId: 3loBqxydMDDtwRnJWIDrRV
+2019/03/22 13:23:39 i: 2, trackId: 4mUt2M3Y4YiQrNJZY9TrOX
+2019/03/22 13:23:39 i: 3, trackId: 0JTQCx3XEw2h0m9LQQfFXj
+2019/03/22 13:23:39 i: 4, trackId: 4jtiSEUfkNoww8dU9DkbUz
+2019/03/22 13:23:39 i: 5, trackId: 3weWfNj7fC3YqxQPsHtiYI
+2019/03/22 13:23:39 i: 6, trackId: 46vsZeTKKcCGFoAz4Bpcik
+2019/03/22 13:23:39 i: 7, trackId: 3uotmCxeTGepzJ8qknC9bI
+2019/03/22 13:23:39 i: 8, trackId: 0SYo2aRh2MYfBoJAFOYtNs
+2019/03/22 13:23:39 i: 9, trackId: 49ETuUR2lWHPLF4AyKrube
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 4nEkJUd8h0Nkyu8t8fPqaT
+2019/03/22 13:23:39 i: 1, trackId: 2HdVblrPwTnBUQLWFH1lxG
+2019/03/22 13:23:39 i: 2, trackId: 49TwhORnuDeXo2xqkdWygv
+2019/03/22 13:23:39 i: 3, trackId: 3pgzjkmYQCKfR7tNBhCoen
+2019/03/22 13:23:39 i: 4, trackId: 5wYq2nzYd2aG9BKzpNTl3B
+2019/03/22 13:23:39 i: 5, trackId: 3ibrRfe64gYDoKTHzSpPRE
+2019/03/22 13:23:39 i: 6, trackId: 3E6aVbpvX3xLKqEtkxfIOl
+2019/03/22 13:23:39 i: 7, trackId: 64yQn7JE3GsAr6VHrylF4J
+2019/03/22 13:23:39 i: 8, trackId: 78SYACdrbvdLOBMb6lQJKL
+2019/03/22 13:23:39 i: 9, trackId: 1H0nNiNi8dnEzR9q4NP4OH
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 0ogkjqKRADOuqDbTMGUBaU
+2019/03/22 13:23:39 i: 1, trackId: 1TuR7Sc2pASiCmCkzKxijO
+2019/03/22 13:23:39 i: 2, trackId: 4W2mxAa2H6CVR4ucZo0war
+2019/03/22 13:23:39 i: 3, trackId: 6fyVClWw2SI5HrN0P7kmqR
+2019/03/22 13:23:39 i: 4, trackId: 2B0JRbFgbEEi7cygfMTSZw
+2019/03/22 13:23:39 i: 5, trackId: 55FPxMXDDxIA2uC2taQgqo
+2019/03/22 13:23:39 i: 6, trackId: 5zTI4R2I6KFJCuvghCEa9C
+2019/03/22 13:23:39 i: 7, trackId: 7CNkDLudNFnV0KYl4kZyLy
+2019/03/22 13:23:39 i: 8, trackId: 4CParcau5aMtTUBMEmnvDL
+2019/03/22 13:23:39 i: 9, trackId: 14yqHWqC9TK7XcDVax6vjd
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 0iXjGLsMcFggGdQMGLwZGs
+2019/03/22 13:23:39 i: 1, trackId: 3rpW6NWeeV2M8c8enz58zO
+2019/03/22 13:23:39 i: 2, trackId: 4GnYNjlfOEX33U7Zxbicen
+2019/03/22 13:23:39 i: 3, trackId: 11H7L7lTdBZcYhURwuwtf6
+2019/03/22 13:23:39 i: 4, trackId: 7bPmFy6pmN3JBGZNnKNLLV
+2019/03/22 13:23:39 i: 5, trackId: 6rlbZXbPMtsanI5CuKLZDZ
+2019/03/22 13:23:39 i: 6, trackId: 4rXGo1FQWG8qm0DeZnOz4J
+2019/03/22 13:23:39 i: 7, trackId: 2m65QtmfOtRQ0pl9pvUaer
+2019/03/22 13:23:39 i: 8, trackId: 6mdONHNgEPttgrr7wV7xS0
+2019/03/22 13:23:39 i: 9, trackId: 41XtMq0chVo8g0AhdgLTWK
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 2yhbY3SZTw2zCZWUgkWI1t
+2019/03/22 13:23:39 i: 1, trackId: 1ghSUXAWsqNVKAFObgUWhB
+2019/03/22 13:23:39 i: 2, trackId: 6HEaa9sYxROVW7soDvRTvP
+2019/03/22 13:23:39 i: 3, trackId: 60nHnMwSgGLN1s4orZkYox
+2019/03/22 13:23:39 i: 4, trackId: 0zjjFearIkCy63DhYfzHvz
+2019/03/22 13:23:39 i: 5, trackId: 4ARwekLjGhr18sIiqg3FQx
+2019/03/22 13:23:39 i: 6, trackId: 0GAEzJQF1PZWNJfT7ofDMu
+2019/03/22 13:23:39 i: 7, trackId: 2QCqCIuIhF2ttifKKgVaDq
+2019/03/22 13:23:39 i: 8, trackId: 0fwigl7FYiUdGe3W9r0QS7
+2019/03/22 13:23:39 i: 9, trackId: 3fUhCRSi79T9XDbhE4GVYR
+2019/03/22 13:23:39 i: 0, trackId: 6XA12laU5GUhas6GcWDLuU
+2019/03/22 13:23:39 i: 0, trackId: 6amsRP2Czn4ZGNnkKlWs16
+2019/03/22 13:23:39 i: 1, trackId: 2Expm82LPbRwRfdoMXtcYK
+2019/03/22 13:23:39 i: 2, trackId: 2c6H7EJd0nfKo0wboXmWN9
+2019/03/22 13:23:39 i: 3, trackId: 2ZZsp2wxGroULtLXdE3heS
+2019/03/22 13:23:39 i: 4, trackId: 6obUht6GKo8z7XagrmHoHs
+2019/03/22 13:23:39 i: 5, trackId: 41uzJYIT4ebMTNSWILkhiY
+2019/03/22 13:23:39 i: 6, trackId: 0xcMGfbipjgiXAFXhiBDXM
+2019/03/22 13:23:39 i: 7, trackId: 1qdK1PmnvKzi96DlKxFXh5
+2019/03/22 13:23:39 i: 8, trackId: 6S7ZZ73xc7H7pbHk7RG2yN
+2019/03/22 13:23:39 i: 9, trackId: 0gj9bsyWle8peHiTHoyG4N
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 1, trackId: 0xQevbz2L13K1a4rWWXGy1
+2019/03/22 13:23:39 i: 2, trackId: 6fEonsnOM8IiqFDuiqukMc
+2019/03/22 13:23:39 i: 3, trackId: 0QapunlwO9vnL5X6h4YF18
+2019/03/22 13:23:39 i: 4, trackId: 0CXQ2LNOcb6oJTWYEWKtyK
+2019/03/22 13:23:39 i: 5, trackId: 2GNkR4EfPnXi0zRl5A89ky
+2019/03/22 13:23:39 i: 6, trackId: 2f23wbpcWh5jW6GFK3FPjN
+2019/03/22 13:23:39 i: 7, trackId: 4sP2lZem4MZn3iDJqd9SBq
+2019/03/22 13:23:39 i: 8, trackId: 29VZaw57nwUtKeGBVv1n9K
+2019/03/22 13:23:39 i: 9, trackId: 6FSM511TqUHUD09nRua1Go
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 6Iy89I2E77pk8EHCHPBcFj
+2019/03/22 13:23:39 i: 1, trackId: 4vSk4RLQLvyWA6oJ0D0mdh
+2019/03/22 13:23:39 i: 2, trackId: 5TpEXP1oqC0j2Ghc7UD72L
+2019/03/22 13:23:39 i: 3, trackId: 5Wt28m9IAltDppTaMsYVGk
+2019/03/22 13:23:39 i: 4, trackId: 29Ncj305JbUVcxZNrCN3Uh
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 5Apdamhhg0TywRiaxFyG3W
+2019/03/22 13:23:39 i: 1, trackId: 0COtUKEWFt4aZmGGAXtAY0
+2019/03/22 13:23:39 i: 2, trackId: 3aELr1MXmYRKhqtXtdbeVm
+2019/03/22 13:23:39 i: 3, trackId: 3IveN1IBmdUR13xHwkqg44
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 11hybHIkqLSl1ca6gUXBlp
+2019/03/22 13:23:39 i: 1, trackId: 4DAe9TgriMAlTEcTusHL3b
+2019/03/22 13:23:39 i: 2, trackId: 24BOcPgPLsAZfqT5sivOXl
+2019/03/22 13:23:39 i: 3, trackId: 2Teio9f7oi4lgkKdqKLXzL
+2019/03/22 13:23:39 i: 4, trackId: 5DKpwTJBkxVEN5x2SJDa9J
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 6bgTyY0jBGEnlJLSZaPoL1
+2019/03/22 13:23:39 i: 1, trackId: 5RQEujkmPDLx1IL0aYKvtu
+2019/03/22 13:23:39 i: 2, trackId: 3Lg8AIM1ez7ltPDYiRp8t5
+2019/03/22 13:23:39 i: 3, trackId: 1wbw5FP6aq7ldkBt2KPr0V
+2019/03/22 13:23:39 i: 4, trackId: 5rTvUqyiRm9ZiV3OgG5UTM
+2019/03/22 13:23:39 i: 5, trackId: 57bofoMtDrtXA9UeJuK0d1
+2019/03/22 13:23:39 i: 6, trackId: 4gy6YFoSexp4uQ0QrM3DuT
+2019/03/22 13:23:39 i: 7, trackId: 0VePvmdU0jFBM2RVGT1PY9
+2019/03/22 13:23:39 i: 8, trackId: 2x5Tm35yfvRRpLPoS5g2NQ
+2019/03/22 13:23:39 i: 9, trackId: 2UpU5NfgYVP8QPuBxaUn4A
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 0Ks5D4Gmcm8HNyYyAuQ6Uh
+2019/03/22 13:23:39 i: 1, trackId: 2ZV7ZU3bLgfqjrCWbquPKi
+2019/03/22 13:23:39 i: 2, trackId: 3s1I7BCIEA2WNgQTl6F08L
+2019/03/22 13:23:39 i: 3, trackId: 22BiBOcjPQCMfjfMXjs7uQ
+2019/03/22 13:23:39 i: 4, trackId: 6Q0OqIhW61jL45c6Ohf0nz
+2019/03/22 13:23:39 i: 5, trackId: 6X9YplPLff9RmDKfTHGr28
+2019/03/22 13:23:39 i: 6, trackId: 5wKQgjOjeEDZNUDMqglDgN
+2019/03/22 13:23:39 i: 7, trackId: 5w7Pn1nflFRrVg9r3eebX8
+2019/03/22 13:23:39 i: 8, trackId: 3S157qca9rPFNcn9SMLaRs
+2019/03/22 13:23:39 i: 9, trackId: 1xClMwgZHnslUftyj5Smmq
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 2AgBD1rBibLI7elfCQ394h
+2019/03/22 13:23:39 i: 1, trackId: 3GuBnUAdUWdATkh5KzG8pq
+2019/03/22 13:23:39 i: 2, trackId: 0mLhTZew7KY753LEZg6apC
+2019/03/22 13:23:39 i: 3, trackId: 3jfM6iQVx08cFBU07SBUEW
+2019/03/22 13:23:39 i: 4, trackId: 1QmLWgX8AB1LuaEfFZzCrn
+2019/03/22 13:23:39 i: 5, trackId: 7qvVEMApHm7j3ARfZ13SQl
+2019/03/22 13:23:39 i: 6, trackId: 4iUc4JXPMI3xi4lvVhtaTU
+2019/03/22 13:23:39 i: 7, trackId: 1i6mTfj9Nn2bYMsrkdqdSc
+2019/03/22 13:23:39 i: 8, trackId: 46V5PXvvX34XzpTu2JIKzh
+2019/03/22 13:23:39 i: 9, trackId: 0APoDN9M1UYSLtIyqLh09L
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 5uo5BzcUrc1GK9KCHNn5bv
+2019/03/22 13:23:39 i: 1, trackId: 5hbIOuqmxXsZ71tAiLbalq
+2019/03/22 13:23:39 i: 2, trackId: 2mFBwdd8bZN6xIG6wYl7WK
+2019/03/22 13:23:39 i: 3, trackId: 3TXH3XOs3D5J5JoIJvMgc3
+2019/03/22 13:23:39 i: 4, trackId: 3yx4VIUoRIHLbus61bYHkh
+2019/03/22 13:23:39 i: 5, trackId: 61eQQLmsCs4XDKCQk32wXl
+2019/03/22 13:23:39 i: 6, trackId: 34lWdHVe013MTfQ85g4Pmt
+2019/03/22 13:23:39 i: 7, trackId: 3kWlbEuHWYtWD4NtWFlzUg
+2019/03/22 13:23:39 i: 8, trackId: 26bN5OCn9naUBY6zZcvbJL
+2019/03/22 13:23:39 i: 9, trackId: 6cqiVwLcFAi1KoEgaPx2Fx
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 4kCa9EiVQ22mfuXTeChNDQ
+2019/03/22 13:23:39 i: 1, trackId: 3VIkyXQicpYZVmzeyRwapG
+2019/03/22 13:23:39 i: 2, trackId: 62BxjgrZJMuACmKpDurC17
+2019/03/22 13:23:39 i: 3, trackId: 2a4sjvh1Qka5Belv1LvGQQ
+2019/03/22 13:23:39 i: 4, trackId: 1FiStlyf6Vr4rUV747mZFB
+2019/03/22 13:23:39 i: 5, trackId: 1FN1DwwT82JHKZbf5gOKFS
+2019/03/22 13:23:39 i: 6, trackId: 6jykiKktkX0JtTSKcfhcIC
+2019/03/22 13:23:39 i: 7, trackId: 2DgccWphsdmXhbAYfO5Oto
+2019/03/22 13:23:39 i: 8, trackId: 6G80mS5c1A3adDNn4VURAV
+2019/03/22 13:23:39 i: 9, trackId: 2x0ELSyxstVDupp6zuIX8C
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 2fWRRecCCnzAE4gLBUjz8M
+2019/03/22 13:23:39 i: 1, trackId: 3wiYAlqOqmABujoeBFxBWL
+2019/03/22 13:23:39 i: 2, trackId: 2ujvbqvgIaAZ4t2yd5QMC2
+2019/03/22 13:23:39 i: 3, trackId: 36H36xRBEYkDkdfobTFAp2
+2019/03/22 13:23:39 i: 4, trackId: 63hse76TvAcQzz6s3kVxoR
+2019/03/22 13:23:39 i: 5, trackId: 0HHDZxc40mWBzkXpzGmyl1
+2019/03/22 13:23:39 i: 6, trackId: 4OJ3ET3FKD9g4wOsU5JVuu
+2019/03/22 13:23:39 i: 7, trackId: 3lSuA351KKZlvB5ImxY7Hz
+2019/03/22 13:23:39 i: 8, trackId: 6mA41CRRuyIk28K7kbi3ZG
+2019/03/22 13:23:39 i: 9, trackId: 3OifSUJkbmaurQa5UiEidO
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 5DpX8L2mE7iVNdtgGIw2mY
+2019/03/22 13:23:39 i: 1, trackId: 45bMBHr1opqtQdDvod92hp
+2019/03/22 13:23:39 i: 2, trackId: 7zGwbJigiJOQnPu20mKsJp
+2019/03/22 13:23:39 i: 3, trackId: 2osG87ykiZA4a1xrzC4dug
+2019/03/22 13:23:39 i: 4, trackId: 4VUSjKr0ajuN8nxPhmp0fz
+2019/03/22 13:23:39 i: 5, trackId: 1yXnZ2RFlRfonI9TGWzkiD
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 4Gogj5uqZe2AsuAy6CVLWt
+2019/03/22 13:23:39 i: 1, trackId: 6wPKGlHrBBKIgGOpfaaVOc
+2019/03/22 13:23:39 i: 2, trackId: 0r0AmCXk5TEz3o9CGm55wN
+2019/03/22 13:23:39 i: 3, trackId: 4LjL2nvzHxW7rMMni7B6iA
+2019/03/22 13:23:39 i: 4, trackId: 2ecOkvAZjiR7ToWadBYiz7
+2019/03/22 13:23:39 i: 5, trackId: 7DrDQan9blQdmJeZv8EG0X
+2019/03/22 13:23:39 i: 6, trackId: 2GROYzxBhIeATQYyZa8QGs
+2019/03/22 13:23:39 i: 7, trackId: 5g6p1ectaivHgZLjmKag0z
+2019/03/22 13:23:39 i: 8, trackId: 13tN5xgboTKWNeFH9NZGEY
+2019/03/22 13:23:39 i: 9, trackId: 341hZ65IDfZdR7nssij6Cy
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 1kQRcv73HROoUXINd1MPuy
+2019/03/22 13:23:39 i: 1, trackId: 2ueS1TyoYq0d4ZKhjNpYPR
+2019/03/22 13:23:39 i: 2, trackId: 6tkFmpXZw0YkjXOznRMHbb
+2019/03/22 13:23:39 i: 3, trackId: 4kpDvL7pFLJ6wt6vx3MvQX
+2019/03/22 13:23:39 i: 4, trackId: 0xCC73QphnE6t0zuAGOpEA
+2019/03/22 13:23:39 i: 5, trackId: 2XCs6NZCcCVzfFWHFD7bQp
+2019/03/22 13:23:39 i: 6, trackId: 5ww3Kj4CD22SZZMl21qKrN
+2019/03/22 13:23:39 i: 7, trackId: 3yljI4I2uvogcPmXSH28xq
+2019/03/22 13:23:39 i: 8, trackId: 3HmmzFSjgapkzkG11HJBJl
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 16gvjuZGmibA3348jWdjKV
+2019/03/22 13:23:39 i: 1, trackId: 5pe0Ju7NrDDsYQhPwVundF
+2019/03/22 13:23:39 i: 2, trackId: 5aYBaKTkyr9mVe0DBZCL72
+2019/03/22 13:23:39 i: 3, trackId: 6AdZaTVNVPUjKvxC7dnPNI
+2019/03/22 13:23:39 i: 4, trackId: 5OwRSppDTdwPHC12qYlfQN
+2019/03/22 13:23:39 i: 5, trackId: 30p7VKzGMfX9TozycHU2t7
+2019/03/22 13:23:39 i: 6, trackId: 34bZJgMUjOPbOdTJYyjB1m
+2019/03/22 13:23:39 i: 7, trackId: 7CvGlnsxrCGp0JzkhwMqA2
+2019/03/22 13:23:39 i: 8, trackId: 33TwP6hHkYLQuhAfWrcYZL
+2019/03/22 13:23:39 i: 9, trackId: 7x5wEE9Zi4JuRJUH6ZxNOm
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 1vaO3722npwbCDwePvGSKF
+2019/03/22 13:23:39 i: 1, trackId: 6vAqW3921cgq39F8ixVRKM
+2019/03/22 13:23:39 i: 2, trackId: 04XYmCWsrPaPIb1juv6nQz
+2019/03/22 13:23:39 i: 3, trackId: 2KaLb2DVHTuyw7yiiYiWZI
+2019/03/22 13:23:39 i: 4, trackId: 3JjbsOXTYul8NF3x8dCViW
+2019/03/22 13:23:39 i: 5, trackId: 17ZQbZSrAfFBwNHNDQESON
+2019/03/22 13:23:39 i: 6, trackId: 65oXvxTEaY7MLL78Fyi0wO
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 0KR0Cxj4JBUdFJsnlfQaFp
+2019/03/22 13:23:39 i: 1, trackId: 4jKe4NnyGnDKb59svENink
+2019/03/22 13:23:39 i: 2, trackId: 1Hx1PgwgcLv7T6NO95bDD6
+2019/03/22 13:23:39 i: 3, trackId: 5enPH2P00j3xvcXqKH7ayo
+2019/03/22 13:23:39 i: 4, trackId: 4xAUEwVbO5BhqsH49CAOhI
+2019/03/22 13:23:39 i: 5, trackId: 21ByD5uzTBkUtI2lb55JUs
+2019/03/22 13:23:39 i: 6, trackId: 2BmFQiVFqoRFR2uzhjI4bJ
+2019/03/22 13:23:39 i: 7, trackId: 0380J5YBxBw1xtGdtC3wdE
+2019/03/22 13:23:39 i: 8, trackId: 78xjHkTjL40U44T1ogbE6r
+2019/03/22 13:23:39 i: 9, trackId: 1MN5gnxpy3GeSFoldiWwGu
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 Could not locate artist This is How We Do It 
+2019/03/22 13:23:39 Could not locate artist DJ Isaiah Summers 
+2019/03/22 13:23:39 Could not locate artist Wet & Kilo Kish 
+2019/03/22 13:23:39 i: 0, trackId: 4psxhrMFCo4FeQeAWTPFhr
+2019/03/22 13:23:39 i: 1, trackId: 7at2FO6HnRqivRcfzTatg9
+2019/03/22 13:23:39 i: 2, trackId: 1HunEnhULBXS1RlftCK8iK
+2019/03/22 13:23:39 i: 3, trackId: 3ngcXocaTjUNa6Ee71tPW2
+2019/03/22 13:23:39 i: 4, trackId: 75ZXsh1pseNVsDMH8RewGK
+2019/03/22 13:23:39 i: 5, trackId: 4w6s7yU51sz3Lbo1Bkm2Ex
+2019/03/22 13:23:39 i: 6, trackId: 74xmZ42V5HZTTWgPKM6TRd
+2019/03/22 13:23:39 i: 7, trackId: 0M1GdN4g3aI2sfUQxIoHpV
+2019/03/22 13:23:39 i: 8, trackId: 2dbpvgMvSPxENNvccTCeko
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 5uhZOxlvwy6RomDtrskuRq
+2019/03/22 13:23:39 i: 1, trackId: 4OPGGbg25lW251wHwNPeNu
+2019/03/22 13:23:39 i: 2, trackId: 31mvyI4bUAwU8JICxKQEg5
+2019/03/22 13:23:39 i: 3, trackId: 09nnZy087Ao1dqNkJhcOFr
+2019/03/22 13:23:39 i: 4, trackId: 5B6W7PVf7MN7c6n0wviB8i
+2019/03/22 13:23:39 i: 5, trackId: 6lBcQsna0I1Ztgu1ZveMaa
+2019/03/22 13:23:39 i: 6, trackId: 6PaeP1dGBfbAHhQjyN7zFu
+2019/03/22 13:23:39 i: 7, trackId: 4HMF6k8h7G2xGyqjeEwxLs
+2019/03/22 13:23:39 i: 8, trackId: 4REJLpaAwu0eJDT7CUU0Yq
+2019/03/22 13:23:39 i: 9, trackId: 7l2DxiZr1qJ98lVxC3Fz9e
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 6EQwszZhQPEPBsGQqw28pY
+2019/03/22 13:23:39 i: 1, trackId: 52l9QjpeZCnP2vGUtY2zqT
+2019/03/22 13:23:39 i: 2, trackId: 4Ex3qnDgJbQUu2dzNkBt7i
+2019/03/22 13:23:39 i: 3, trackId: 08grky7iYfgr9uILV0H6IL
+2019/03/22 13:23:39 i: 4, trackId: 0hHHvfmSDMO3S5aRSBR5ug
+2019/03/22 13:23:39 i: 5, trackId: 4BdOgbffpuEjfJUiE2sh6t
+2019/03/22 13:23:39 i: 6, trackId: 1OSilIDjdpAmYc4BopH8MD
+2019/03/22 13:23:39 i: 7, trackId: 4MtqbKJVtyhbRGwYvwQPnu
+2019/03/22 13:23:39 i: 8, trackId: 0qJAeyyiURcDNm4HSEUGEl
+2019/03/22 13:23:39 i: 9, trackId: 4JoQevZfAaHvf1yeDJ2nwM
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 4muAGMNipTEtIoYfMa9QL0
+2019/03/22 13:23:39 i: 1, trackId: 5yUfBfsoFd1PzQHrkWVTdV
+2019/03/22 13:23:39 i: 2, trackId: 3fOETmGlFv8nCmZSMIPfmL
+2019/03/22 13:23:39 i: 3, trackId: 4TcTtWG8wSrxRmKWHNYHK8
+2019/03/22 13:23:39 i: 4, trackId: 2d7lM2tUbVZbfOvmJFn4pw
+2019/03/22 13:23:39 i: 5, trackId: 0FORftUv1AjBfUn6iaKFCA
+2019/03/22 13:23:39 i: 6, trackId: 4xpHRDRSts4Zz2MDreHxPc
+2019/03/22 13:23:39 i: 7, trackId: 5ldbJwt3yE1hQuOvtp9P2J
+2019/03/22 13:23:39 i: 8, trackId: 4LuVCdZLCLcaOCzomwp4es
+2019/03/22 13:23:39 i: 9, trackId: 1Cy1mZ5KVGh4lU5gyBEmpq
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 2tbAtiycEXydvPBfyCRnoK
+2019/03/22 13:23:39 i: 1, trackId: 4FmHW1CuH9oQFwFVqsWfTv
+2019/03/22 13:23:39 i: 2, trackId: 33zamR6uTqOI15nKTz3DWD
+2019/03/22 13:23:39 i: 3, trackId: 7kieUjhbkjEkTnPXkujNmy
+2019/03/22 13:23:39 i: 4, trackId: 2oD8cLhTbUaBeYAQ85Bnw0
+2019/03/22 13:23:39 i: 5, trackId: 5AVntk4SDVglgGlrWAvVdK
+2019/03/22 13:23:39 i: 6, trackId: 48Ah8Nw0bMHw6IfrCnFfTq
+2019/03/22 13:23:39 i: 7, trackId: 3hauzBzyKvoDw8vzExR9hm
+2019/03/22 13:23:39 i: 8, trackId: 4CKtLZlaFn0CtlBxynsZBk
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 7JXg4fsx2p1iRygEBIhvgF
+2019/03/22 13:23:39 i: 1, trackId: 4GIhMr21KbdGGBlN9VBj1Y
+2019/03/22 13:23:39 i: 2, trackId: 1YAlilz6K66edjsyB7AB4D
+2019/03/22 13:23:39 i: 3, trackId: 6VHCe6mMAQe2fuAzCvhfv1
+2019/03/22 13:23:39 i: 4, trackId: 0E0sZgM5CenRKPNixxEhw3
+2019/03/22 13:23:39 i: 5, trackId: 5zrZCsmEfd6wJrgGk80nWj
+2019/03/22 13:23:39 i: 6, trackId: 6IvvCHjhsPFC4uOFqXmqu7
+2019/03/22 13:23:39 i: 7, trackId: 2JsSXpR0Pf8MQtaGZ2bJuz
+2019/03/22 13:23:39 i: 8, trackId: 5lytAucRHbRuQMJ8udxehD
+2019/03/22 13:23:39 i: 9, trackId: 7x323IQfZ0w79DmsxwWlxc
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 3FEBsU1XGqjwkDfMn8utnw
+2019/03/22 13:23:39 i: 1, trackId: 2ZbnciuexDuEurSsXUUx7c
+2019/03/22 13:23:39 i: 2, trackId: 5WUB17hTOCKE0kYscizIl6
+2019/03/22 13:23:39 i: 3, trackId: 4ZSKL2EVrm3QDGefhVE3vm
+2019/03/22 13:23:39 i: 4, trackId: 5iXma63GBE12hglT5DuwYo
+2019/03/22 13:23:39 i: 5, trackId: 5Nuy3J2nv4AFJDwkfQQHt6
+2019/03/22 13:23:39 i: 6, trackId: 0o1yupLwR1vjnEWbLPQqrO
+2019/03/22 13:23:39 i: 7, trackId: 7yEp8rprN0RSiYWHhfMwAX
+2019/03/22 13:23:39 i: 8, trackId: 3a5tkk5TmhF1BvT05avAcX
+2019/03/22 13:23:39 i: 9, trackId: 0e0Ppelp4gCKmRa3BZHiGZ
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 1B2hgLeZeYmJhVe0OOSzoR
+2019/03/22 13:23:39 i: 1, trackId: 4sWOiVIsWOqKKZ9iML3Jnl
+2019/03/22 13:23:39 i: 2, trackId: 3EcxiZh71Hq3HDtpSCr6hS
+2019/03/22 13:23:39 i: 3, trackId: 1RNitReDjJvNZ6I596aEP8
+2019/03/22 13:23:39 i: 4, trackId: 6ISyWaIYLQ2a0V3CeTSnI6
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 6oqN1SWyVkUuRp0NyfvsUA
+2019/03/22 13:23:39 i: 1, trackId: 5sNWRDxfjPLVmbREsMKhAK
+2019/03/22 13:23:39 i: 2, trackId: 7jvVuU1qKhoEwha0r1lwNS
+2019/03/22 13:23:39 i: 3, trackId: 4ArlkuGw20vZ3jl8ejFQ7U
+2019/03/22 13:23:39 i: 4, trackId: 4kZ0ypGHITqlCbkwFBqcqj
+2019/03/22 13:23:39 i: 5, trackId: 42FIFgGxI6qmh8k4l7mzyQ
+2019/03/22 13:23:39 i: 6, trackId: 4SI8ijXs3OQLYc0584ZGzi
+2019/03/22 13:23:39 i: 7, trackId: 2gjDHaEdyuaPg2W6psQ0Ej
+2019/03/22 13:23:39 i: 8, trackId: 1RiwzQVVk56OXBwTvlJKDE
+2019/03/22 13:23:39 i: 9, trackId: 1sOcrJBXsp4gTzibeVCpDP
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:39 i: 0, trackId: 7e0fO3VlPSkbpha0A9olGS
+2019/03/22 13:23:39 i: 1, trackId: 1YcX2kZjIwWlB8X8CdEodI
+2019/03/22 13:23:39 i: 2, trackId: 46JKID6hnYhSeoj1NF9Cfe
+2019/03/22 13:23:39 i: 3, trackId: 7Al725sCwFefIREnLDIF2Q
+2019/03/22 13:23:39 i: 4, trackId: 1N6fZ4l7c7cmXdEQACwzpT
+2019/03/22 13:23:39 i: 5, trackId: 3mP7u718yslJNLQfxsf4K9
+2019/03/22 13:23:39 i: 6, trackId: 7M6hy8hCw11wRKiitOakZN
+2019/03/22 13:23:39 i: 7, trackId: 1CJVwprYaQSYHl7vLhIX8v
+2019/03/22 13:23:39 i: 8, trackId: 6DDJDDzDrhiPHTJysRMOLf
+2019/03/22 13:23:39 i: 9, trackId: 5P4s55ubmOnRPKPoyoJfP5
+2019/03/22 13:23:39 sending tracks to channel
+2019/03/22 13:23:46 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 13:23:46 i: 0, trackId: 2RW5eRfsogoQWbjsGYaQ3l
+2019/03/22 13:23:46 i: 1, trackId: 0UXQVjSes4LApxkoWNoKKt
+2019/03/22 13:23:46 i: 2, trackId: 3kLBxRAnAkGyg5UtmmLlua
+2019/03/22 13:23:46 i: 3, trackId: 4MXtOHy6wBwmhNgl0AXIul
+2019/03/22 13:23:46 i: 4, trackId: 2d0njD7IX4LB9QKGSQcdKH
+2019/03/22 13:23:46 i: 5, trackId: 5qAs8V01S8bsNY16wRndfL
+2019/03/22 13:23:46 i: 6, trackId: 5fRedIcH5MN5oEbZg88duV
+2019/03/22 13:23:46 i: 7, trackId: 5pjHFJMlkVPQNajaBljKqn
+2019/03/22 13:23:46 i: 8, trackId: 1bUl21ilhCLFDcjhVzDCuD
+2019/03/22 13:23:46 i: 9, trackId: 1Syuof73716HH8roYxFfHD
+2019/03/22 13:23:46 sending tracks to channel
+2019/03/22 13:23:47 Could not locate artist Ghost Town Cinema 
+2019/03/22 13:23:47 i: 0, trackId: 49PFXN3DdbnET8png7ndEo
+2019/03/22 13:23:47 i: 1, trackId: 7HV04ic4HPXmDhI2gQ1by8
+2019/03/22 13:23:47 i: 2, trackId: 6pVPnZLcRXjyARnejNMVvf
+2019/03/22 13:23:47 i: 3, trackId: 28Qb8OlORDhiKRe4YLcBMD
+2019/03/22 13:23:47 i: 4, trackId: 1q513ubdglYUhAQLjuFjmD
+2019/03/22 13:23:47 sending tracks to channel
+2019/03/22 13:23:47 i: 0, trackId: 0MNAmUVKOrNa9QQYXMb2wM
+2019/03/22 13:23:47 i: 1, trackId: 5pxNWSjNnoncQxyyuqHaYC
+2019/03/22 13:23:47 i: 2, trackId: 1ZZeS3sa7IIdI6lzTZN7ES
+2019/03/22 13:23:47 i: 3, trackId: 2aChjzLnut5oLAJj0ENbnM
+2019/03/22 13:23:47 i: 4, trackId: 4ynAcGM9ZPkEe0uejy5p1v
+2019/03/22 13:23:47 i: 5, trackId: 0cJ7jEhzNdGUgiJCr97LBj
+2019/03/22 13:23:47 i: 6, trackId: 1vX2O3Nw1b1IG0Zkk1oOv7
+2019/03/22 13:23:47 i: 7, trackId: 7ypyzIgDgI4UWSW18CRJcS
+2019/03/22 13:23:47 i: 8, trackId: 5F0N3GtCxxh8Ud28AMmkw5
+2019/03/22 13:23:47 i: 9, trackId: 1KbvZgkBgde0TFG6JMUTS8
+2019/03/22 13:23:47 sending tracks to channel
+2019/03/22 13:23:47 i: 0, trackId: 2pUj9Suisg1wdL5BmDW54s
+2019/03/22 13:23:47 i: 1, trackId: 5xhDm4H9wA6d6eKVVrwxwA
+2019/03/22 13:23:47 i: 2, trackId: 4bCXWbJqHGjeHOYDJz1VYT
+2019/03/22 13:23:47 i: 3, trackId: 0btm9X1aW4Ldf0M5PPTumS
+2019/03/22 13:23:47 i: 4, trackId: 2xa95Yu6UYIvUn5Z0FK2QL
+2019/03/22 13:23:47 sending tracks to channel
+2019/03/22 13:23:47 i: 0, trackId: 5F3t5WgLyBX2W7un8IXiLD
+2019/03/22 13:23:47 i: 1, trackId: 4HiuT2pdJzwdSKf72aSdhs
+2019/03/22 13:23:47 i: 2, trackId: 6NZtSdYMHFCrGGCQX2vom6
+2019/03/22 13:23:47 i: 3, trackId: 3zjx24dKimAUvpxBLucXRq
+2019/03/22 13:23:47 i: 4, trackId: 7r6zJH3xZRy2gHdrWsj0e9
+2019/03/22 13:23:47 i: 5, trackId: 4YTrP8N3DU7zYyAR1OJ5h3
+2019/03/22 13:23:47 i: 6, trackId: 2GStT6oDQWg7CtKSFMjPr0
+2019/03/22 13:23:47 i: 7, trackId: 63yDbsUppBXFPtzR4efaKP
+2019/03/22 13:23:47 i: 8, trackId: 6GSTgqPsvBarpdItP3dUHf
+2019/03/22 13:23:47 i: 9, trackId: 4KMtBO5l4pnpQKpvmxXYhy
+2019/03/22 13:23:47 sending tracks to channel
+2019/03/22 13:23:47 i: 0, trackId: 4z5sQHr476gOMILYK7sdwS
+2019/03/22 13:23:47 i: 1, trackId: 2JRYSkoyE4PBiK0MpRFk6y
+2019/03/22 13:23:47 i: 2, trackId: 6ihLUeid7mwQ4qcMF3BIBx
+2019/03/22 13:23:47 i: 3, trackId: 2lAzd6Twq7cj9KmUfe9psG
+2019/03/22 13:23:47 i: 4, trackId: 3BCs9ITEsBqXDGYDDV0wQW
+2019/03/22 13:23:47 i: 5, trackId: 4B7cFicxQMRjkzpoY1haPq
+2019/03/22 13:23:47 i: 6, trackId: 6mlmHJIyLr3R7dGBBDFnbq
+2019/03/22 13:23:47 i: 7, trackId: 1E98Tlu1d5oyLJBNqkLNgz
+2019/03/22 13:23:47 i: 8, trackId: 4V4gW0iEZsVTtX8jdqaYNp
+2019/03/22 13:23:47 i: 9, trackId: 13B7nhnewRqq7s3YA8bSUy
+2019/03/22 13:23:47 sending tracks to channel
+2019/03/22 13:23:47 i: 0, trackId: 3GYdHTk3E3WWDjic27M4NZ
+2019/03/22 13:23:47 i: 1, trackId: 2rrKos3QgYHnJJc9FtCF4Y
+2019/03/22 13:23:47 i: 2, trackId: 70bJhqI5fBIYKpmBPDrpne
+2019/03/22 13:23:47 i: 3, trackId: 663NOqZVQBuf3wbXl3bllc
+2019/03/22 13:23:47 i: 4, trackId: 7LOHfH1aWysR3n93nNnBcw
+2019/03/22 13:23:47 i: 5, trackId: 1Ga1iLj4XuSQtkCz93Y0EV
+2019/03/22 13:23:47 i: 6, trackId: 6Fynye3acfr55zvuA84GsE
+2019/03/22 13:23:47 i: 7, trackId: 1HgCbgiCIE3u7d4XBTItK0
+2019/03/22 13:23:47 i: 8, trackId: 5fuY7mISGL383ISsA19LLE
+2019/03/22 13:23:47 i: 9, trackId: 4UP5kHecVuSoTsNKt31rRS
+2019/03/22 13:23:47 sending tracks to channel
+2019/03/22 13:23:47 i: 0, trackId: 6dUNMAkCmHBdPiKY6vL1ne
+2019/03/22 13:23:47 i: 1, trackId: 38mndiq3ea14J9yerMJSvH
+2019/03/22 13:23:47 i: 2, trackId: 2C0rUmoUEv0YWJbogzecRV
+2019/03/22 13:23:47 i: 3, trackId: 384WAJpzPACfUFMhm4pnrU
+2019/03/22 13:23:47 i: 4, trackId: 18s3bLkWhanZSK9G92zxe4
+2019/03/22 13:23:47 i: 5, trackId: 7LsRFimx5UyT0Ftwbu7hWz
+2019/03/22 13:23:47 i: 6, trackId: 0aEfJ2nGEbw47Iuxb7yXj5
+2019/03/22 13:23:47 i: 7, trackId: 0XPFfJI3bUQUIqOcqpdHdc
+2019/03/22 13:23:47 i: 8, trackId: 1ajGVPMYWyBJADmK8SQuhi
+2019/03/22 13:23:47 i: 9, trackId: 1W7HPPJ4QDJJDgRMPfczu2
+2019/03/22 13:23:47 sending tracks to channel
+2019/03/22 13:43:49 using port 8080
+2019/03/22 13:43:49 using redirect url http://localhost:8080/callback
+2019/03/22 13:43:53 Got request for: /
+2019/03/22 13:43:53 no client found for this user: 126154079
+2019/03/22 13:43:54 Got request for: /favicon.ico
+2019/03/22 13:43:54 no client found for this user: 126154079
+2019/03/22 13:43:56 callback request: &{GET /callback?code=AQDIt7zJZcdHkxJNh8dowTkwuOBxZ7MP5quN7N1T7TE5LXxD5KbLLYTyi9bG5xmov5I-TNclA0szfJbIFOBM6jXI43sKW9OIpQ55aw7kcw-1Mgml6UJtxW2j6sYfDd9yNhI9eZujWjwZyJD543a2SXazXGbasy1Y5hHF-yjiWlFlmKp9GoFp1BH9H63x8FjT6ge_6kKKnaWXQ72bwfrW9c8eB6FynAjkKJk_8IOtfKKXJRpqQR8GKS22VOZKKaEN74NTW2Wortj8J7WTZyrOjyPePzUhyB1fJbmgPOEUSIwioLsmnUFwx_DbwPpJCtVA7EViVTRe&state=abc123 HTTP/1.1 1 1 map[Referer:[http://localhost:8080/] Accept-Encoding:[gzip, deflate, br] Accept-Language:[en-US,en;q=0.9] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Cookie:[user_id=126154079] Connection:[keep-alive] Upgrade-Insecure-Requests:[1]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:54461 /callback?code=AQDIt7zJZcdHkxJNh8dowTkwuOBxZ7MP5quN7N1T7TE5LXxD5KbLLYTyi9bG5xmov5I-TNclA0szfJbIFOBM6jXI43sKW9OIpQ55aw7kcw-1Mgml6UJtxW2j6sYfDd9yNhI9eZujWjwZyJD543a2SXazXGbasy1Y5hHF-yjiWlFlmKp9GoFp1BH9H63x8FjT6ge_6kKKnaWXQ72bwfrW9c8eB6FynAjkKJk_8IOtfKKXJRpqQR8GKS22VOZKKaEN74NTW2Wortj8J7WTZyrOjyPePzUhyB1fJbmgPOEUSIwioLsmnUFwx_DbwPpJCtVA7EViVTRe&state=abc123 <nil> <nil> <nil> 0xc00017c3c0}
+2019/03/22 13:43:56 user id is 126154079
+2019/03/22 13:43:56 callback got the client
+2019/03/22 13:43:57 Got request for: /favicon.ico
+2019/03/22 13:43:57 Got a request to maange the playlist
+2019/03/22 13:43:57 blarg triggering the redirect
+2019/03/22 13:43:57 Got a request to maange the playlist
+2019/03/22 13:43:57 Got request for: /favicon.ico
+2019/03/22 13:43:57 Got a request to maange the playlist
+2019/03/22 13:44:02 Got a request to build the playlist
+2019/03/22 13:44:02 Got userID from cookie: 126154079
+2019/03/22 13:44:02 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 7fvX8WNqrzHpuaeON0D439
+2019/03/22 13:44:02 unfollowed the existing playlist
+2019/03/22 13:44:03 Created playlist
+2019/03/22 13:44:03 diff: 0
+2019/03/22 13:44:03 waiting for channel response 0
+2019/03/22 13:44:04 there's another page for date 2019-03-22
+2019/03/22 13:44:04 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:44:05 end of listings for date 2019-03-22
+2019/03/22 13:44:05 scrapeDates got one channel response
+2019/03/22 13:44:05 waiting for searches to finish
+2019/03/22 13:44:05 debugcnt: 82
+2019/03/22 13:44:05 Could not locate artist Dead Dives 
+2019/03/22 13:44:05 Could not locate artist Cosmonox 
+2019/03/22 13:44:05 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 13:44:05 Could not locate artist Wet & Kilo Kish 
+2019/03/22 13:44:05 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 13:44:06 Could not locate artist Space Bass After-Party 
+2019/03/22 13:44:06 Could not locate artist Coraline in Concert 
+2019/03/22 13:44:06 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:44:06 Could not locate artist Neighborhood Superfriends 
+2019/03/22 13:44:06 Could not locate artist Dubblife 
+2019/03/22 13:44:06 Could not locate artist DJ Aquamarine 
+2019/03/22 13:44:06 Could not locate artist Zazzy Zoe 
+2019/03/22 13:44:06 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 13:44:06 Could not locate artist The Sportin' Lifers 
+2019/03/22 13:44:06 Could not locate artist DJ Major Sean 
+2019/03/22 13:44:06 Could not locate artist DJ Nate C 
+2019/03/22 13:44:06 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:44:06 Could not locate artist This is How We Do It 
+2019/03/22 13:44:06 Could not locate artist Ghost Town Cinema 
+2019/03/22 13:44:06 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 Could not locate artist DJ Isaiah Summers 
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 Could not locate artist Natural Beavers 
+2019/03/22 13:44:06 sending tracks to channel
+2019/03/22 13:44:06 Could not locate artist Weekend Spin 
+2019/03/22 13:44:06 Could not locate artist Draves 
+2019/03/22 13:44:07 sending tracks to channel
+2019/03/22 13:44:07 sending tracks to channel
+2019/03/22 13:44:07 sending tracks to channel
+2019/03/22 13:44:07 sending tracks to channel
+2019/03/22 13:44:07 sending tracks to channel
+2019/03/22 13:44:07 sending tracks to channel
+2019/03/22 13:44:07 sending tracks to channel
+2019/03/22 13:44:08 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 13:44:08 Could not locate artist Valouria 
+2019/03/22 13:44:08 Could not locate artist Treneti Brown 
+2019/03/22 13:44:08 Could not locate artist Way Worse 
+2019/03/22 13:44:08 Could not locate artist Garden Chat 
+2019/03/22 13:44:08 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 13:44:08 Could not locate artist MedEvil Madness III 
+2019/03/22 13:44:09 Could not locate artist UnDude 
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:09 sending tracks to channel
+2019/03/22 13:44:35 debugcnt: 48
+2019/03/22 13:52:29 using port 8080
+2019/03/22 13:52:29 using redirect url http://localhost:8080/callback
+2019/03/22 13:52:35 Got request for: /
+2019/03/22 13:52:35 no client found for this user: 126154079
+2019/03/22 13:52:35 Got request for: /favicon.ico
+2019/03/22 13:52:35 no client found for this user: 126154079
+2019/03/22 13:52:37 callback request: &{GET /callback?code=AQAvOQ-EY09eCI1fIY3NBi19K_s2d0D8sNKqwIyLkHAfuOgZHnUp2-RokLcQtPTPYJGdOxh4X8vg5nEE131Lp9UZ82UKSucf1-EsxtTF8SgttW-vijSmRoMKrXljCGzXVxTAVBB-bMjeV5Qu2AC3ssoRzxLsvEq3OK3yASgsQ4rIAvcEPaPZ2tA0p75RicvoSYcL8NJOxE0V5iKeQ55oByt3yzYFeBVP8AIQEH31cQGC9bjmdsWHH7-ECePpTtqcOuyo6-gNQZG6OJ8WbEMWskQij1mkS4x5xCRE8p35UaZUdBJ5vNMSONaP3KpOlzx_H2RCvzEH&state=abc123 HTTP/1.1 1 1 map[Referer:[http://localhost:8080/] Accept-Encoding:[gzip, deflate, br] Cookie:[user_id=126154079] Connection:[keep-alive] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Upgrade-Insecure-Requests:[1] Accept-Language:[en-US,en;q=0.9]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:55138 /callback?code=AQAvOQ-EY09eCI1fIY3NBi19K_s2d0D8sNKqwIyLkHAfuOgZHnUp2-RokLcQtPTPYJGdOxh4X8vg5nEE131Lp9UZ82UKSucf1-EsxtTF8SgttW-vijSmRoMKrXljCGzXVxTAVBB-bMjeV5Qu2AC3ssoRzxLsvEq3OK3yASgsQ4rIAvcEPaPZ2tA0p75RicvoSYcL8NJOxE0V5iKeQ55oByt3yzYFeBVP8AIQEH31cQGC9bjmdsWHH7-ECePpTtqcOuyo6-gNQZG6OJ8WbEMWskQij1mkS4x5xCRE8p35UaZUdBJ5vNMSONaP3KpOlzx_H2RCvzEH&state=abc123 <nil> <nil> <nil> 0xc000186340}
+2019/03/22 13:52:38 user id is 126154079
+2019/03/22 13:52:38 callback got the client
+2019/03/22 13:52:38 Got request for: /favicon.ico
+2019/03/22 13:52:38 Got a request to maange the playlist
+2019/03/22 13:52:38 blarg triggering the redirect
+2019/03/22 13:52:38 Got a request to maange the playlist
+2019/03/22 13:52:38 Got request for: /favicon.ico
+2019/03/22 13:52:38 Got a request to maange the playlist
+2019/03/22 13:52:42 Got a request to build the playlist
+2019/03/22 13:52:42 Got userID from cookie: 126154079
+2019/03/22 13:52:42 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 4iX2QnbWCwGXa95llrCCAG
+2019/03/22 13:52:42 unfollowed the existing playlist
+2019/03/22 13:52:42 Created playlist
+2019/03/22 13:52:42 diff: 0
+2019/03/22 13:52:42 waiting for channel response 0
+2019/03/22 13:52:44 there's another page for date 2019-03-22
+2019/03/22 13:52:44 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:52:45 end of listings for date 2019-03-22
+2019/03/22 13:52:45 scrapeDates got one channel response
+2019/03/22 13:52:45 found 82 artists
+2019/03/22 13:52:45 waiting for searches to finish
+2019/03/22 13:52:45 debugcnt: 82
+2019/03/22 13:52:45 Could not locate artist Dead Dives 
+2019/03/22 13:52:45 Could not locate artist Cosmonox 
+2019/03/22 13:52:45 Could not locate artist UnDude 
+2019/03/22 13:52:45 Could not locate artist Valouria 
+2019/03/22 13:52:45 Could not locate artist Space Bass After-Party 
+2019/03/22 13:52:45 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 13:52:45 Could not locate artist DJ Nate C 
+2019/03/22 13:52:45 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:52:45 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 13:52:46 Could not locate artist Coraline in Concert 
+2019/03/22 13:52:46 Could not locate artist Weekend Spin 
+2019/03/22 13:52:46 Could not locate artist Natural Beavers 
+2019/03/22 13:52:46 Could not locate artist DJ Aquamarine 
+2019/03/22 13:52:46 Could not locate artist Way Worse 
+2019/03/22 13:52:46 Could not locate artist DJ Isaiah Summers 
+2019/03/22 13:52:46 Could not locate artist Dubblife 
+2019/03/22 13:52:46 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 13:52:46 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 13:52:46 Could not locate artist This is How We Do It 
+2019/03/22 13:52:46 Could not locate artist Wet & Kilo Kish 
+2019/03/22 13:52:46 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:52:46 Could not locate artist Garden Chat 
+2019/03/22 13:52:46 Could not locate artist Treneti Brown 
+2019/03/22 13:52:46 Could not locate artist DJ Major Sean 
+2019/03/22 13:52:48 Could not locate artist The Sportin' Lifers 
+2019/03/22 13:52:48 Could not locate artist MedEvil Madness III 
+2019/03/22 13:52:48 Could not locate artist Zazzy Zoe 
+2019/03/22 13:52:48 Could not locate artist Ghost Town Cinema 
+2019/03/22 13:52:48 Could not locate artist Draves 
+2019/03/22 13:52:48 Could not locate artist Neighborhood Superfriends 
+2019/03/22 13:52:48 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 13:52:48 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 13:53:15 debugcnt: 48
+2019/03/22 13:53:45 debugcnt: 48
+2019/03/22 13:54:15 debugcnt: 48
+2019/03/22 13:57:18 using port 8080
+2019/03/22 13:57:18 using redirect url http://localhost:8080/callback
+2019/03/22 13:57:22 Got request for: /
+2019/03/22 13:57:22 no client found for this user: 126154079
+2019/03/22 13:57:22 Got request for: /favicon.ico
+2019/03/22 13:57:22 no client found for this user: 126154079
+2019/03/22 13:57:24 callback request: &{GET /callback?code=AQChCBtGb9HISaSUcgV-nlbO8XJAJ8QiGGSQt0MwMaDmsKyjfKL1vmPKTwGHO2k6rtENziqzU6wA3mlnt9y9IKrxt63jOpPU61Ku31wT3-irmaqTszo6Mwp8W3TxLKODo_464n9L5WVVAKi5yI0U-3wVUT9w4nQZMi7RKF5cPnCW8-QB1b0jBeOxZghLdB67ne5v_wStf_zyG3nwqJm5zm8UelIbHWaxaSR2WHlK4XUgqw83aI8jbmLEPJ98UxUKTjTLiapAVS7JLP8gJmg6-cMJmW2L5G0LiCgywha56K7LfmtVvv6sQ8qSIQ5BC32RbqHpWAgB&state=abc123 HTTP/1.1 1 1 map[Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Accept-Encoding:[gzip, deflate, br] Cookie:[user_id=126154079] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Connection:[keep-alive] Upgrade-Insecure-Requests:[1] Referer:[http://localhost:8080/] Accept-Language:[en-US,en;q=0.9]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:55573 /callback?code=AQChCBtGb9HISaSUcgV-nlbO8XJAJ8QiGGSQt0MwMaDmsKyjfKL1vmPKTwGHO2k6rtENziqzU6wA3mlnt9y9IKrxt63jOpPU61Ku31wT3-irmaqTszo6Mwp8W3TxLKODo_464n9L5WVVAKi5yI0U-3wVUT9w4nQZMi7RKF5cPnCW8-QB1b0jBeOxZghLdB67ne5v_wStf_zyG3nwqJm5zm8UelIbHWaxaSR2WHlK4XUgqw83aI8jbmLEPJ98UxUKTjTLiapAVS7JLP8gJmg6-cMJmW2L5G0LiCgywha56K7LfmtVvv6sQ8qSIQ5BC32RbqHpWAgB&state=abc123 <nil> <nil> <nil> 0xc0001ae380}
+2019/03/22 13:57:25 user id is 126154079
+2019/03/22 13:57:25 callback got the client
+2019/03/22 13:57:25 Got request for: /favicon.ico
+2019/03/22 13:57:25 Got a request to maange the playlist
+2019/03/22 13:57:25 blarg triggering the redirect
+2019/03/22 13:57:25 Got a request to maange the playlist
+2019/03/22 13:57:25 Got request for: /favicon.ico
+2019/03/22 13:57:25 Got a request to maange the playlist
+2019/03/22 13:57:30 Got a request to build the playlist
+2019/03/22 13:57:30 Got userID from cookie: 126154079
+2019/03/22 13:57:31 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 0ZPysVXO2wrc5pmsiDN5L1
+2019/03/22 13:57:31 unfollowed the existing playlist
+2019/03/22 13:57:31 Created playlist
+2019/03/22 13:57:31 diff: 0
+2019/03/22 13:57:31 waiting for channel response 0
+2019/03/22 13:57:33 there's another page for date 2019-03-22
+2019/03/22 13:57:33 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 13:57:33 end of listings for date 2019-03-22
+2019/03/22 13:57:33 scrapeDates got one channel response
+2019/03/22 13:57:33 found 82 artists
+2019/03/22 13:57:33 waiting for searches to finish
+2019/03/22 13:57:33 debugcnt: 82
+2019/03/22 13:57:38 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 13:57:38 decrementing artist Spring Supper Club: Happy Days are Here Again
+2019/03/22 13:57:38 getting top tracks for artist Huxley Anne
+2019/03/22 13:57:38 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:57:38 decrementing artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/22 13:57:38 Could not locate artist Natural Beavers 
+2019/03/22 13:57:38 decrementing artist Natural Beavers
+2019/03/22 13:57:38 getting top tracks for artist Pretty Gritty
+2019/03/22 13:57:38 getting top tracks for artist Creature Society
+2019/03/22 13:57:38 getting top tracks for artist Taylors Crossing
+2019/03/22 13:57:38 getting top tracks for artist Methyl Ethel
+2019/03/22 13:57:38 getting top tracks for artist Small Million
+2019/03/22 13:57:38 getting top tracks for artist Jumblehead
+2019/03/22 13:57:38 Could not locate artist DJ Aquamarine 
+2019/03/22 13:57:38 decrementing artist DJ Aquamarine
+2019/03/22 13:57:38 Could not locate artist Dead Dives 
+2019/03/22 13:57:38 decrementing artist Dead Dives
+2019/03/22 13:57:38 getting top tracks for artist Eureka California
+2019/03/22 13:57:38 getting top tracks for artist The Heirs of Eiffel Tower
+2019/03/22 13:57:38 getting top tracks for artist Black Magdalene
+2019/03/22 13:57:38 Could not locate artist DJ Isaiah Summers 
+2019/03/22 13:57:38 decrementing artist DJ Isaiah Summers
+2019/03/22 13:57:38 getting top tracks for artist SciFiSol
+2019/03/22 13:57:38 getting top tracks for artist Camp Crush
+2019/03/22 13:57:38 Could not locate artist The Sportin' Lifers 
+2019/03/22 13:57:38 decrementing artist The Sportin' Lifers
+2019/03/22 13:57:38 Could not locate artist This is How We Do It 
+2019/03/22 13:57:38 decrementing artist This is How We Do It
+2019/03/22 13:57:38 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 13:57:38 decrementing artist Pete Krebs & His Portland Playboys
+2019/03/22 13:57:38 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 13:57:38 decrementing artist Bass House in the Bassment: Floral
+2019/03/22 13:57:38 Could not locate artist Zazzy Zoe 
+2019/03/22 13:57:38 decrementing artist Zazzy Zoe
+2019/03/22 13:57:38 Could not locate artist Garden Chat 
+2019/03/22 13:57:38 decrementing artist Garden Chat
+2019/03/22 13:57:38 Could not locate artist Wet & Kilo Kish 
+2019/03/22 13:57:38 decrementing artist Wet & Kilo Kish
+2019/03/22 13:57:38 getting top tracks for artist Big Bossa Quartet
+2019/03/22 13:57:38 getting top tracks for artist Switch
+2019/03/22 13:57:38 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 13:57:38 decrementing artist Brazilian Carnaval Ball: Africa Brazil
+2019/03/22 13:57:38 Could not locate artist Ghost Town Cinema 
+2019/03/22 13:57:38 decrementing artist Ghost Town Cinema
+2019/03/22 13:57:38 Could not locate artist MedEvil Madness III 
+2019/03/22 13:57:38 decrementing artist MedEvil Madness III
+2019/03/22 13:57:38 Could not locate artist Valouria 
+2019/03/22 13:57:38 decrementing artist Valouria
+2019/03/22 13:57:38 Could not locate artist Dubblife 
+2019/03/22 13:57:38 decrementing artist Dubblife
+2019/03/22 13:57:38 getting top tracks for artist Mapache
+2019/03/22 13:57:38 Could not locate artist DJ Nate C 
+2019/03/22 13:57:38 decrementing artist DJ Nate C
+2019/03/22 13:57:38 Could not locate artist Coraline in Concert 
+2019/03/22 13:57:38 decrementing artist Coraline in Concert
+2019/03/22 13:57:38 Could not locate artist Treneti Brown 
+2019/03/22 13:57:38 decrementing artist Treneti Brown
+2019/03/22 13:57:38 Could not locate artist Draves 
+2019/03/22 13:57:38 decrementing artist Draves
+2019/03/22 13:57:38 decrementing artist Teen
+2019/03/22 13:57:38 Could not locate artist Neighborhood Superfriends 
+2019/03/22 13:57:38 decrementing artist Neighborhood Superfriends
+2019/03/22 13:57:38 getting top tracks for artist Goodnight Cairo
+2019/03/22 13:57:38 getting top tracks for artist Motorcoat
+2019/03/22 13:57:38 getting top tracks for artist Katelyn Convery
+2019/03/22 13:57:38 getting top tracks for artist Ten Million Lights
+2019/03/22 13:57:38 Could not locate artist Space Bass After-Party 
+2019/03/22 13:57:38 decrementing artist Space Bass After-Party
+2019/03/22 13:57:38 getting top tracks for artist Doe
+2019/03/22 13:57:38 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 13:57:38 getting top tracks for artist Subways On The Sun
+2019/03/22 13:57:38 decrementing artist The Punchers
+2019/03/22 13:57:38 decrementing artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/22 13:57:38 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 13:57:38 decrementing artist 10 Years On: Cascadia Founders Speak
+2019/03/22 13:57:38 getting top tracks for artist Deepest Darkest
+2019/03/22 13:57:38 getting top tracks for artist Whisper Hiss
+2019/03/22 13:57:38 Could not locate artist DJ Major Sean 
+2019/03/22 13:57:38 decrementing artist DJ Major Sean
+2019/03/22 13:57:38 getting top tracks for artist Rad Max
+2019/03/22 13:57:38 getting top tracks for artist Production Unit Xero
+2019/03/22 13:57:38 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 13:57:38 decrementing artist King Louie & La Rhonda Steele
+2019/03/22 13:57:38 getting top tracks for artist Accolade
+2019/03/22 13:57:38 getting top tracks for artist State Champs
+2019/03/22 13:57:38 getting top tracks for artist Metalachi
+2019/03/22 13:57:38 getting top tracks for artist Hælos
+2019/03/22 13:57:38 getting top tracks for artist Space Jesus
+2019/03/22 13:57:38 getting top tracks for artist Jimbo
+2019/03/22 13:57:38 getting top tracks for artist ABSV
+2019/03/22 13:57:39 getting top tracks for artist Helena Deland
+2019/03/22 13:57:39 Could not locate artist Cosmonox 
+2019/03/22 13:57:39 decrementing artist Cosmonox
+2019/03/22 13:57:39 getting top tracks for artist Social Stomach
+2019/03/22 13:57:39 getting top tracks for artist Grayscale
+2019/03/22 13:57:39 getting top tracks for artist Arteries
+2019/03/22 13:57:39 getting top tracks for artist Soul Stew
+2019/03/22 13:57:39 getting top tracks for artist Our Last Night
+2019/03/22 13:57:39 getting top tracks for artist Sayer
+2019/03/22 13:57:39 getting top tracks for artist Makana
+2019/03/22 13:57:39 getting top tracks for artist The Dangerous Summer
+2019/03/22 13:57:39 Could not locate artist Weekend Spin 
+2019/03/22 13:57:39 decrementing artist Weekend Spin
+2019/03/22 13:57:39 getting top tracks for artist Rllrbll
+2019/03/22 13:57:39 Could not locate artist UnDude 
+2019/03/22 13:57:39 decrementing artist UnDude
+2019/03/22 13:57:39 getting top tracks for artist Mandolin Orange
+2019/03/22 13:57:42 getting top tracks for artist Low Flyer
+2019/03/22 13:57:43 getting top tracks for artist Dirty Sidewalks
+2019/03/22 13:57:43 getting top tracks for artist The Cave
+2019/03/22 13:57:43 getting top tracks for artist Fatoumata Diawara
+2019/03/22 13:57:43 Could not locate artist Way Worse 
+2019/03/22 13:57:43 decrementing artist Way Worse
+2019/03/22 13:57:43 getting top tracks for artist Buku
+2019/03/22 13:58:03 debugcnt: 48
+2019/03/22 13:58:33 debugcnt: 48
+2019/03/22 13:59:03 debugcnt: 48
+2019/03/22 14:12:20 using port 8080
+2019/03/22 14:12:20 using redirect url http://localhost:8080/callback
+2019/03/22 14:12:26 Got request for: /
+2019/03/22 14:12:26 no client found for this user: 126154079
+2019/03/22 14:12:27 Got request for: /favicon.ico
+2019/03/22 14:12:27 no client found for this user: 126154079
+2019/03/22 14:12:28 callback request: &{GET /callback?code=AQB-8VoexR64OGG7K80ROMjUT6FRMk17lS8LvNwAo_XwdN4p-mVCKJ-FFETzaobo7n3kXQtmGdtyMp9H51fun3uYutw83JJNOHSGu7QTciGUmBaISm6BPZ7em0VzMJZHCIDayN6PIbFc0rptp8OH19KBrwrjce4s-2fNvRuAaCvE3scAU-ERrx4BvUZTun_KLMMdgbE5DF7N-0xFOQZTYOi-sa5r8TmdvQJ-NgOMLSM9ENymFD1BD4ZOugmKI68ZlQJ5pJbfOLnBCY8nVw2TxB39ibsFn112mNk3_Zn5r0y8mpJQX-ovi1jdSHA0oyPNpiB7kGi4&state=abc123 HTTP/1.1 1 1 map[Cookie:[user_id=126154079] Connection:[keep-alive] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Accept-Encoding:[gzip, deflate, br] Referer:[http://localhost:8080/] Accept-Language:[en-US,en;q=0.9] Upgrade-Insecure-Requests:[1] Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:56556 /callback?code=AQB-8VoexR64OGG7K80ROMjUT6FRMk17lS8LvNwAo_XwdN4p-mVCKJ-FFETzaobo7n3kXQtmGdtyMp9H51fun3uYutw83JJNOHSGu7QTciGUmBaISm6BPZ7em0VzMJZHCIDayN6PIbFc0rptp8OH19KBrwrjce4s-2fNvRuAaCvE3scAU-ERrx4BvUZTun_KLMMdgbE5DF7N-0xFOQZTYOi-sa5r8TmdvQJ-NgOMLSM9ENymFD1BD4ZOugmKI68ZlQJ5pJbfOLnBCY8nVw2TxB39ibsFn112mNk3_Zn5r0y8mpJQX-ovi1jdSHA0oyPNpiB7kGi4&state=abc123 <nil> <nil> <nil> 0xc0001a2340}
+2019/03/22 14:12:29 user id is 126154079
+2019/03/22 14:12:29 callback got the client
+2019/03/22 14:12:29 Got request for: /favicon.ico
+2019/03/22 14:12:29 Got a request to maange the playlist
+2019/03/22 14:12:29 blarg triggering the redirect
+2019/03/22 14:12:29 Got a request to maange the playlist
+2019/03/22 14:12:30 Got request for: /favicon.ico
+2019/03/22 14:12:30 Got a request to maange the playlist
+2019/03/22 14:12:32 Got a request to build the playlist
+2019/03/22 14:12:32 Got userID from cookie: 126154079
+2019/03/22 14:12:33 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 1D8BRKmahxnkemqRVNI6eY
+2019/03/22 14:12:33 unfollowed the existing playlist
+2019/03/22 14:12:33 Created playlist
+2019/03/22 14:12:33 diff: 0
+2019/03/22 14:12:33 waiting for channel response 0
+2019/03/22 14:12:34 there's another page for date 2019-03-22
+2019/03/22 14:12:34 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 14:12:35 end of listings for date 2019-03-22
+2019/03/22 14:12:35 scrapeDates got one channel response
+2019/03/22 14:12:35 found 82 artists
+2019/03/22 14:12:35 waiting for searches to finish
+2019/03/22 14:12:35 debugcnt: 82
+2019/03/22 14:12:35 Could not locate artist UnDude 
+2019/03/22 14:12:35 decrementing artist UnDude
+2019/03/22 14:12:35 getting top tracks for artist Rllrbll
+2019/03/22 14:12:35 getting top tracks for artist SciFiSol
+2019/03/22 14:12:35 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 14:12:35 decrementing artist King Louie & La Rhonda Steele
+2019/03/22 14:12:35 Could not locate artist Weekend Spin 
+2019/03/22 14:12:35 decrementing artist Weekend Spin
+2019/03/22 14:12:35 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 14:12:35 decrementing artist Brazilian Carnaval Ball: Africa Brazil
+2019/03/22 14:12:35 getting top tracks for artist Our Last Night
+2019/03/22 14:12:35 Could not locate artist DJ Nate C 
+2019/03/22 14:12:35 decrementing artist DJ Nate C
+2019/03/22 14:12:35 getting top tracks for artist Small Million
+2019/03/22 14:12:35 Could not locate artist Valouria 
+2019/03/22 14:12:35 decrementing artist Valouria
+2019/03/22 14:12:35 Could not locate artist Garden Chat 
+2019/03/22 14:12:35 decrementing artist Garden Chat
+2019/03/22 14:12:35 Could not locate artist DJ Aquamarine 
+2019/03/22 14:12:35 decrementing artist DJ Aquamarine
+2019/03/22 14:12:35 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 14:12:35 decrementing artist Pete Krebs & His Portland Playboys
+2019/03/22 14:12:35 Could not locate artist The Sportin' Lifers 
+2019/03/22 14:12:35 decrementing artist The Sportin' Lifers
+2019/03/22 14:12:35 getting top tracks for artist The Dangerous Summer
+2019/03/22 14:12:35 Could not locate artist Dead Dives 
+2019/03/22 14:12:35 decrementing artist Dead Dives
+2019/03/22 14:12:35 Could not locate artist Wet & Kilo Kish 
+2019/03/22 14:12:35 decrementing artist Wet & Kilo Kish
+2019/03/22 14:12:35 getting top tracks for artist ABSV
+2019/03/22 14:12:35 getting top tracks for artist Dirty Sidewalks
+2019/03/22 14:12:35 Could not locate artist Dubblife 
+2019/03/22 14:12:35 decrementing artist Dubblife
+2019/03/22 14:12:35 getting top tracks for artist Methyl Ethel
+2019/03/22 14:12:35 Could not locate artist Draves 
+2019/03/22 14:12:35 decrementing artist Draves
+2019/03/22 14:12:35 getting top tracks for artist Deepest Darkest
+2019/03/22 14:12:35 getting top tracks for artist Social Stomach
+2019/03/22 14:12:35 getting top tracks for artist Ten Million Lights
+2019/03/22 14:12:35 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 14:12:35 decrementing artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/22 14:12:35 Could not locate artist Way Worse 
+2019/03/22 14:12:35 decrementing artist Way Worse
+2019/03/22 14:12:35 getting top tracks for artist Accolade
+2019/03/22 14:12:35 getting top tracks for artist Rad Max
+2019/03/22 14:12:35 getting top tracks for artist Mapache
+2019/03/22 14:12:35 getting top tracks for artist Whisper Hiss
+2019/03/22 14:12:35 getting top tracks for artist Big Bossa Quartet
+2019/03/22 14:12:35 getting top tracks for artist Jumblehead
+2019/03/22 14:12:35 Could not locate artist MedEvil Madness III 
+2019/03/22 14:12:35 decrementing artist MedEvil Madness III
+2019/03/22 14:12:35 decrementing artist The Punchers
+2019/03/22 14:12:35 Could not locate artist Treneti Brown 
+2019/03/22 14:12:35 decrementing artist Treneti Brown
+2019/03/22 14:12:35 getting top tracks for artist Black Magdalene
+2019/03/22 14:12:35 getting top tracks for artist Fatoumata Diawara
+2019/03/22 14:12:35 getting top tracks for artist Mandolin Orange
+2019/03/22 14:12:35 getting top tracks for artist Camp Crush
+2019/03/22 14:12:35 getting top tracks for artist Metalachi
+2019/03/22 14:12:35 getting top tracks for artist State Champs
+2019/03/22 14:12:35 getting top tracks for artist Taylors Crossing
+2019/03/22 14:12:35 getting top tracks for artist Hælos
+2019/03/22 14:12:35 getting top tracks for artist Creature Society
+2019/03/22 14:12:35 getting top tracks for artist Jimbo
+2019/03/22 14:12:35 decrementing artist Teen
+2019/03/22 14:12:35 Could not locate artist Zazzy Zoe 
+2019/03/22 14:12:35 decrementing artist Zazzy Zoe
+2019/03/22 14:12:35 Could not locate artist Neighborhood Superfriends 
+2019/03/22 14:12:35 decrementing artist Neighborhood Superfriends
+2019/03/22 14:12:35 getting top tracks for artist Low Flyer
+2019/03/22 14:12:35 got top tracks for artist Rllrbll
+2019/03/22 14:12:35 sending tracks to channel for artist Rllrbll
+2019/03/22 14:12:35 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 14:12:35 decrementing artist 10 Years On: Cascadia Founders Speak
+2019/03/22 14:12:35 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 14:12:35 decrementing artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/22 14:12:35 getting top tracks for artist Space Jesus
+2019/03/22 14:12:35 got top tracks for artist SciFiSol
+2019/03/22 14:12:35 sending tracks to channel for artist SciFiSol
+2019/03/22 14:12:35 Could not locate artist Natural Beavers 
+2019/03/22 14:12:35 decrementing artist Natural Beavers
+2019/03/22 14:12:35 got top tracks for artist The Dangerous Summer
+2019/03/22 14:12:35 sending tracks to channel for artist The Dangerous Summer
+2019/03/22 14:12:35 got top tracks for artist Methyl Ethel
+2019/03/22 14:12:35 sending tracks to channel for artist Methyl Ethel
+2019/03/22 14:12:35 got top tracks for artist Our Last Night
+2019/03/22 14:12:35 sending tracks to channel for artist Our Last Night
+2019/03/22 14:12:35 getting top tracks for artist Buku
+2019/03/22 14:12:35 got top tracks for artist Ten Million Lights
+2019/03/22 14:12:35 sending tracks to channel for artist Ten Million Lights
+2019/03/22 14:12:35 getting top tracks for artist Eureka California
+2019/03/22 14:12:35 got top tracks for artist Rad Max
+2019/03/22 14:12:35 sending tracks to channel for artist Rad Max
+2019/03/22 14:12:35 got top tracks for artist Whisper Hiss
+2019/03/22 14:12:35 sending tracks to channel for artist Whisper Hiss
+2019/03/22 14:12:35 got top tracks for artist Jumblehead
+2019/03/22 14:12:35 sending tracks to channel for artist Jumblehead
+2019/03/22 14:12:35 got top tracks for artist Metalachi
+2019/03/22 14:12:35 sending tracks to channel for artist Metalachi
+2019/03/22 14:12:35 getting top tracks for artist Subways On The Sun
+2019/03/22 14:12:35 got top tracks for artist Mandolin Orange
+2019/03/22 14:12:35 sending tracks to channel for artist Mandolin Orange
+2019/03/22 14:12:35 got top tracks for artist Taylors Crossing
+2019/03/22 14:12:35 sending tracks to channel for artist Taylors Crossing
+2019/03/22 14:12:35 got top tracks for artist Social Stomach
+2019/03/22 14:12:35 sending tracks to channel for artist Social Stomach
+2019/03/22 14:12:35 got top tracks for artist ABSV
+2019/03/22 14:12:35 sending tracks to channel for artist ABSV
+2019/03/22 14:12:35 got top tracks for artist Creature Society
+2019/03/22 14:12:35 sending tracks to channel for artist Creature Society
+2019/03/22 14:12:35 got top tracks for artist Big Bossa Quartet
+2019/03/22 14:12:35 sending tracks to channel for artist Big Bossa Quartet
+2019/03/22 14:12:35 got top tracks for artist Accolade
+2019/03/22 14:12:35 got top tracks for artist State Champs
+2019/03/22 14:12:35 sending tracks to channel for artist Accolade
+2019/03/22 14:12:35 sending tracks to channel for artist State Champs
+2019/03/22 14:12:35 got top tracks for artist Small Million
+2019/03/22 14:12:35 sending tracks to channel for artist Small Million
+2019/03/22 14:12:35 getting top tracks for artist Switch
+2019/03/22 14:12:35 got top tracks for artist Dirty Sidewalks
+2019/03/22 14:12:35 sending tracks to channel for artist Dirty Sidewalks
+2019/03/22 14:12:35 got top tracks for artist Deepest Darkest
+2019/03/22 14:12:35 sending tracks to channel for artist Deepest Darkest
+2019/03/22 14:12:35 got top tracks for artist Fatoumata Diawara
+2019/03/22 14:12:35 sending tracks to channel for artist Fatoumata Diawara
+2019/03/22 14:12:35 got top tracks for artist Black Magdalene
+2019/03/22 14:12:35 sending tracks to channel for artist Black Magdalene
+2019/03/22 14:12:35 got top tracks for artist Camp Crush
+2019/03/22 14:12:35 sending tracks to channel for artist Camp Crush
+2019/03/22 14:12:35 getting top tracks for artist Grayscale
+2019/03/22 14:12:35 got top tracks for artist Mapache
+2019/03/22 14:12:35 sending tracks to channel for artist Mapache
+2019/03/22 14:12:35 got top tracks for artist Jimbo
+2019/03/22 14:12:35 sending tracks to channel for artist Jimbo
+2019/03/22 14:12:35 got top tracks for artist Hælos
+2019/03/22 14:12:35 sending tracks to channel for artist Hælos
+2019/03/22 14:12:35 Could not locate artist This is How We Do It 
+2019/03/22 14:12:35 decrementing artist This is How We Do It
+2019/03/22 14:12:35 getting top tracks for artist Helena Deland
+2019/03/22 14:12:35 Could not locate artist Space Bass After-Party 
+2019/03/22 14:12:35 decrementing artist Space Bass After-Party
+2019/03/22 14:12:35 got top tracks for artist Low Flyer
+2019/03/22 14:12:35 sending tracks to channel for artist Low Flyer
+2019/03/22 14:12:35 getting top tracks for artist Sayer
+2019/03/22 14:12:35 getting top tracks for artist Soul Stew
+2019/03/22 14:12:35 got top tracks for artist Space Jesus
+2019/03/22 14:12:35 sending tracks to channel for artist Space Jesus
+2019/03/22 14:12:35 got top tracks for artist Eureka California
+2019/03/22 14:12:35 sending tracks to channel for artist Eureka California
+2019/03/22 14:12:35 getting top tracks for artist The Cave
+2019/03/22 14:12:35 got top tracks for artist Subways On The Sun
+2019/03/22 14:12:35 sending tracks to channel for artist Subways On The Sun
+2019/03/22 14:12:35 got top tracks for artist Switch
+2019/03/22 14:12:35 sending tracks to channel for artist Switch
+2019/03/22 14:12:35 getting top tracks for artist Doe
+2019/03/22 14:12:35 got top tracks for artist Buku
+2019/03/22 14:12:35 sending tracks to channel for artist Buku
+2019/03/22 14:12:35 got top tracks for artist Grayscale
+2019/03/22 14:12:35 sending tracks to channel for artist Grayscale
+2019/03/22 14:12:35 got top tracks for artist Doe
+2019/03/22 14:12:35 sending tracks to channel for artist Doe
+2019/03/22 14:12:37 got top tracks for artist Helena Deland
+2019/03/22 14:12:37 sending tracks to channel for artist Helena Deland
+2019/03/22 14:12:37 got top tracks for artist Sayer
+2019/03/22 14:12:37 sending tracks to channel for artist Sayer
+2019/03/22 14:12:37 got top tracks for artist Soul Stew
+2019/03/22 14:12:37 sending tracks to channel for artist Soul Stew
+2019/03/22 14:12:37 got top tracks for artist The Cave
+2019/03/22 14:12:37 sending tracks to channel for artist The Cave
+2019/03/22 14:12:38 Could not locate artist Cosmonox 
+2019/03/22 14:12:38 decrementing artist Cosmonox
+2019/03/22 14:12:38 getting top tracks for artist Goodnight Cairo
+2019/03/22 14:12:38 getting top tracks for artist Motorcoat
+2019/03/22 14:12:38 Could not locate artist Coraline in Concert 
+2019/03/22 14:12:38 decrementing artist Coraline in Concert
+2019/03/22 14:12:38 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 14:12:38 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 14:12:38 decrementing artist Spring Supper Club: Happy Days are Here Again
+2019/03/22 14:12:38 decrementing artist Bass House in the Bassment: Floral
+2019/03/22 14:12:38 Could not locate artist DJ Isaiah Summers 
+2019/03/22 14:12:38 decrementing artist DJ Isaiah Summers
+2019/03/22 14:12:38 getting top tracks for artist Production Unit Xero
+2019/03/22 14:12:38 getting top tracks for artist Katelyn Convery
+2019/03/22 14:12:38 Could not locate artist Ghost Town Cinema 
+2019/03/22 14:12:38 decrementing artist Ghost Town Cinema
+2019/03/22 14:12:38 Could not locate artist DJ Major Sean 
+2019/03/22 14:12:38 decrementing artist DJ Major Sean
+2019/03/22 14:12:38 getting top tracks for artist Pretty Gritty
+2019/03/22 14:12:38 getting top tracks for artist Makana
+2019/03/22 14:12:38 getting top tracks for artist Huxley Anne
+2019/03/22 14:12:38 getting top tracks for artist The Heirs of Eiffel Tower
+2019/03/22 14:12:38 getting top tracks for artist Arteries
+2019/03/22 14:12:38 got top tracks for artist Katelyn Convery
+2019/03/22 14:12:38 sending tracks to channel for artist Katelyn Convery
+2019/03/22 14:12:38 got top tracks for artist Production Unit Xero
+2019/03/22 14:12:38 sending tracks to channel for artist Production Unit Xero
+2019/03/22 14:12:38 got top tracks for artist Goodnight Cairo
+2019/03/22 14:12:38 sending tracks to channel for artist Goodnight Cairo
+2019/03/22 14:12:38 got top tracks for artist Makana
+2019/03/22 14:12:38 sending tracks to channel for artist Makana
+2019/03/22 14:12:38 got top tracks for artist Huxley Anne
+2019/03/22 14:12:38 sending tracks to channel for artist Huxley Anne
+2019/03/22 14:12:38 got top tracks for artist The Heirs of Eiffel Tower
+2019/03/22 14:12:38 sending tracks to channel for artist The Heirs of Eiffel Tower
+2019/03/22 14:12:38 got top tracks for artist Arteries
+2019/03/22 14:12:38 sending tracks to channel for artist Arteries
+2019/03/22 14:12:38 got top tracks for artist Pretty Gritty
+2019/03/22 14:12:38 sending tracks to channel for artist Pretty Gritty
+2019/03/22 14:12:38 got top tracks for artist Motorcoat
+2019/03/22 14:12:38 sending tracks to channel for artist Motorcoat
+2019/03/22 14:13:05 debugcnt: 48
+2019/03/22 14:13:35 debugcnt: 48
+2019/03/22 14:14:05 debugcnt: 48
+2019/03/22 14:41:59 using port 8080
+2019/03/22 14:41:59 using redirect url http://localhost:8080/callback
+2019/03/22 14:42:04 Got request for: /
+2019/03/22 14:42:04 no client found for this user: 126154079
+2019/03/22 14:42:04 Got request for: /favicon.ico
+2019/03/22 14:42:04 no client found for this user: 126154079
+2019/03/22 14:42:07 callback request: &{GET /callback?code=AQAAR2zox20bUG1_j-NKIeYkyQBXytldjvSIxMQpBuESIoFM5NGkYiKcTmhNsF9kPVKA4NeD10lRizmYp7mYDdTTxJYBpDpk6E3_t-_Yiaq9-jX7xnvIkf4MNDDxljBqMpRC3uYls7oWYPukDN2m8_r-XxM0REVhR708qEXgEiT3ky6HUy2zrCv64ilEy1CMSeBzxnJybygAe5oe3QYNZIfPLRoTEtVYfrD2xmxOMK5Fil7-wtP_1QO9qbL1MAu6bsVpVctf1z8PlUsWU4TT2T50v01PaJy4okJkMegipIVh3ns7eMLIX_46b835Vbz6La1N3kLa&state=abc123 HTTP/1.1 1 1 map[Accept:[text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8] Accept-Encoding:[gzip, deflate, br] Accept-Language:[en-US,en;q=0.9] Upgrade-Insecure-Requests:[1] Connection:[keep-alive] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36] Referer:[http://localhost:8080/] Cookie:[user_id=126154079]] {} <nil> 0 [] false localhost:8080 map[] map[] <nil> map[] [::1]:58409 /callback?code=AQAAR2zox20bUG1_j-NKIeYkyQBXytldjvSIxMQpBuESIoFM5NGkYiKcTmhNsF9kPVKA4NeD10lRizmYp7mYDdTTxJYBpDpk6E3_t-_Yiaq9-jX7xnvIkf4MNDDxljBqMpRC3uYls7oWYPukDN2m8_r-XxM0REVhR708qEXgEiT3ky6HUy2zrCv64ilEy1CMSeBzxnJybygAe5oe3QYNZIfPLRoTEtVYfrD2xmxOMK5Fil7-wtP_1QO9qbL1MAu6bsVpVctf1z8PlUsWU4TT2T50v01PaJy4okJkMegipIVh3ns7eMLIX_46b835Vbz6La1N3kLa&state=abc123 <nil> <nil> <nil> 0xc000026280}
+2019/03/22 14:42:07 user id is 126154079
+2019/03/22 14:42:07 callback got the client
+2019/03/22 14:42:08 Got request for: /favicon.ico
+2019/03/22 14:42:08 Got a request to maange the playlist
+2019/03/22 14:42:08 blarg triggering the redirect
+2019/03/22 14:42:08 Got a request to maange the playlist
+2019/03/22 14:42:08 Got request for: /favicon.ico
+2019/03/22 14:42:08 Got a request to maange the playlist
+2019/03/22 14:42:13 Got a request to build the playlist
+2019/03/22 14:42:13 Got userID from cookie: 126154079
+2019/03/22 14:42:13 local shows {Liz Gabriel map[spotify:https://open.spotify.com/user/126154079] {0 } https://api.spotify.com/v1/users/126154079 126154079 [] spotify:user:126154079} 3wJ9rfcOMAre7FGdaxzHSV
+2019/03/22 14:42:14 unfollowed the existing playlist
+2019/03/22 14:42:14 Created playlist
+2019/03/22 14:42:14 diff: 0
+2019/03/22 14:42:14 waiting for channel response 0
+2019/03/22 14:42:15 there's another page for date 2019-03-22
+2019/03/22 14:42:15 https://www.portlandmercury.com/events/music/2019-03-22?page=2&view_id=events
+2019/03/22 14:42:16 end of listings for date 2019-03-22
+2019/03/22 14:42:16 scrapeDates got one channel response
+2019/03/22 14:42:16 found 82 artists
+2019/03/22 14:42:16 waiting for searches to finish
+2019/03/22 14:42:16 Could not locate artist The Sportin' Lifers 
+2019/03/22 14:42:16 Could not locate artist Space Bass After-Party 
+2019/03/22 14:42:16 Could not locate artist Brazilian Carnaval Ball: Africa Brazil 
+2019/03/22 14:42:16 Could not locate artist 10 Years On: Cascadia Founders Speak 
+2019/03/22 14:42:16 getting top tracks for artist Motorcoat
+2019/03/22 14:42:16 getting top tracks for artist Jumblehead
+2019/03/22 14:42:16 getting top tracks for artist Metalachi
+2019/03/22 14:42:16 Could not locate artist Coraline in Concert 
+2019/03/22 14:42:16 getting top tracks for artist Taylors Crossing
+2019/03/22 14:42:16 Could not locate artist Dubblife 
+2019/03/22 14:42:16 Could not locate artist Way Worse 
+2019/03/22 14:42:16 Could not locate artist King Louie & La Rhonda Steele 
+2019/03/22 14:42:16 Could not locate artist Treneti Brown 
+2019/03/22 14:42:16 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 14:42:16 Could not locate artist Weekend Spin 
+2019/03/22 14:42:16 Could not locate artist Ghost Town Cinema 
+2019/03/22 14:42:16 Could not locate artist DJ Aquamarine 
+2019/03/22 14:42:16 getting top tracks for artist Pretty Gritty
+2019/03/22 14:42:16 getting top tracks for artist Katelyn Convery
+2019/03/22 14:42:16 Could not locate artist Draves 
+2019/03/22 14:42:16 getting top tracks for artist Creature Society
+2019/03/22 14:42:16 getting top tracks for artist Rllrbll
+2019/03/22 14:42:16 getting top tracks for artist Camp Crush
+2019/03/22 14:42:16 Could not locate artist Garden Chat 
+2019/03/22 14:42:16 getting top tracks for artist Subways On The Sun
+2019/03/22 14:42:16 getting top tracks for artist The Heirs of Eiffel Tower
+2019/03/22 14:42:16 getting top tracks for artist Black Magdalene
+2019/03/22 14:42:16 Could not locate artist MedEvil Madness III 
+2019/03/22 14:42:16 getting top tracks for artist Mandolin Orange
+2019/03/22 14:42:16 getting top tracks for artist Whisper Hiss
+2019/03/22 14:42:16 Could not locate artist Valouria 
+2019/03/22 14:42:16 Could not locate artist This is How We Do It 
+2019/03/22 14:42:16 getting top tracks for artist Helena Deland
+2019/03/22 14:42:16 getting top tracks for artist Social Stomach
+2019/03/22 14:42:16 getting top tracks for artist Methyl Ethel
+2019/03/22 14:42:16 Could not locate artist DJ Isaiah Summers 
+2019/03/22 14:42:16 getting top tracks for artist Arteries
+2019/03/22 14:42:16 Could not locate artist Bass House in the Bassment: Floral 
+2019/03/22 14:42:16 Could not locate artist Spring Supper Club: Happy Days are Here Again 
+2019/03/22 14:42:16 getting top tracks for artist Low Flyer
+2019/03/22 14:42:16 getting top tracks for artist State Champs
+2019/03/22 14:42:16 Could not locate artist Natural Beavers 
+2019/03/22 14:42:16 Could not locate artist Wet & Kilo Kish 
+2019/03/22 14:42:16 getting top tracks for artist Ten Million Lights
+2019/03/22 14:42:16 getting top tracks for artist Our Last Night
+2019/03/22 14:42:16 getting top tracks for artist Big Bossa Quartet
+2019/03/22 14:42:16 getting top tracks for artist Accolade
+2019/03/22 14:42:16 getting top tracks for artist SciFiSol
+2019/03/22 14:42:16 getting top tracks for artist Huxley Anne
+2019/03/22 14:42:16 getting top tracks for artist Makana
+2019/03/22 14:42:16 getting top tracks for artist Production Unit Xero
+2019/03/22 14:42:16 getting top tracks for artist Mapache
+2019/03/22 14:42:16 getting top tracks for artist Hælos
+2019/03/22 14:42:16 Could not locate artist UnDude 
+2019/03/22 14:42:16 getting top tracks for artist Buku
+2019/03/22 14:42:16 getting top tracks for artist Grayscale
+2019/03/22 14:42:16 getting top tracks for artist Eureka California
+2019/03/22 14:42:16 getting top tracks for artist Goodnight Cairo
+2019/03/22 14:42:16 getting top tracks for artist Space Jesus
+2019/03/22 14:42:16 getting top tracks for artist Sayer
+2019/03/22 14:42:16 getting top tracks for artist The Dangerous Summer
+2019/03/22 14:42:16 getting top tracks for artist Jimbo
+2019/03/22 14:42:17 getting top tracks for artist The Cave
+2019/03/22 14:42:17 getting top tracks for artist Doe
+2019/03/22 14:42:17 got top tracks for artist Motorcoat
+2019/03/22 14:42:17 sending tracks to playlist for artist Motorcoat
+2019/03/22 14:42:17 got top tracks for artist Metalachi
+2019/03/22 14:42:17 sending tracks to playlist for artist Metalachi
+2019/03/22 14:42:17 got top tracks for artist Jumblehead
+2019/03/22 14:42:17 sending tracks to playlist for artist Jumblehead
+2019/03/22 14:42:17 got top tracks for artist Pretty Gritty
+2019/03/22 14:42:17 sending tracks to playlist for artist Pretty Gritty
+2019/03/22 14:42:17 got top tracks for artist Camp Crush
+2019/03/22 14:42:17 sending tracks to playlist for artist Camp Crush
+2019/03/22 14:42:17 got top tracks for artist Taylors Crossing
+2019/03/22 14:42:17 sending tracks to playlist for artist Taylors Crossing
+2019/03/22 14:42:17 got top tracks for artist Creature Society
+2019/03/22 14:42:17 sending tracks to playlist for artist Creature Society
+2019/03/22 14:42:17 got top tracks for artist The Heirs of Eiffel Tower
+2019/03/22 14:42:17 sending tracks to playlist for artist The Heirs of Eiffel Tower
+2019/03/22 14:42:17 got top tracks for artist Arteries
+2019/03/22 14:42:17 sending tracks to playlist for artist Arteries
+2019/03/22 14:42:17 got top tracks for artist Whisper Hiss
+2019/03/22 14:42:17 sending tracks to playlist for artist Whisper Hiss
+2019/03/22 14:42:17 got top tracks for artist Black Magdalene
+2019/03/22 14:42:17 sending tracks to playlist for artist Black Magdalene
+2019/03/22 14:42:17 got top tracks for artist State Champs
+2019/03/22 14:42:17 sending tracks to playlist for artist State Champs
+2019/03/22 14:42:17 got top tracks for artist Low Flyer
+2019/03/22 14:42:17 sending tracks to playlist for artist Low Flyer
+2019/03/22 14:42:17 got top tracks for artist Our Last Night
+2019/03/22 14:42:17 sending tracks to playlist for artist Our Last Night
+2019/03/22 14:42:17 got top tracks for artist Subways On The Sun
+2019/03/22 14:42:17 sending tracks to playlist for artist Subways On The Sun
+2019/03/22 14:42:17 got top tracks for artist Rllrbll
+2019/03/22 14:42:17 sending tracks to playlist for artist Rllrbll
+2019/03/22 14:42:17 got top tracks for artist Accolade
+2019/03/22 14:42:17 sending tracks to playlist for artist Accolade
+2019/03/22 14:42:17 got top tracks for artist Methyl Ethel
+2019/03/22 14:42:17 sending tracks to playlist for artist Methyl Ethel
+2019/03/22 14:42:17 got top tracks for artist Social Stomach
+2019/03/22 14:42:17 sending tracks to playlist for artist Social Stomach
+2019/03/22 14:42:17 got top tracks for artist Mandolin Orange
+2019/03/22 14:42:17 sending tracks to playlist for artist Mandolin Orange
+2019/03/22 14:42:17 got top tracks for artist Katelyn Convery
+2019/03/22 14:42:17 sending tracks to playlist for artist Katelyn Convery
+2019/03/22 14:42:17 got top tracks for artist SciFiSol
+2019/03/22 14:42:17 sending tracks to playlist for artist SciFiSol
+2019/03/22 14:42:17 got top tracks for artist Hælos
+2019/03/22 14:42:17 sending tracks to playlist for artist Hælos
+2019/03/22 14:42:17 got top tracks for artist Helena Deland
+2019/03/22 14:42:17 sending tracks to playlist for artist Helena Deland
+2019/03/22 14:42:17 got top tracks for artist Production Unit Xero
+2019/03/22 14:42:17 sending tracks to playlist for artist Production Unit Xero
+2019/03/22 14:42:17 got top tracks for artist Eureka California
+2019/03/22 14:42:17 sending tracks to playlist for artist Eureka California
+2019/03/22 14:42:17 got top tracks for artist Buku
+2019/03/22 14:42:17 sending tracks to playlist for artist Buku
+2019/03/22 14:42:17 got top tracks for artist Grayscale
+2019/03/22 14:42:17 sending tracks to playlist for artist Grayscale
+2019/03/22 14:42:17 got top tracks for artist Ten Million Lights
+2019/03/22 14:42:17 sending tracks to playlist for artist Ten Million Lights
+2019/03/22 14:42:17 got top tracks for artist Huxley Anne
+2019/03/22 14:42:17 sending tracks to playlist for artist Huxley Anne
+2019/03/22 14:42:17 got top tracks for artist Big Bossa Quartet
+2019/03/22 14:42:17 sending tracks to playlist for artist Big Bossa Quartet
+2019/03/22 14:42:17 got top tracks for artist Makana
+2019/03/22 14:42:17 sending tracks to playlist for artist Makana
+2019/03/22 14:42:17 got top tracks for artist Mapache
+2019/03/22 14:42:17 sending tracks to playlist for artist Mapache
+2019/03/22 14:42:17 got top tracks for artist The Cave
+2019/03/22 14:42:17 sending tracks to playlist for artist The Cave
+2019/03/22 14:42:17 got top tracks for artist Doe
+2019/03/22 14:42:17 sending tracks to playlist for artist Doe
+2019/03/22 14:42:17 got top tracks for artist Goodnight Cairo
+2019/03/22 14:42:17 sending tracks to playlist for artist Goodnight Cairo
+2019/03/22 14:42:17 Could not locate artist Dead Dives 
+2019/03/22 14:42:17 Could not locate artist Neighborhood Superfriends 
+2019/03/22 14:42:17 Could not locate artist Cosmonox 
+2019/03/22 14:42:17 Could not locate artist DJ Major Sean 
+2019/03/22 14:42:17 getting top tracks for artist Dirty Sidewalks
+2019/03/22 14:42:17 Could not locate artist Zazzy Zoe 
+2019/03/22 14:42:17 getting top tracks for artist Small Million
+2019/03/22 14:42:17 Could not locate artist DJ Nate C 
+2019/03/22 14:42:17 getting top tracks for artist ABSV
+2019/03/22 14:42:17 getting top tracks for artist Rad Max
+2019/03/22 14:42:17 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/22 14:42:17 getting top tracks for artist Deepest Darkest
+2019/03/22 14:42:17 getting top tracks for artist Fatoumata Diawara
+2019/03/22 14:42:17 getting top tracks for artist Soul Stew
+2019/03/22 14:42:17 Could not locate artist Pete Krebs & His Portland Playboys 
+2019/03/22 14:42:17 got top tracks for artist The Dangerous Summer
+2019/03/22 14:42:17 sending tracks to playlist for artist The Dangerous Summer
+2019/03/22 14:42:17 got top tracks for artist Sayer
+2019/03/22 14:42:17 sending tracks to playlist for artist Sayer
+2019/03/22 14:42:17 got top tracks for artist Jimbo
+2019/03/22 14:42:17 sending tracks to playlist for artist Jimbo
+2019/03/22 14:42:17 got top tracks for artist Space Jesus
+2019/03/22 14:42:17 sending tracks to playlist for artist Space Jesus
+2019/03/22 14:42:17 got top tracks for artist Small Million
+2019/03/22 14:42:17 sending tracks to playlist for artist Small Million
+2019/03/22 14:42:17 got top tracks for artist Dirty Sidewalks
+2019/03/22 14:42:17 sending tracks to playlist for artist Dirty Sidewalks
+2019/03/22 14:42:17 getting top tracks for artist Switch
+2019/03/22 14:42:17 got top tracks for artist ABSV
+2019/03/22 14:42:17 sending tracks to playlist for artist ABSV
+2019/03/22 14:42:17 got top tracks for artist Rad Max
+2019/03/22 14:42:17 sending tracks to playlist for artist Rad Max
+2019/03/22 14:42:17 got top tracks for artist Deepest Darkest
+2019/03/22 14:42:17 sending tracks to playlist for artist Deepest Darkest
+2019/03/22 14:42:17 got top tracks for artist Soul Stew
+2019/03/22 14:42:17 sending tracks to playlist for artist Soul Stew
+2019/03/22 14:42:17 got top tracks for artist Fatoumata Diawara
+2019/03/22 14:42:17 sending tracks to playlist for artist Fatoumata Diawara
+2019/03/22 14:42:17 got top tracks for artist Switch
+2019/03/22 14:42:17 sending tracks to playlist for artist Switch
+2019/03/22 14:42:17 finished search
+2019/03/22 14:42:18 Got request for: /favicon.ico
+2019/03/22 14:42:18 Got a request to maange the playlist
+2019/03/23 12:38:18 using port 8080
+2019/03/23 12:38:18 using redirect url http://localhost:8080/callback
+2019/03/23 12:38:29 Got request for: /
+2019/03/23 12:38:29 no userId cookie on this request
+2019/03/23 12:38:29 Got request for: /favicon.ico
+2019/03/23 12:38:29 no userId cookie on this request
+2019/03/23 12:38:37 user id is 126154079
+2019/03/23 12:38:37 Got request for: /favicon.ico
+2019/03/23 12:38:37 Got a request to maange the playlist
+2019/03/23 12:38:37 Got a request to maange the playlist
+2019/03/23 12:38:38 Got request for: /favicon.ico
+2019/03/23 12:38:38 Got a request to maange the playlist
+2019/03/23 12:38:42 Got a request to build the playlist
+2019/03/23 12:38:42 Got userID from cookie: 126154079
+2019/03/23 12:38:42 unfollowed the existing playlist
+2019/03/23 12:38:42 Created playlist
+2019/03/23 12:38:42 diff: 0
+2019/03/23 12:38:42 waiting for channel response 0
+2019/03/23 12:38:46 there's another page for date 2019-03-23
+2019/03/23 12:38:46 https://www.portlandmercury.com/events/music/2019-03-23?page=2&view_id=events
+2019/03/23 12:38:51 end of listings for date 2019-03-23
+2019/03/23 12:38:51 scrapeDates got one channel response
+2019/03/23 12:38:51 found 69 artists
+2019/03/23 12:38:51 Could not locate artist DJ Freaky Outty 
+2019/03/23 12:38:51 Could not locate artist Jay Doughty 
+2019/03/23 12:38:51 Could not locate artist Gravity Blanket 
+2019/03/23 12:38:51 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/23 12:38:51 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/23 12:38:51 Could not locate artist Radical Revolution 
+2019/03/23 12:38:51 Could not locate artist The Newport Nightingales 
+2019/03/23 12:38:51 Could not locate artist Weekend Spin 
+2019/03/23 12:38:51 Could not locate artist Unforgettable: 100 Years of Nat and Natalie Cole 
+2019/03/23 12:38:51 Could not locate artist Phantasm: A Dark Dance Night 
+2019/03/23 12:38:51 Could not locate artist Drizzly Adams 
+2019/03/23 12:38:51 Could not locate artist The Splendour 
+2019/03/23 12:38:51 Could not locate artist DJ Major Sean 
+2019/03/23 12:38:51 Could not locate artist Vinylogy DJs 
+2019/03/23 12:38:51 Could not locate artist Galactic & Erica Falls 
+2019/03/23 12:38:51 Could not locate artist The Clap Trap 
+2019/03/23 12:38:51 Could not locate artist Solo Viaje 
+2019/03/23 12:38:51 Could not locate artist MedEvil Madness III 
+2019/03/23 12:38:51 Could not locate artist Dave Mason & Steve Cropper: Rock & Soul Revue 
+2019/03/23 12:38:52 Could not locate artist Mike Baggetta/Mike Watt/Stephen Hodges 
+2019/03/23 12:38:58 Got request for: /favicon.ico
+2019/03/23 12:38:58 Got a request to maange the playlist
+2019/03/23 12:48:39 using port 8080
+2019/03/23 12:48:39 using redirect url http://localhost:8080/callback
+2019/03/23 12:48:47 Got request for: /
+2019/03/23 12:48:47 no client found for this user: 126154079
+2019/03/23 12:48:47 Got request for: /favicon.ico
+2019/03/23 12:48:47 no client found for this user: 126154079
+2019/03/23 12:48:50 user id is 126154079
+2019/03/23 12:48:50 Got request for: /favicon.ico
+2019/03/23 12:48:50 Got a request to maange the playlist
+2019/03/23 12:48:50 Got a request to maange the playlist
+2019/03/23 12:48:51 Got request for: /favicon.ico
+2019/03/23 12:48:51 Got a request to maange the playlist
+2019/03/23 12:48:54 Got a request to build the playlist
+2019/03/23 12:48:54 Got userID from cookie: 126154079
+2019/03/23 12:48:54 unfollowed the existing playlist
+2019/03/23 12:48:54 Created playlist
+2019/03/23 12:48:54 diff: 0
+2019/03/23 12:48:54 waiting for channel response 0
+2019/03/23 12:48:55 there's another page for date 2019-03-23
+2019/03/23 12:48:55 https://www.portlandmercury.com/events/music/2019-03-23?page=2&view_id=events
+2019/03/23 12:48:56 end of listings for date 2019-03-23
+2019/03/23 12:48:56 scrapeDates got one channel response
+2019/03/23 12:48:56 found 69 artists
+2019/03/23 12:48:56 Could not locate artist Weekend Spin 
+2019/03/23 12:48:56 Could not locate artist The Splendour 
+2019/03/23 12:48:56 The Hoons:  potential matches
+2019/03/23 12:48:56 Mayhaw Hoons and the Outsiders
+2019/03/23 12:48:56 hoon matched else
+2019/03/23 12:48:56 Could not locate artist Dave Mason & Steve Cropper: Rock & Soul Revue 
+2019/03/23 12:48:56 Could not locate artist Mike Baggetta/Mike Watt/Stephen Hodges 
+2019/03/23 12:48:56 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/23 12:48:56 Could not locate artist Phantasm: A Dark Dance Night 
+2019/03/23 12:48:56 Could not locate artist Vinylogy DJs 
+2019/03/23 12:48:56 Could not locate artist The Newport Nightingales 
+2019/03/23 12:48:56 Could not locate artist MedEvil Madness III 
+2019/03/23 12:48:56 Could not locate artist Gravity Blanket 
+2019/03/23 12:48:56 Could not locate artist Radical Revolution 
+2019/03/23 12:48:56 Could not locate artist DJ Major Sean 
+2019/03/23 12:48:56 Could not locate artist Galactic & Erica Falls 
+2019/03/23 12:48:56 Could not locate artist Jay Doughty 
+2019/03/23 12:48:56 Could not locate artist Unforgettable: 100 Years of Nat and Natalie Cole 
+2019/03/23 12:48:56 Could not locate artist DJ Freaky Outty 
+2019/03/23 12:48:56 Could not locate artist The Clap Trap 
+2019/03/23 12:48:56 Could not locate artist Solo Viaje 
+2019/03/23 12:48:56 Could not locate artist Drizzly Adams 
+2019/03/23 12:48:57 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/23 12:48:57 Got request for: /favicon.ico
+2019/03/23 12:48:57 Got a request to maange the playlist
+2019/03/23 12:55:34 using port 8080
+2019/03/23 12:55:34 using redirect url http://localhost:8080/callback
+2019/03/23 12:55:39 Got request for: /
+2019/03/23 12:55:39 no client found for this user: 126154079
+2019/03/23 12:55:39 Got request for: /favicon.ico
+2019/03/23 12:55:39 no client found for this user: 126154079
+2019/03/23 12:55:48 user id is 126154079
+2019/03/23 12:55:48 Got request for: /favicon.ico
+2019/03/23 12:55:48 Got a request to maange the playlist
+2019/03/23 12:55:48 Got a request to maange the playlist
+2019/03/23 12:55:49 Got request for: /favicon.ico
+2019/03/23 12:55:49 Got a request to maange the playlist
+2019/03/23 12:55:53 Got a request to build the playlist
+2019/03/23 12:55:53 Got userID from cookie: 126154079
+2019/03/23 12:55:53 unfollowed the existing playlist
+2019/03/23 12:55:54 Created playlist
+2019/03/23 12:55:54 diff: 0
+2019/03/23 12:55:54 waiting for channel response 0
+2019/03/23 12:55:58 there's another page for date 2019-03-23
+2019/03/23 12:55:58 https://www.portlandmercury.com/events/music/2019-03-23?page=2&view_id=events
+2019/03/23 12:55:59 end of listings for date 2019-03-23
+2019/03/23 12:55:59 scrapeDates got one channel response
+2019/03/23 12:55:59 found 69 artists
+2019/03/23 12:56:03 Could not locate artist Galactic & Erica Falls 
+2019/03/23 12:56:03 Could not locate artist Solo Viaje 
+2019/03/23 12:56:03 Could not locate artist Dave Mason & Steve Cropper: Rock & Soul Revue 
+2019/03/23 12:56:03 Could not locate artist Drizzly Adams 
+2019/03/23 12:56:03 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/23 12:56:03 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/23 12:56:03 Could not locate artist Phantasm: A Dark Dance Night 
+2019/03/23 12:56:03 Could not locate artist Gravity Blanket 
+2019/03/23 12:56:03 Could not locate artist DJ Major Sean 
+2019/03/23 12:56:03 Could not locate artist The Clap Trap 
+2019/03/23 12:56:03 Could not locate artist Radical Revolution 
+2019/03/23 12:56:03 Could not locate artist Vinylogy DJs 
+2019/03/23 12:56:03 Could not locate artist The Splendour 
+2019/03/23 12:56:03 Could not locate artist Weekend Spin 
+2019/03/23 12:56:03 The Hoons:  potential matches
+2019/03/23 12:56:03 Mayhaw Hoons and the Outsiders
+2019/03/23 12:56:03 Could not locate artist Mike Baggetta/Mike Watt/Stephen Hodges 
+2019/03/23 12:56:03 Could not locate artist The Newport Nightingales 
+2019/03/23 12:56:03 Could not locate artist DJ Freaky Outty 
+2019/03/23 12:56:03 Could not locate artist Unforgettable: 100 Years of Nat and Natalie Cole 
+2019/03/23 12:56:03 Could not locate artist Jay Doughty 
+2019/03/23 12:56:03 Could not locate artist MedEvil Madness III 
+2019/03/23 12:56:08 Got request for: /favicon.ico
+2019/03/23 12:56:08 Got a request to maange the playlist
+2019/03/25 17:25:25 Got request for: /
+2019/03/25 17:25:25 no userId cookie on this request
+2019/03/25 17:25:25 Got request for: /favicon.ico
+2019/03/25 17:25:25 no userId cookie on this request
+2019/03/25 17:25:46 user id is 126154079
+2019/03/25 17:25:46 Got request for: /favicon.ico
+2019/03/25 17:25:46 Got a request to maange the playlist
+2019/03/25 17:25:46 Got a request to maange the playlist
+2019/03/25 17:25:47 Got request for: /favicon.ico
+2019/03/25 17:25:47 Got a request to maange the playlist
+2019/03/25 17:25:51 Got a request to build the playlist
+2019/03/25 17:25:51 Got userID from cookie: 126154079
+2019/03/25 17:25:52 unfollowed the existing playlist
+2019/03/25 17:25:52 Created playlist
+2019/03/25 17:25:52 diff: 0
+2019/03/25 17:25:52 waiting for channel response 0
+2019/03/25 17:25:53 end of listings for date 2019-03-25
+2019/03/25 17:25:53 scrapeDates got one channel response
+2019/03/25 17:25:53 found 31 artists
+2019/03/25 17:25:54 Could not locate artist John Value 
+2019/03/25 17:25:54 Could not locate artist Raging Bull Sound System 
+2019/03/25 17:25:54 Could not locate artist Hover Girl 
+2019/03/25 17:25:54 Could not locate artist We Make Songs: Music for Female Poets 
+2019/03/25 17:25:54 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/25 17:25:54 Could not locate artist Legendary Mondays 
+2019/03/25 17:25:54 Could not locate artist Reaganomix 
+2019/03/25 17:25:54 Could not locate artist Doc Watson & Friends 
+2019/03/25 17:25:54 Could not locate artist Ron Steen Jam 
+2019/03/25 17:25:54 Could not locate artist Metal Monday 
+2019/03/25 17:25:54 Could not locate artist Because of Her 
+2019/03/25 17:25:54 Could not locate artist Karaoke from Hell 
+2019/03/25 17:25:55 Got request for: /favicon.ico
+2019/03/25 17:25:55 Got a request to maange the playlist
+2019/03/25 17:32:39 Got a request to maange the playlist
+2019/03/25 17:32:40 Got request for: /favicon.ico
+2019/03/25 17:32:40 Got a request to maange the playlist
+2019/03/25 17:32:43 Got a request to build the playlist
+2019/03/25 17:32:43 Got userID from cookie: 126154079
+2019/03/25 17:32:44 unfollowed the existing playlist
+2019/03/25 17:32:44 Created playlist
+2019/03/25 17:32:44 diff: 0
+2019/03/25 17:32:44 waiting for channel response 0
+2019/03/25 17:32:45 end of listings for date 2019-03-25
+2019/03/25 17:32:45 scrapeDates got one channel response
+2019/03/25 17:32:45 found 31 artists
+2019/03/25 17:32:45 Could not locate artist John Value 
+2019/03/25 17:32:45 Could not locate artist Reaganomix 
+2019/03/25 17:32:45 Could not locate artist Karaoke from Hell 
+2019/03/25 17:32:45 Could not locate artist Raging Bull Sound System 
+2019/03/25 17:32:45 Could not locate artist Hover Girl 
+2019/03/25 17:32:45 Could not locate artist Ron Steen Jam 
+2019/03/25 17:32:45 Could not locate artist Legendary Mondays 
+2019/03/25 17:32:45 Could not locate artist Metal Monday 
+2019/03/25 17:32:45 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/25 17:32:45 Could not locate artist We Make Songs: Music for Female Poets 
+2019/03/25 17:32:45 Could not locate artist Doc Watson & Friends 
+2019/03/25 17:32:45 Could not locate artist Because of Her 
+2019/03/25 17:32:46 Got request for: /favicon.ico
+2019/03/25 17:32:46 Got a request to maange the playlist
+2019/03/25 17:34:11 using port 8080
+2019/03/25 17:34:11 using redirect url http://localhost:8080/callback
+2019/03/25 17:34:11 Initializing 0 db file
+2019/03/25 17:34:14 Got request for: /
+2019/03/25 17:34:14 no client found for this user: 126154079
+2019/03/25 17:34:14 Got request for: /favicon.ico
+2019/03/25 17:34:14 no client found for this user: 126154079
+2019/03/25 17:34:28 user id is 126154079
+2019/03/25 17:34:28 Got a request to maange the playlist
+2019/03/25 17:34:28 Got request for: /favicon.ico
+2019/03/25 17:34:28 Got a request to maange the playlist
+2019/03/25 17:34:28 Got request for: /favicon.ico
+2019/03/25 17:34:28 Got a request to maange the playlist
+2019/03/25 17:34:33 Got a request to build the playlist
+2019/03/25 17:34:33 Got userID from cookie: 126154079
+2019/03/25 17:34:34 unfollowed the existing playlist
+2019/03/25 17:34:34 Created playlist
+2019/03/25 17:34:34 diff: 0
+2019/03/25 17:34:34 waiting for channel response 0
+2019/03/25 17:34:36 end of listings for date 2019-03-25
+2019/03/25 17:34:36 scrapeDates got one channel response
+2019/03/25 17:34:36 found 31 artists
+2019/03/25 17:34:38 Could not locate artist Metal Monday 
+2019/03/25 17:34:38 Could not locate artist Veil of Maya 
+2019/03/25 17:34:38 Could not locate artist Karaoke from Hell 
+2019/03/25 17:34:38 Could not locate artist Reaganomix 
+2019/03/25 17:34:38 Could not locate artist John Value 
+2019/03/25 17:34:38 Could not locate artist Legendary Mondays 
+2019/03/25 17:34:38 Could not locate artist Ron Steen Jam 
+2019/03/25 17:34:38 Could not locate artist Raging Bull Sound System 
+2019/03/25 17:34:38 Could not locate artist We Make Songs: Music for Female Poets 
+2019/03/25 17:34:38 Could not locate artist Hover Girl 
+2019/03/25 17:34:38 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/25 17:34:38 Could not locate artist Catfish & the Bottlemen 
+2019/03/25 17:34:38 Could not locate artist Because of Her 
+2019/03/25 17:34:38 Could not locate artist Doc Watson & Friends 
+2019/03/25 17:34:39 Got request for: /favicon.ico
+2019/03/25 17:34:39 Got a request to maange the playlist
+2019/03/25 17:44:40 using port 8080
+2019/03/25 17:44:40 using redirect url http://localhost:8080/callback
+2019/03/25 17:44:40 Initializing 0 db file
+2019/03/25 17:44:45 Got request for: /
+2019/03/25 17:44:45 no client found for this user: 126154079
+2019/03/25 17:44:48 Got dumpDb request
+2019/03/25 17:44:48 0TfWLbyEITK3wjax2OU33I
+2019/03/25 17:44:48 7enBrBojgBJuPPdqTq4Z5F
+2019/03/25 17:44:48 6aaRy3pEsAC5lrbpQC5WEl
+2019/03/25 17:44:48 1J0C0GapgxwMjbjWt7kUQr
+2019/03/25 17:44:48 0tdEYJ5sMRX3vD2Z0xHklf
+2019/03/25 17:44:48 3XoQkucAI4z1O0lFeTUXQQ
+2019/03/25 17:44:48 74fkl73HDlCXw0l6cemB89
+2019/03/25 17:44:48 5poU7FPEYoBlwjzOEWMbX5
+2019/03/25 17:44:48 0xpJGyjbEzkWSNfcf2tcMl
+2019/03/25 17:44:48 1LFKdWhK7y7nBOLfJPtFrL
+2019/03/25 17:44:48 3HtE7kkgBAq4u5265zNOeU
+2019/03/25 17:44:48 0zodxoaogKBIOzB0c0zFUO
+2019/03/25 17:44:48 2N75Y8H64JwHRcyrmDeV79
+2019/03/25 17:44:48 4ic6zoLCwLKJxAKvGOdtrk
+2019/03/25 17:44:48 0tC995Rfn9k2l7nqgCZsV7
+2019/03/25 17:44:48 4CyxMgnF71FyOWADVWxJRE
+2019/03/25 17:44:48 0rHOjcy9iMdgpJMq0kPf08
+2019/03/25 17:44:48 testVal
+2019/03/25 17:44:48 Got request for: /favicon.ico
+2019/03/25 17:44:48 no client found for this user: 126154079
+2019/03/25 18:03:29 using port 8080
+2019/03/25 18:03:29 using redirect url http://localhost:8080/callback
+2019/03/25 18:03:29 Initializing 0 db file
+2019/03/25 18:04:33 Got dumpDb request
+2019/03/25 18:04:33 Cat Valley 0TfWLbyEITK3wjax2OU33I
+2019/03/25 18:04:33 Citizen Cope 7enBrBojgBJuPPdqTq4Z5F
+2019/03/25 18:04:33 Cryptodira 6aaRy3pEsAC5lrbpQC5WEl
+2019/03/25 18:04:33 Driftwood 1J0C0GapgxwMjbjWt7kUQr
+2019/03/25 18:04:33 Eye Candy 0tdEYJ5sMRX3vD2Z0xHklf
+2019/03/25 18:04:33 Faustina Masigat 3XoQkucAI4z1O0lFeTUXQQ
+2019/03/25 18:04:33 G. Love & Special Sauce 74fkl73HDlCXw0l6cemB89
+2019/03/25 18:04:33 Hand Habits 5poU7FPEYoBlwjzOEWMbX5
+2019/03/25 18:04:33 Intervals 0xpJGyjbEzkWSNfcf2tcMl
+2019/03/25 18:04:33 Kung Pao Chickens 1LFKdWhK7y7nBOLfJPtFrL
+2019/03/25 18:04:33 Lloyd Jones 3HtE7kkgBAq4u5265zNOeU
+2019/03/25 18:04:33 Mega Bog 0zodxoaogKBIOzB0c0zFUO
+2019/03/25 18:04:33 Mr. Ben 2N75Y8H64JwHRcyrmDeV79
+2019/03/25 18:04:33 Portland Country Underground 4ic6zoLCwLKJxAKvGOdtrk
+2019/03/25 18:04:33 Prateek Kuhad 0tC995Rfn9k2l7nqgCZsV7
+2019/03/25 18:04:33 Strawberry Girls 4CyxMgnF71FyOWADVWxJRE
+2019/03/25 18:04:33 Them Coulee Boys 0rHOjcy9iMdgpJMq0kPf08
+2019/03/25 18:04:33 testKey testVal
+2019/03/25 18:04:33 Got request for: /favicon.ico
+2019/03/25 18:04:33 no client found for this user: 126154079
+2019/03/27 10:02:03 using port 8080
+2019/03/27 10:02:03 using redirect url http://localhost:8080/callback
+2019/03/27 10:02:03 Initializing 0 db file
+2019/03/27 10:02:15 Got request for: /
+2019/03/27 10:02:15 no userId cookie on this request
+2019/03/27 10:02:15 Got request for: /favicon.ico
+2019/03/27 10:02:15 no userId cookie on this request
+2019/03/27 10:02:19 user id is 126154079
+2019/03/27 10:02:19 Got request for: /favicon.ico
+2019/03/27 10:02:19 Got a request to maange the playlist
+2019/03/27 10:02:19 Got a request to maange the playlist
+2019/03/27 10:02:20 Got request for: /favicon.ico
+2019/03/27 10:02:20 Got a request to maange the playlist
+2019/03/27 10:02:22 using port 8080
+2019/03/27 10:02:22 using redirect url http://localhost:8080/callback
+2019/03/27 10:02:22 Initializing 0 db file
+2019/03/27 10:02:45 using port 8080
+2019/03/27 10:02:45 using redirect url http://localhost:8080/callback
+2019/03/27 10:02:45 Initializing 0 db file
+2019/03/27 10:02:56 Got a request to build the playlist
+2019/03/27 10:02:56 Got userID from cookie: 126154079
+2019/03/27 10:02:57 unfollowed the existing playlist
+2019/03/27 10:02:57 Created playlist
+2019/03/27 10:02:57 diff: 0
+2019/03/27 10:02:57 waiting for channel response 0
+2019/03/27 10:02:58 there's another page for date 2019-03-27
+2019/03/27 10:02:58 https://www.portlandmercury.com/events/music/2019-03-27?page=2&view_id=events
+2019/03/27 10:03:08 end of listings for date 2019-03-27
+2019/03/27 10:03:08 scrapeDates got one channel response
+2019/03/27 10:03:08 found 55 artists
+2019/03/27 10:03:08 Could not locate artist Anson Wright Duo 
+2019/03/27 10:03:08 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/27 10:03:08 Could not locate artist A Night of Music & Verse in the Heart of PDX 
+2019/03/27 10:03:08 Could not locate artist Mazaroth 
+2019/03/27 10:03:08 Could not locate artist KPSU DJs 
+2019/03/27 10:03:08 Could not locate artist Wednesday Night Zydeco 
+2019/03/27 10:03:08 Could not locate artist Atom 13 
+2019/03/27 10:03:08 Could not locate artist Rainbow Electric 
+2019/03/27 10:03:08 Could not locate artist Pickathon Curation Dinner 
+2019/03/27 10:03:08 Could not locate artist King Fader Laser Vision 
+2019/03/27 10:03:08 Could not locate artist Gothic Lounge 
+2019/03/27 10:03:08 Could not locate artist TRONix: Logical Aggression 
+2019/03/27 10:03:08 Could not locate artist The Fenix Project 
+2019/03/27 10:03:08 Could not locate artist 10 Groverfield Lane 
+2019/03/27 10:03:08 Could not locate artist The Damn Straight 
+2019/03/27 10:03:08 Could not locate artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st 
+2019/03/27 10:03:08 Could not locate artist Charley No Face 
+2019/03/27 10:03:08 Could not locate artist Bumper Jacksons 
+2019/03/27 10:03:08 Could not locate artist Portland Thorns Spring Invitational 
+2019/03/27 10:03:08 Could not locate artist Total Request Nite 
+2019/03/27 10:03:08 Could not locate artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st 
+2019/03/27 10:03:08 Could not locate artist Dubblife 
+2019/03/27 10:03:08 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/27 10:03:08 Could not locate artist Christopher Brown Quartet 
+2019/03/27 10:03:08 Could not locate artist Kid Coast 
+2019/03/27 10:03:08 Could not locate artist Help 
+2019/03/27 10:03:09 Got request for: /favicon.ico
+2019/03/27 10:03:09 Got a request to maange the playlist
+2019/03/27 10:13:16 using port 8080
+2019/03/27 10:13:16 using redirect url http://localhost:8080/callback
+2019/03/27 10:13:16 Initializing 0 db file
+2019/03/27 10:13:40 Got request for: /
+2019/03/27 10:13:40 no client found for this user: 126154079
+2019/03/27 10:13:40 Got request for: /favicon.ico
+2019/03/27 10:13:40 no client found for this user: 126154079
+2019/03/27 10:13:44 user id is 126154079
+2019/03/27 10:13:44 Got request for: /favicon.ico
+2019/03/27 10:13:47 Got a request to maange the playlist
+2019/03/27 10:13:55 Got a request to maange the playlist
+2019/03/27 10:13:55 Got request for: /favicon.ico
+2019/03/27 10:14:07 Got a request to maange the playlist
+2019/03/27 10:14:49 Got a request to build the playlist
+2019/03/27 10:14:54 Got userID from cookie: 126154079
+2019/03/27 10:14:59 unfollowed the existing playlist
+2019/03/27 10:14:59 Created playlist
+2019/03/27 10:14:59 diff: 0
+2019/03/27 10:14:59 waiting for channel response 0
+2019/03/27 10:14:59 there's another page for date 2019-03-27
+2019/03/27 10:14:59 https://www.portlandmercury.com/events/music/2019-03-27?page=2&view_id=events
+2019/03/27 10:15:00 end of listings for date 2019-03-27
+2019/03/27 10:15:00 scrapeDates got one channel response
+2019/03/27 10:15:00 found 55 artists
+2019/03/27 10:15:00 Could not locate artist Anson Wright Duo 
+2019/03/27 10:15:00 Could not locate artist Mazaroth 
+2019/03/27 10:15:00 Could not locate artist The Fenix Project 
+2019/03/27 10:15:00 Could not locate artist Total Request Nite 
+2019/03/27 10:15:00 Could not locate artist Rainbow Electric 
+2019/03/27 10:15:00 Could not locate artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st 
+2019/03/27 10:15:00 Could not locate artist 10 Groverfield Lane 
+2019/03/27 10:15:00 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/27 10:15:00 Could not locate artist Atom 13 
+2019/03/27 10:15:00 Could not locate artist Dubblife 
+2019/03/27 10:15:00 Could not locate artist Wednesday Night Zydeco 
+2019/03/27 10:15:00 Could not locate artist TRONix: Logical Aggression 
+2019/03/27 10:15:00 Could not locate artist Pickathon Curation Dinner 
+2019/03/27 10:15:00 Could not locate artist KPSU DJs 
+2019/03/27 10:15:00 Could not locate artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st 
+2019/03/27 10:15:00 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/27 10:15:00 Could not locate artist Christopher Brown Quartet 
+2019/03/27 10:15:00 Could not locate artist Bumper Jacksons 
+2019/03/27 10:15:00 Could not locate artist King Fader Laser Vision 
+2019/03/27 10:15:00 Could not locate artist Charley No Face 
+2019/03/27 10:15:00 Could not locate artist Kid Coast 
+2019/03/27 10:15:00 Could not locate artist Help 
+2019/03/27 10:15:00 Could not locate artist Portland Thorns Spring Invitational 
+2019/03/27 10:15:00 Could not locate artist Gothic Lounge 
+2019/03/27 10:15:00 Could not locate artist A Night of Music & Verse in the Heart of PDX 
+2019/03/27 10:15:00 Could not locate artist The Damn Straight 
+2019/03/27 10:15:25 Got request for: /favicon.ico
+2019/03/27 10:17:14 Got a request to maange the playlist
+2019/03/27 10:30:21 using port 8080
+2019/03/27 10:30:21 using redirect url http://localhost:8080/callback
+2019/03/27 10:30:21 Initializing 0 db file
+2019/03/27 10:30:23 Got request for: /
+2019/03/27 10:30:23 no client found for this user: 126154079
+2019/03/27 10:30:24 Got request for: /favicon.ico
+2019/03/27 10:30:24 no client found for this user: 126154079
+2019/03/27 10:30:27 user id is 126154079
+2019/03/27 10:30:27 Got request for: /favicon.ico
+2019/03/27 10:30:27 Got a request to maange the playlist
+2019/03/27 10:30:27 Got a request to maange the playlist
+2019/03/27 10:30:28 Got request for: /favicon.ico
+2019/03/27 10:30:28 Got a request to maange the playlist
+2019/03/27 10:30:32 Got a request to build the playlist
+2019/03/27 10:30:32 Got userID from cookie: 126154079
+2019/03/27 10:30:32 unfollowed the existing playlist
+2019/03/27 10:30:32 Created playlist
+2019/03/27 10:30:32 diff: 0
+2019/03/27 10:30:32 waiting for channel response 0
+2019/03/27 10:30:33 there's another page for date 2019-03-27
+2019/03/27 10:30:33 https://www.portlandmercury.com/events/music/2019-03-27?page=2&view_id=events
+2019/03/27 10:30:34 end of listings for date 2019-03-27
+2019/03/27 10:30:34 scrapeDates got one channel response
+2019/03/27 10:30:34 All artists: [Cass McCombs Performs at Aladdin Theater on March 27 Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st bed. Rainbow Electric  Spyn Reset Stephen Kellogg Cass McCombs  Sam Evian Ramblin' Jack Elliott Com Truise  Jack Grace  ginla Susto The Bright Light Social Hour  Sea Moya  Help Devin Phillips Atom 13 Julie Amici Scott Yoder  Ezza Rose  Annachristie Sapphire Bumper Jacksons 10 Groverfield Lane  Psyclops  Bert Olsen  Kid Coast  Charley No Face A Night of Music & Verse in the Heart of PDX Pickathon Curation Dinner Aborted  Cryptopsy  Benighted  Hideous Divinity  Mazaroth Headphone  Ghost Motor Gothic Lounge Portland Thorns Spring Invitational The Fenix Project Anson Wright Duo The Damn Straight Wednesday Night Zydeco Christopher Brown Quartet Night Shift KPSU DJs Total Request Nite King Fader Laser Vision Dubblife Cass McCombs Performs at Aladdin Theater on March 27 Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st Tallulah's Daddy TRONix: Logical Aggression Psychopomp DJ Derek]
+2019/03/27 10:30:34 found 55 artists
+2019/03/27 10:30:34 kicking off artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/27 10:30:34 kicking off artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st
+2019/03/27 10:30:34 kicking off artist bed.
+2019/03/27 10:30:34 kicking off artist Rainbow Electric
+2019/03/27 10:30:34 kicking off artist Spyn Reset
+2019/03/27 10:30:34 kicking off artist Stephen Kellogg
+2019/03/27 10:30:34 kicking off artist Cass McCombs
+2019/03/27 10:30:34 kicking off artist Sam Evian
+2019/03/27 10:30:34 kicking off artist Ramblin' Jack Elliott
+2019/03/27 10:30:34 kicking off artist Com Truise
+2019/03/27 10:30:34 kicking off artist Jack Grace
+2019/03/27 10:30:34 kicking off artist ginla
+2019/03/27 10:30:34 kicking off artist Susto
+2019/03/27 10:30:34 kicking off artist The Bright Light Social Hour
+2019/03/27 10:30:34 kicking off artist Sea Moya
+2019/03/27 10:30:34 kicking off artist Help
+2019/03/27 10:30:34 kicking off artist Devin Phillips
+2019/03/27 10:30:34 kicking off artist Atom 13
+2019/03/27 10:30:34 kicking off artist Julie Amici
+2019/03/27 10:30:34 kicking off artist Scott Yoder
+2019/03/27 10:30:34 kicking off artist Ezza Rose
+2019/03/27 10:30:34 kicking off artist Annachristie Sapphire
+2019/03/27 10:30:34 kicking off artist Bumper Jacksons
+2019/03/27 10:30:34 kicking off artist 10 Groverfield Lane
+2019/03/27 10:30:34 kicking off artist Psyclops
+2019/03/27 10:30:34 kicking off artist Bert Olsen
+2019/03/27 10:30:34 kicking off artist Kid Coast
+2019/03/27 10:30:34 kicking off artist Charley No Face
+2019/03/27 10:30:34 kicking off artist A Night of Music & Verse in the Heart of PDX
+2019/03/27 10:30:34 kicking off artist Pickathon Curation Dinner
+2019/03/27 10:30:34 kicking off artist Aborted
+2019/03/27 10:30:34 kicking off artist Cryptopsy
+2019/03/27 10:30:34 kicking off artist Benighted
+2019/03/27 10:30:34 kicking off artist Hideous Divinity
+2019/03/27 10:30:34 kicking off artist Mazaroth
+2019/03/27 10:30:34 kicking off artist Headphone
+2019/03/27 10:30:34 kicking off artist Ghost Motor
+2019/03/27 10:30:34 kicking off artist Gothic Lounge
+2019/03/27 10:30:34 kicking off artist Portland Thorns Spring Invitational
+2019/03/27 10:30:34 kicking off artist The Fenix Project
+2019/03/27 10:30:34 kicking off artist Anson Wright Duo
+2019/03/27 10:30:34 kicking off artist The Damn Straight
+2019/03/27 10:30:34 kicking off artist Wednesday Night Zydeco
+2019/03/27 10:30:34 kicking off artist Christopher Brown Quartet
+2019/03/27 10:30:34 kicking off artist Night Shift
+2019/03/27 10:30:34 kicking off artist KPSU DJs
+2019/03/27 10:30:34 kicking off artist Total Request Nite
+2019/03/27 10:30:34 kicking off artist King Fader Laser Vision
+2019/03/27 10:30:34 kicking off artist Dubblife
+2019/03/27 10:30:34 kicking off artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/27 10:30:34 kicking off artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st
+2019/03/27 10:30:34 kicking off artist Tallulah's Daddy
+2019/03/27 10:30:34 kicking off artist TRONix: Logical Aggression
+2019/03/27 10:30:34 kicking off artist Psychopomp
+2019/03/27 10:30:34 kicking off artist DJ Derek
+2019/03/27 10:30:34 Could not locate artist Wednesday Night Zydeco 
+2019/03/27 10:30:34 defering artist Wednesday Night Zydeco
+2019/03/27 10:30:34 Could not locate artist Atom 13 
+2019/03/27 10:30:34 defering artist Atom 13
+2019/03/27 10:30:34 Could not locate artist Charley No Face 
+2019/03/27 10:30:34 defering artist Charley No Face
+2019/03/27 10:30:34 Could not locate artist A Night of Music & Verse in the Heart of PDX 
+2019/03/27 10:30:34 defering artist A Night of Music & Verse in the Heart of PDX
+2019/03/27 10:30:34 Could not locate artist Mazaroth 
+2019/03/27 10:30:34 defering artist Mazaroth
+2019/03/27 10:30:34 Could not locate artist Bumper Jacksons 
+2019/03/27 10:30:34 defering artist Bumper Jacksons
+2019/03/27 10:30:34 Could not locate artist TRONix: Logical Aggression 
+2019/03/27 10:30:34 defering artist TRONix: Logical Aggression
+2019/03/27 10:30:34 Could not locate artist Gothic Lounge 
+2019/03/27 10:30:34 defering artist Gothic Lounge
+2019/03/27 10:30:34 Could not locate artist Anson Wright Duo 
+2019/03/27 10:30:34 defering artist Anson Wright Duo
+2019/03/27 10:30:34 Could not locate artist Help 
+2019/03/27 10:30:34 defering artist Help
+2019/03/27 10:30:34 Could not locate artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st 
+2019/03/27 10:30:34 defering artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st
+2019/03/27 10:30:34 Could not locate artist KPSU DJs 
+2019/03/27 10:30:34 defering artist KPSU DJs
+2019/03/27 10:30:34 Could not locate artist Pickathon Curation Dinner 
+2019/03/27 10:30:34 defering artist Pickathon Curation Dinner
+2019/03/27 10:30:34 Could not locate artist The Damn Straight 
+2019/03/27 10:30:34 defering artist The Damn Straight
+2019/03/27 10:30:34 Could not locate artist Portland Thorns Spring Invitational 
+2019/03/27 10:30:34 defering artist Portland Thorns Spring Invitational
+2019/03/27 10:30:34 Could not locate artist 10 Groverfield Lane 
+2019/03/27 10:30:34 defering artist 10 Groverfield Lane
+2019/03/27 10:30:34 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/27 10:30:34 defering artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/27 10:30:34 Could not locate artist The Fenix Project 
+2019/03/27 10:30:34 defering artist The Fenix Project
+2019/03/27 10:30:34 Could not locate artist Rainbow Electric 
+2019/03/27 10:30:34 defering artist Rainbow Electric
+2019/03/27 10:30:34 Could not locate artist Christopher Brown Quartet 
+2019/03/27 10:30:34 defering artist Christopher Brown Quartet
+2019/03/27 10:30:34 Could not locate artist Kid Coast 
+2019/03/27 10:30:34 defering artist Kid Coast
+2019/03/27 10:30:34 defering artist Susto
+2019/03/27 10:30:34 defering artist Spyn Reset
+2019/03/27 10:30:34 defering artist Aborted
+2019/03/27 10:30:34 defering artist Com Truise
+2019/03/27 10:30:34 defering artist Ghost Motor
+2019/03/27 10:30:34 defering artist Sam Evian
+2019/03/27 10:30:34 defering artist bed.
+2019/03/27 10:30:34 defering artist Sea Moya
+2019/03/27 10:30:34 defering artist Jack Grace
+2019/03/27 10:30:34 defering artist Cass McCombs
+2019/03/27 10:30:34 defering artist Hideous Divinity
+2019/03/27 10:30:34 defering artist ginla
+2019/03/27 10:30:34 defering artist Julie Amici
+2019/03/27 10:30:34 Could not locate artist Dubblife 
+2019/03/27 10:30:34 defering artist Dubblife
+2019/03/27 10:30:34 Could not locate artist King Fader Laser Vision 
+2019/03/27 10:30:34 defering artist King Fader Laser Vision
+2019/03/27 10:30:34 Could not locate artist Total Request Nite 
+2019/03/27 10:30:34 defering artist Total Request Nite
+2019/03/27 10:30:34 Could not locate artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st 
+2019/03/27 10:30:34 defering artist Ry X celebrates new album Unfurl at the Aladdin Theater on April 1st
+2019/03/27 10:30:34 defering artist Ezza Rose
+2019/03/27 10:30:34 Could not locate artist Cass McCombs Performs at Aladdin Theater on March 27 
+2019/03/27 10:30:34 defering artist Cass McCombs Performs at Aladdin Theater on March 27
+2019/03/27 10:30:34 defering artist Scott Yoder
+2019/03/27 10:30:34 defering artist Night Shift
+2019/03/27 10:30:34 defering artist Devin Phillips
+2019/03/27 10:30:34 defering artist Bert Olsen
+2019/03/27 10:30:34 defering artist Ramblin' Jack Elliott
+2019/03/27 10:30:34 defering artist Tallulah's Daddy
+2019/03/27 10:30:34 defering artist Psyclops
+2019/03/27 10:30:34 defering artist Cryptopsy
+2019/03/27 10:30:35 defering artist Stephen Kellogg
+2019/03/27 10:30:35 defering artist The Bright Light Social Hour
+2019/03/27 10:30:35 defering artist Annachristie Sapphire
+2019/03/27 10:30:35 defering artist Psychopomp
+2019/03/27 10:30:35 defering artist Headphone
+2019/03/27 10:30:35 defering artist Benighted
+2019/03/27 10:30:35 defering artist DJ Derek
+2019/03/27 10:30:35 Got request for: /favicon.ico
+2019/03/27 10:30:35 Got a request to maange the playlist

@@ -16,7 +16,8 @@ func getToday() time.Time {
 
 func scrapeDates(start time.Time, end time.Time) []string {
 	//Mon Jan 2 15:04:05 MST 2006
-
+	log.Printf("scrape start: %v", start)
+	log.Printf("scrape end: %v", end)
 	//allArtists := make([]string, 0)
 	var allArtists []string
 
@@ -32,12 +33,15 @@ func scrapeDates(start time.Time, end time.Time) []string {
 
 	midDate := start
 	ch := make(chan []string)
-	diff := int((end.Sub(start).Hours()) / 24)
+	diffHours := end.Sub(start).Hours()
+	diff := (int)(diffHours / 24)
+	//diff := int((end.Sub(start).Hours()) / 24)
+	log.Printf("diff: %v", diff)
 	for i := 0; i <= diff; i++ {
+		log.Printf("going to scrape date %v", midDate)
 		go scrape(midDate.Format("2006-01-02"), 1, ch)
 		midDate = midDate.Add(time.Hour * 24)
 	}
-	log.Printf("diff: %v", diff)
 	for i := 0; i <= diff; i++ {
 		log.Printf("waiting for channel response %v", i)
 		a := <-ch

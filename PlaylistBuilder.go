@@ -18,32 +18,46 @@ import (
 	"golang.org/x/oauth2/clientcredentials"
 )
 
-const dbFile = "test/example.db"
+type dbFile int
 
-//const redirectURI = "https://example.com/callback/"
-//const redirectURI = "http://localhost:" + port + "/callback"
+const (
+	artistsDb dbFile = iota
+)
+
+var dbFiles = map[dbFile]string{artistsDb: "db/artists.db"}
+
 const configFilePath = "config.ini"
 
 var (
-	scopes  = []string{spotify.ScopePlaylistReadCollaborative, spotify.ScopePlaylistReadPrivate, spotify.ScopeUserReadPrivate, spotify.ScopePlaylistModifyPrivate}
+	scopes = []string{
+		spotify.ScopePlaylistReadCollaborative,
+		spotify.ScopePlaylistReadPrivate,
+		spotify.ScopeUserReadPrivate,
+		spotify.ScopePlaylistModifyPrivate,
+		spotify.ScopeUserFollowRead,
+		spotify.ScopeUserTopRead}
 	ch      = make(chan *spotify.Client)
 	clients = make(map[string]spotify.Client) //really this should be a cache or something
 	state   = "abc123"                        //this is a security thing to validate the request actually originated with me.  Do something with it later.
 )
 
 var (
-	clientID, clientSecret, port string
+	clientID, clientSecret, port, ip string
 )
 var auth spotify.Authenticator
 
 var artists []string
 
 func init() {
+	ip = os.Getenv("IP")
+	if ip == "" {
+		ip = "localhost"
+	}
 	port = os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
-	redirectURI := "http://localhost:" + port + "/callback"
+	redirectURI := "http://" + ip + ":" + port + "/callback"
 	auth = spotify.NewAuthenticator(redirectURI, scopes...)
 }
 
@@ -59,6 +73,7 @@ func main() {
 	log.Printf("using redirect url %v", "http://localhost:"+port+"/callback")
 	setupCredentials()
 	setupDB()
+	defer closeDb()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Got request for:", r.URL.String())
@@ -90,6 +105,12 @@ func main() {
 		client := <-ch
 		user, _ := client.CurrentUser()
 		fmt.Fprintf(w, "hello %v", user.ID)
+	})
+
+	http.HandleFunc("/dumpDb", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("Got dumpDb request")
+		dbDump(artistsDb)
+		fmt.Fprint(w, "Dumped")
 	})
 	http.ListenAndServe(":"+port, nil)
 }
@@ -241,23 +262,24 @@ func setupCredentials() {
 func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, playlistID spotify.ID) {
 	defer wg.Done()
 	var artistID spotify.ID
-	result, err := client.Search(artist, spotify.SearchTypeArtist)
-	if err != nil {
-		log.Printf("Encountered an error searching for artist %v: %v", artist, err)
-		return
-	} else if result.Artists.Total > 1 {
-		for i, match := range result.Artists.Artists {
-			if match.Name == artist {
-				artistID = result.Artists.Artists[i].ID
-				break
+	//first check the db for the artists id
+	artistID = spotify.ID(dbGet(artistsDb, artist))
+	//if it wasn't saved, then call spotify search
+	if artistID == "" {
+		result, err := client.Search(artist, spotify.SearchTypeArtist)
+		if err != nil {
+			log.Printf("Encountered an error searching for artist %v: %v", artist, err)
+			return
+		} else if result.Artists.Total > 0 {
+			for i, match := range result.Artists.Artists {
+				if match.Name == artist {
+					artistID = result.Artists.Artists[i].ID
+					dbInsert(artistsDb, artist, artistID.String())
+				}
 			}
 		}
-	} else if result.Artists.Total == 0 {
-		log.Printf("Could not locate artist %v ", artist)
-		return
-	} else {
-		artistID = result.Artists.Artists[0].ID
 	}
+
 	if artistID != "" {
 		tracks, err := client.GetArtistsTopTracks(artistID, spotify.CountryUSA)
 		if err != nil {
@@ -268,8 +290,13 @@ func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, pl
 			for i, track := range tracks {
 				trackIds[i] = track.SimpleTrack.ID
 			}
-			client.AddTracksToPlaylist(playlistID, trackIds...)
+			_, err := client.AddTracksToPlaylist(playlistID, trackIds...)
+			if err != nil {
+				log.Printf("Error adding tracks for artist %v: %v", artist, err)
+			}
 		}
+	} else {
+		log.Printf("Could not locate artist %v ", artist)
 	}
 }
 
@@ -288,11 +315,25 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 	deleteExisting := r.FormValue("deleteExisting")
 	startStr := r.FormValue("start")
 	endStr := r.FormValue("end")
-	startDate, _ := time.Parse("2006-01-02", startStr)
-	endDate, _ := time.Parse("2006-01-02", endStr)
+	startDate, startErr := time.Parse("2006-01-02", startStr)
+	if startErr != nil {
+		log.Printf("Error parsing start date: %v", startErr)
+	} else {
+		log.Printf("start: %v", startDate)
+	}
+	endDate, endErr := time.Parse("2006-01-02", endStr)
+	if endErr != nil {
+		log.Printf("Error parsing start date: %v", endErr)
+	} else {
+		log.Printf("end: %v", endDate)
+	}
 
 	playlistID := setupPlaylist(&userClient, userIDCookie.Value, startStr, endStr, deleteExisting == "on")
 	artists = scrapeDates(startDate, endDate)
+	ch := make(chan []string)
+	go getLikedIntersect(&userClient, artists, ch)
+	likedShows := <-ch
+	close(ch)
 	var wg sync.WaitGroup
 	log.Printf("found %v artists", len(artists))
 	for _, artist := range artists {
@@ -301,7 +342,20 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 		go spotifySearch(&wg, &userClient, artist, playlistID)
 	}
 	wg.Wait()
-	fmt.Fprint(w, "Done, go check out your cool new playlist")
+
+	if len(likedShows) > 0 {
+		fmt.Fprintf(w, "Done making the playlist, there are some shows you might like: %v", likedShows)
+	} else {
+		fmt.Fprint(w, "Done, go check out your cool new playlist")
+	}
+	//fmt.Fprint(w, "Done, go check out your cool new playlist")
+}
+
+func getLikedIntersect(client *spotify.Client, artists []string, ch chan []string) {
+	liked := getLikedArtists(client)
+	log.Printf("Found %v liked artists", len(liked))
+	intersect := intersect(artists, liked)
+	ch <- intersect
 }
 
 func getUserClient(userID string) (spotify.Client, error) {
@@ -313,7 +367,86 @@ func getUserClient(userID string) (spotify.Client, error) {
 	return client, err
 }
 
+//This isn't really necessary - slowpoke will automatically create the files on demand
+//Using it as a placeholder for when I switch to a different db that might need initialization
 func setupDB() {
-	defer slowpoke.CloseAll()
-	slowpoke.Set(dbFile, []byte("testKey"), []byte("testVal"))
+	for dbName, file := range dbFiles {
+		log.Printf("Initializing %v db file", dbName)
+		slowpoke.Set(file, []byte("testKey"), []byte("testVal"))
+	}
+}
+
+func closeDb() {
+	slowpoke.CloseAll()
+}
+
+func dbInsert(db dbFile, key string, val string) {
+	slowpoke.Set(dbFiles[db], []byte(key), []byte(val))
+}
+
+func dbGet(db dbFile, key string) string {
+	val, err := slowpoke.Get(dbFiles[db], []byte(key))
+	if err != nil {
+		return ""
+	}
+	return string(val)
+}
+
+func dbDump(db dbFile) {
+	keys, err := slowpoke.Keys(dbFiles[db], nil, 0, 0, true)
+	if err != nil {
+		log.Printf("Error dumping db: %v", err)
+		return
+	}
+	for _, key := range keys {
+		artistBytes, _ := slowpoke.Get(dbFiles[db], key)
+		log.Println(string(key), string(artistBytes))
+	}
+}
+
+func getLikedArtists(client *spotify.Client) []string {
+	liked := make(map[string]bool)
+	//get explicitly liked artists
+	res, err := client.CurrentUsersFollowedArtists()
+	if err != nil {
+		log.Printf("Encountered an error getting followed artists: %v", err)
+		//return liked
+	} else {
+		for _, artist := range res.Artists {
+			liked[artist.Name] = true
+		}
+	}
+
+	//get top played artists
+	top, err := client.CurrentUsersTopArtists()
+	if err != nil {
+		log.Printf("Encountered an error getting top artists: %v", err)
+		//return liked
+	} else {
+		for _, artist := range top.Artists {
+			liked[artist.Name] = true
+		}
+	}
+	ret := make([]string, len(liked))
+	i := 0
+	for val := range liked {
+		ret[i] = val
+		i++
+	}
+	return ret
+}
+
+func intersect(arists, liked []string) (c []string) {
+	m := make(map[string]bool)
+
+	for _, item := range arists {
+		m[item] = true
+	}
+
+	for _, item := range liked {
+		if _, ok := m[item]; ok {
+			c = append(c, item)
+		}
+	}
+	return
 }
