@@ -48,6 +48,8 @@ var auth spotify.Authenticator
 
 var artists []string
 
+// var Cities = []string{"Portland", "San Francisco"}
+
 func init() {
 	ip = os.Getenv("IP")
 	if ip == "" {
@@ -131,7 +133,8 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 				UserID  string
 				Today   string
 				MaxDate string
-			}{userIDCookie.Value, today, maxDate})
+				Cities  []string
+			}{userIDCookie.Value, today, maxDate, getSupportedCities()})
 		} else {
 			fmt.Fprintf(w, "no client found for this user: %v", userIDCookie.Value)
 		}
@@ -160,47 +163,52 @@ func setupPlaylist(client *spotify.Client, userID string, startDate string, endD
 	var playlistID spotify.ID
 	myPlaylists, err := client.GetPlaylistsForUser(userID)
 	if err != nil {
-		fmt.Printf("failed to get playlists: %v", err)
-		log.Fatalf("couldn't get playlists for user: %v", err)
-	}
-	var exists = false
-	for _, p := range myPlaylists.Playlists {
-		if p.Name == "local shows" {
-			if deleteExisting {
+		log.Printf("failed to get playlists, will move on to create: %v", err)
+		//log.Fatalf("couldn't get playlists for user: %v", err)
+	} else if deleteExisting {
+		for _, p := range myPlaylists.Playlists {
+			if p.Name == "local shows" {
+				//if deleteExisting {
 				unfollowErr := client.UnfollowPlaylist(spotify.ID(p.Owner.ID), p.ID)
 				if unfollowErr != nil {
 					log.Printf("failed to unfollow: %v", unfollowErr)
 				} else {
 					log.Println("unfollowed the existing playlist")
 				}
-			} else {
-				exists = true
+				// } else {
+				// 	exists = true
+				// }
 			}
 		}
 	}
-	if !exists {
-		date := time.Now().Format("2006-01-02 15:04:05")
-		desc := fmt.Sprintf("local shows - created %v for dates %v - %v", date, startDate, endDate)
-		playlist, err := client.CreatePlaylistForUser(userID, "local shows", desc, false)
-		if err != nil {
-			log.Fatalf("Encountered an error creating the playlist: %v", err)
-		} else {
-			log.Println("Created playlist")
-		}
-		playlistID = playlist.ID
+	//if !exists {
+	date := time.Now().Format("2006-01-02 15:04:05")
+	desc := fmt.Sprintf("local shows - created %v for dates %v - %v", date, startDate, endDate)
+	playlist, err := client.CreatePlaylistForUser(userID, "local shows", desc, false)
+	if err != nil {
+		log.Printf("Encountered an error creating the playlist: %v", err)
+	} else {
+		log.Println("Created playlist")
 	}
+	playlistID = playlist.ID
+	//}
 	return playlistID
 }
 
 func completeAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *spotify.Client {
 	tok, err := auth.Token(state, r)
 	if err != nil {
-		http.Error(w, "Couldn't get token", http.StatusForbidden)
-		log.Fatal(err)
+		//http.Error(w, "Couldn't get token", http.StatusForbidden)
+		log.Printf("auth error: %v", err)
+		fmt.Fprint(w, "There was an error while authenticating, please try again later.")
+		return nil
 	}
 	if st := r.FormValue("state"); st != state {
-		http.NotFound(w, r)
-		log.Fatalf("State mismatch: %s != %s\n", st, state)
+		//http.NotFound(w, r)
+		//log.Fatalf("State mismatch: %s != %s\n", st, state)
+		log.Printf("auth error: %v", err)
+		fmt.Fprint(w, "There was an error in the provided state, please try again later.")
+		return nil
 	}
 	// use the token to get an authenticated client
 	client := auth.NewClient(tok)
@@ -227,7 +235,8 @@ func doClientCredsAuth() spotify.Client {
 	}
 	token, err := config.Token(context.Background())
 	if err != nil {
-		log.Fatalf("couldn't get token: %v", err)
+		log.Printf("couldn't get token: %v", err)
+		//return nil
 	}
 
 	return spotify.Authenticator{}.NewClient(token)
@@ -309,7 +318,7 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Got userID from cookie: %v", userIDCookie.Value)
 	userClient, err := getUserClient(userIDCookie.Value)
 	if err != nil {
-		log.Fatalf("no client for the user") //really redirect to login
+		log.Printf("no client for the user %v", userIDCookie.Value) //really redirect to login
 	}
 	//get the form data
 	deleteExisting := r.FormValue("deleteExisting")
@@ -328,8 +337,23 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("end: %v", endDate)
 	}
 
+	city := r.FormValue("city")
+
 	playlistID := setupPlaylist(&userClient, userIDCookie.Value, startStr, endStr, deleteExisting == "on")
-	artists = scrapeDates(startDate, endDate)
+	if playlistID == "" {
+		fmt.Fprint(w, "There was an error creating the playlist, please try again later.")
+		return
+	}
+	artists, err = scrapeDates(startDate, endDate, city)
+	if err != nil && len(artists) == 0 {
+		w.WriteHeader(500)
+		fmt.Fprint(w, "There was an error retrieving events, please try again later.")
+		return
+	}
+	if len(artists) == 0 {
+		fmt.Fprint(w, "We didn't find any artists in your date range.")
+		return
+	}
 	ch := make(chan []string)
 	go getLikedIntersect(&userClient, artists, ch)
 	likedShows := <-ch
@@ -342,13 +366,19 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 		go spotifySearch(&wg, &userClient, artist, playlistID)
 	}
 	wg.Wait()
-
-	if len(likedShows) > 0 {
-		fmt.Fprintf(w, "Done making the playlist, there are some shows you might like: %v", likedShows)
-	} else {
-		fmt.Fprint(w, "Done, go check out your cool new playlist")
+	msg := "Done, go check out your cool new playlist"
+	if err != nil {
+		msg = msg + ", but there may be some artists missing because we encountered an error"
 	}
-	//fmt.Fprint(w, "Done, go check out your cool new playlist")
+	if len(likedShows) > 0 {
+		//fmt.Fprintf(w, "Done making the playlist, there are some shows you might like: %v", likedShows)
+		msg = fmt.Sprintf("%v. \n There are some shows you might like: %v", msg, likedShows)
+	}
+	// } else {
+	// 	fmt.Fprint(w, "Done, go check out your cool new playlist")
+	// }
+	//fmt.Fprint(w, "Done, go check out your cool new playlist")43RE3R
+	fmt.Fprintf(w, msg)
 }
 
 func getLikedIntersect(client *spotify.Client, artists []string, ch chan []string) {
