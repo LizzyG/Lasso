@@ -16,6 +16,11 @@ import (
 	"github.com/recoilme/slowpoke"
 	"github.com/zmb3/spotify"
 	"golang.org/x/oauth2/clientcredentials"
+
+	"github.com/aws/aws-sdk-go/aws"
+
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/dynamodb"
 )
 
 type dbFile int
@@ -23,6 +28,14 @@ type dbFile int
 const (
 	artistsDb dbFile = iota
 )
+
+type idType int
+
+const (
+	spotifyId idType = iota
+)
+
+var idTypeNames = map[idType]string{spotifyId: "SpotifyID"}
 
 var dbFiles = map[dbFile]string{artistsDb: "db/artists.db"}
 
@@ -42,9 +55,10 @@ var (
 )
 
 var (
-	clientID, clientSecret, port, ip string
+	clientID, clientSecret, port, ip, region string
 )
 var auth spotify.Authenticator
+var dynamoClient *dynamodb.DynamoDB
 
 var artists []string
 
@@ -256,12 +270,18 @@ func setupCredentials() {
 				clientID = strings.TrimSpace(parts[1])
 			case "CLIENT_SECRET":
 				clientSecret = strings.TrimSpace(parts[1])
+			case "AWS_REGION":
+				region = strings.TrimSpace(parts[1])
+				os.Setenv("AWS_REGION", region)
 			}
 		}
 	}
 	err = s.Err()
 	if err != nil {
 		log.Fatal(err)
+	}
+	if region == "" {
+		region = "us-west-2"
 	}
 	auth.SetAuthInfo(clientID, clientSecret)
 }
@@ -272,7 +292,8 @@ func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, pl
 	defer wg.Done()
 	var artistID spotify.ID
 	//first check the db for the artists id
-	artistID = spotify.ID(dbGet(artistsDb, artist))
+	//artistID = spotify.ID(dbGet(artistsDb, artist))
+	artistID = spotify.ID(getArtistID(artist, spotifyId))
 	//if it wasn't saved, then call spotify search
 	if artistID == "" {
 		result, err := client.Search(artist, spotify.SearchTypeArtist)
@@ -283,7 +304,8 @@ func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, pl
 			for i, match := range result.Artists.Artists {
 				if match.Name == artist {
 					artistID = result.Artists.Artists[i].ID
-					dbInsert(artistsDb, artist, artistID.String())
+					//dbInsert(artistsDb, artist, artistID.String())
+					setArtistID(artist, artistID.String(), spotifyId)
 				}
 			}
 		}
@@ -400,37 +422,60 @@ func getUserClient(userID string) (spotify.Client, error) {
 //This isn't really necessary - slowpoke will automatically create the files on demand
 //Using it as a placeholder for when I switch to a different db that might need initialization
 func setupDB() {
-	for dbName, file := range dbFiles {
-		log.Printf("Initializing %v db file", dbName)
-		slowpoke.Set(file, []byte("testKey"), []byte("testVal"))
-	}
+	// for dbName, file := range dbFiles {
+	// 	log.Printf("Initializing %v db file", dbName)
+	// 	slowpoke.Set(file, []byte("testKeyStr"), []byte("testVal"))
+	// }
+	config := &aws.Config{Region: &region}
+	sess := session.Must(session.NewSession(config))
+	dynamoClient = dynamodb.New(sess)
 }
 
 func closeDb() {
 	slowpoke.CloseAll()
 }
 
-func dbInsert(db dbFile, key string, val string) {
-	slowpoke.Set(dbFiles[db], []byte(key), []byte(val))
+// func dbInsert(db dbFile, KeyStr string, val string) {
+// 	slowpoke.Set(dbFiles[db], []byte(KeyStr), []byte(val))
+// }
+
+func getArtistID(artistName string, idType idType) string {
+	res, err := dynamoClient.GetItem(&dynamodb.GetItemInput{TableName: aws.String("ArtistIDs"), Key: map[string]*dynamodb.AttributeValue{"ArtistName": {S: aws.String(artistName)}}})
+	if err != nil {
+		panic(err)
+	}
+	item := res.Item
+	idVal, exists := item[idTypeNames[idType]]
+	if exists {
+		return idVal.String()
+	}
+	return ""
 }
 
-func dbGet(db dbFile, key string) string {
-	val, err := slowpoke.Get(dbFiles[db], []byte(key))
-	if err != nil {
-		return ""
-	}
-	return string(val)
+func setArtistID(artistName string, artistID string, idType idType) {
+	put := dynamodb.UpdateItemInput{TableName: aws.String("ArtistIDs"),
+		Key: map[string]*dynamodb.AttributeValue{"ArtistName": {S: aws.String(artistName)},
+			idTypeNames[idType]: {S: aws.String(artistID)}}}
+	dynamoClient.UpdateItem(&put)
 }
+
+// func dbGet(db dbFile, KeyStr string) string {
+// 	val, err := slowpoke.Get(dbFiles[db], []byte(KeyStr))
+// 	if err != nil {
+// 		return ""
+// 	}
+// 	return string(val)
+// }
 
 func dbDump(db dbFile) {
-	keys, err := slowpoke.Keys(dbFiles[db], nil, 0, 0, true)
+	KeyStrs, err := slowpoke.Keys(dbFiles[db], nil, 0, 0, true)
 	if err != nil {
 		log.Printf("Error dumping db: %v", err)
 		return
 	}
-	for _, key := range keys {
-		artistBytes, _ := slowpoke.Get(dbFiles[db], key)
-		log.Println(string(key), string(artistBytes))
+	for _, KeyStr := range KeyStrs {
+		artistBytes, _ := slowpoke.Get(dbFiles[db], KeyStr)
+		log.Println(string(KeyStr), string(artistBytes))
 	}
 }
 
