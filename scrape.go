@@ -14,10 +14,6 @@ import (
 	"github.com/gocolly/colly"
 )
 
-// var cityMap = map[string]func(time.Time, int, chan eventsRecord, chan error){
-// 	"Portland":      scrapeMerc,
-// 	"San Francisco": scrapeSF}
-
 var cityMap = map[string]scraper{
 	"Portland":      mercScraper{"Music"},
 	"San Francisco": sfScraper{"Music"}}
@@ -76,7 +72,6 @@ func scrapeDates(start time.Time, end time.Time, city string) ([]string, error) 
 	log.Printf("scrape start: %v", start)
 	log.Printf("scrape end: %v", end)
 	log.Printf("city: %v", city)
-	//allArtists := make([]string, 0)
 	var allArtists []string
 
 	today := getToday()
@@ -86,15 +81,11 @@ func scrapeDates(start time.Time, end time.Time, city string) ([]string, error) 
 	if end.Before(start) {
 		end = start
 	}
-	//startStr := start.Format("2006-01-02")
-	//endStr := end.Format("2006-01-02")
 
 	midDate := start
 	resCh := make(chan *eventsRecord)
 	errCh := make(chan error)
-	diffHours := end.Sub(start).Hours()
-	diff := (int)(diffHours / 24)
-	//diff := int((end.Sub(start).Hours()) / 24)
+	diff := int((end.Sub(start).Hours()) / 24)
 	log.Printf("diff: %v", diff)
 	for i := 0; i <= diff; i++ {
 		if i%2 == 0 { //sleep sometimes so the website doesn't throttle
@@ -102,9 +93,6 @@ func scrapeDates(start time.Time, end time.Time, city string) ([]string, error) 
 			time.Sleep(time.Duration(wait) * time.Second)
 		}
 		log.Printf("going to scrape date %v", midDate)
-		//go cityMap[city](midDate.Format("2006-01-02"), 1, resCh, errCh)
-		//go cityMap[city](midDate, 1, resCh, errCh)
-		//////////////
 		cityScraper := cityMap[city]
 		e := cityScraper.getBlankEventRecord()
 		e.Date = midDate
@@ -117,7 +105,6 @@ func scrapeDates(start time.Time, end time.Time, city string) ([]string, error) 
 			e.fromDb = true
 			go func() { resCh <- e }()
 		} else {
-			////////////
 			log.Println("scraping events from db")
 			go cityScraper.scrapeDate(midDate, 1, resCh, errCh, e)
 		}
@@ -131,7 +118,6 @@ func scrapeDates(start time.Time, end time.Time, city string) ([]string, error) 
 		select {
 		case a := <-resCh:
 			log.Println("scrapeDates got one channel response")
-			//a.Artists = sliceUniqMap(a.Artists)
 			allArtists = append(allArtists, a.Artists...)
 			if !a.fromDb {
 				go addEventToDb(a)
@@ -140,7 +126,6 @@ func scrapeDates(start time.Time, end time.Time, city string) ([]string, error) 
 			done = cnt > diff
 		case e = <-errCh:
 			log.Printf("got an error from the go routine: %v", e)
-			//done = true
 		case <-time.After(120 * time.Second):
 			log.Println("timed out watiting for response from scraper")
 			e = errors.New("Timed out while processing your request")
@@ -151,10 +136,8 @@ func scrapeDates(start time.Time, end time.Time, city string) ([]string, error) 
 	return allArtists, e
 }
 
-//func scrapeMerc(dateStr string, page int, resCh chan []string, errCh chan error) {
 func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *eventsRecord, errCh chan error, event *eventsRecord) {
 	dateStr := date.Format("2006-01-02")
-
 	artists := make([]string, 0)
 	if page <= 1 {
 		page = 1
@@ -163,9 +146,6 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *eventsReco
 	site := "https://www.portlandmercury.com/events/music/" + dateStr
 
 	c := colly.NewCollector()
-	//Googlebot/2.1
-	//c.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
-	//c.OnHTML("h3.calendar-post-title>a", func(e *colly.HTMLElement) {
 	c.OnHTML("h3.event-row-title>a", func(e *colly.HTMLElement) {
 		text := strings.Trim(e.Text, "\n ")
 		artists = append(artists, strings.Split(text, ",")...)
@@ -179,7 +159,6 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *eventsReco
 			err := c.Visit(site)
 			if err != nil {
 				log.Printf("error visiting the site: %v", err)
-				//resCh <- &eventsRecord{City: "Portland", EventSource: "PortlandMercury", Date: date, Artists: artists, ScrapeDate: time.Now(), FullListing: false, EventType: "Music"}
 				event.Artists = append(event.Artists, artists...)
 				event.ScrapeDate = time.Now()
 				event.FullListing = false
@@ -189,7 +168,8 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *eventsReco
 			//there's not another page, return
 			//this probably isn't quite right, check if there can be a race condition
 			log.Printf("end of listings for date %v", dateStr)
-			//resCh <- &eventsRecord{City: "Portland", EventSource: "PortlandMercury", Date: date, Artists: artists, ScrapeDate: time.Now(), FullListing: true, EventType: "Music"}
+			//clear out any old artists that may have been in the event because we got the full thing with no errors
+			event.Artists = nil
 			event.Artists = append(event.Artists, artists...)
 			event.ScrapeDate = time.Now()
 			event.FullListing = true
@@ -201,7 +181,6 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *eventsReco
 	err := c.Visit(site)
 	if err != nil {
 		log.Printf("error visiting the site: %v", err)
-		//resCh <- &eventsRecord{City: "Portland", EventSource: "PortlandMercury", Date: date, Artists: artists, ScrapeDate: time.Now(), FullListing: false, EventType: "Music"}
 		event.Artists = append(event.Artists, artists...)
 		event.ScrapeDate = time.Now()
 		event.FullListing = false
@@ -212,19 +191,15 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *eventsReco
 
 func (s sfScraper) scrapeDate(date time.Time, page int, ch chan *eventsRecord, errCh chan error, e *eventsRecord) {
 	dateStr := date.Format("2006-01-02")
-	//errCh <- errors.New("not implemented")
 	artists := make([]string, 0)
 	site := "https://archives.sfweekly.com/sanfrancisco/EventSearch?eventSection=2205482&date=" + dateStr //2019-04-05"
 	c := colly.NewCollector()
+	c.SetRequestTimeout(time.Second * 20)
 
-	//c.OnHTML("h3.calendar-post-title>a", func(e *colly.HTMLElement) {
-	//>thead>tr>td>a
 	c.OnHTML("#ConcertResults>table>thead>tr>td>a", func(e *colly.HTMLElement) {
 		attr := e.Attr("href")
 		if strings.Contains(attr, "Event") {
-
 			text := strings.Trim(e.Text, "\n ")
-			//fmt.Println(text)
 			if text != "" {
 				artists = append(artists, text)
 			}
@@ -234,7 +209,6 @@ func (s sfScraper) scrapeDate(date time.Time, page int, ch chan *eventsRecord, e
 	c.OnHTML("#gridFooter", func(e *colly.HTMLElement) {
 		ch <- &eventsRecord{City: "San Francisco", EventSource: "SFWeekly", Date: date, Artists: artists, ScrapeDate: time.Now(), FullListing: true, EventType: "Music"}
 	})
-	//need to send results to channel
 
 	err := c.Visit(site)
 	if err != nil {
@@ -248,9 +222,6 @@ func scrapeSfStation(dateStr string) {
 	site := "https://www.sfstation.com/music/calendar/" + dateStr //04-05-2019
 	//https://www.sfstation.com/music/calendar/2/04-05-2019  optional page before date
 	c := colly.NewCollector()
-
-	//c.OnHTML("h3.calendar-post-title>a", func(e *colly.HTMLElement) {
-	//>thead>tr>td>a
 	c.OnHTML("#list>tbody>tr>td>div>a", func(e *colly.HTMLElement) {
 		attr := e.Attr("href")
 		if strings.Contains(attr, "Event") {
@@ -266,8 +237,10 @@ func scrapeSfStation(dateStr string) {
 	}
 }
 
-//func addEventToDb(date time.Time, city string, source string, eventType string, artists []string) {
 func addEventToDb(e *eventsRecord) {
+	if len(e.Artists) == 0 {
+		return
+	}
 	dateStr := e.Date.Format("2006-01-02")
 	//validate KeyStr fields
 	if _, ok := cityMap[e.City]; !ok {
@@ -316,11 +289,8 @@ func getEventFromDb(e *eventsRecord) error {
 	get := dynamodb.GetItemInput{TableName: aws.String("Events"),
 		Key: map[string]*dynamodb.AttributeValue{"DateStr": {S: aws.String(dateStr)}, "KeyStr": {S: aws.String(KeyStr)}}}
 	res, err := dynamoClient.GetItem(&get)
-	log.Printf("retrieved events for date %v: %v", dateStr, res.Item["Artists"])
-	//e2 := eventsRecord{}
+	//log.Printf("retrieved events for date %v: %v", dateStr, res.Item["Artists"])
 	err = dynamodbattribute.UnmarshalMap(res.Item, &e)
-	//load res back into e
-	//e.Artists = res.Item["Artists"].
 	return err
 }
 
@@ -336,4 +306,48 @@ func sliceUniqMap(s []string) []string {
 		j++
 	}
 	return s[:j]
+}
+
+//check db for missing/expiring dates for the relevant cities
+func preScrape(daysOut int, cacheHours int) {
+	resCh := make(chan *eventsRecord)
+	errCh := make(chan error)
+	startDate := time.Now()
+	cities := getSupportedCities()
+	total := 0
+	for i := 0; i <= daysOut; i++ {
+		for _, city := range cities {
+			scraper := cityMap[city]
+			e := scraper.getBlankEventRecord()
+			e.Date = startDate.AddDate(0, 0, i)
+			//first check the db
+			getEventFromDb(e)
+			dur := time.Duration(cacheHours) * time.Hour
+			if len(e.Artists) == 0 || (time.Now().Sub(e.ScrapeDate) > dur || !e.FullListing) {
+				go scraper.scrapeDate(startDate.AddDate(0, 0, i), 1, resCh, errCh, e)
+				total = total + 1
+			}
+		}
+	}
+
+	done := false
+	cnt := 0
+	var allArtists []string
+	for !done {
+		select {
+		case event := <-resCh:
+			cnt++
+			allArtists = append(allArtists, event.Artists...)
+			addEventToDb(event)
+			if cnt >= total {
+				done = true
+			}
+		case err := <-errCh:
+			log.Println("Error pre scraping: ", err)
+		case <-time.After(120 * time.Minute):
+			log.Println("Timed out pre scraping")
+			done = true
+		}
+	}
+	allArtists = sliceUniqMap(allArtists)
 }

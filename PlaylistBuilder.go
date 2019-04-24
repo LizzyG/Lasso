@@ -21,6 +21,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 )
 
 type dbFile int
@@ -61,6 +62,16 @@ var auth spotify.Authenticator
 var dynamoClient *dynamodb.DynamoDB
 
 var artists []string
+
+type spotifyInfo struct {
+	ID          spotify.ID
+	TopTrackIds []spotify.ID
+	AsOf        time.Time
+}
+type artistInfo struct {
+	ArtistName  string
+	SpotifyInfo spotifyInfo
+}
 
 // var Cities = []string{"Portland", "San Francisco"}
 
@@ -252,8 +263,8 @@ func doClientCredsAuth() spotify.Client {
 		log.Printf("couldn't get token: %v", err)
 		//return nil
 	}
-
-	return spotify.Authenticator{}.NewClient(token)
+	client := spotify.Authenticator{}.NewClient(token)
+	return client
 }
 
 func setupCredentials() {
@@ -292,8 +303,10 @@ func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, pl
 	defer wg.Done()
 	var artistID spotify.ID
 	//first check the db for the artists id
-	//artistID = spotify.ID(dbGet(artistsDb, artist))
-	artistID = spotify.ID(getArtistID(artist, spotifyId))
+
+	//artistID = spotify.ID(getArtistID(artist, spotifyId))
+	info := getArtistInfoFromDb(artist)
+	artistID = info.SpotifyInfo.ID
 	//if it wasn't saved, then call spotify search
 	if artistID == "" {
 		result, err := client.Search(artist, spotify.SearchTypeArtist)
@@ -305,24 +318,42 @@ func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, pl
 				if match.Name == artist {
 					artistID = result.Artists.Artists[i].ID
 					//dbInsert(artistsDb, artist, artistID.String())
-					setArtistID(artist, artistID.String(), spotifyId)
+					//setArtistID(artist, artistID.String(), spotifyId)
 				}
 			}
 		}
 	}
 
 	if artistID != "" {
-		tracks, err := client.GetArtistsTopTracks(artistID, spotify.CountryUSA)
-		if err != nil {
-			log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
+		//check if we had the tracks saved and when they were last retrieved
+		savedTracks := info.SpotifyInfo.TopTrackIds
 
-		} else {
-			trackIds := make([]spotify.ID, len(tracks))
-			for i, track := range tracks {
-				trackIds[i] = track.SimpleTrack.ID
+		//if we didn't have anything saved, or what was saved is old, do the spotify lookup
+		var trackIds []spotify.ID
+		if len(savedTracks) == 0 || time.Now().Sub(info.SpotifyInfo.AsOf) > time.Hour*24 {
+			tracks, err := client.GetArtistsTopTracks(artistID, spotify.CountryUSA)
+			//if we get an error then log if and use the old info, if there was any
+			if err != nil {
+				log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
+				trackIds = savedTracks
+			} else {
+				trackIds := make([]spotify.ID, len(tracks))
+				for i, track := range tracks {
+					trackIds[i] = track.SimpleTrack.ID
+				}
+				//add new info to db
+				info.ArtistName = artist
+				info.SpotifyInfo = spotifyInfo{ID: artistID, TopTrackIds: trackIds, AsOf: time.Now()}
+				setArtistInfo(artist, info)
 			}
+		}
+		if len(trackIds) == 0 && len(savedTracks) > 0 {
+			trackIds = savedTracks
+		}
+		if len(trackIds) > 0 {
 			_, err := client.AddTracksToPlaylist(playlistID, trackIds...)
 			if err != nil {
+
 				log.Printf("Error adding tracks for artist %v: %v", artist, err)
 			}
 		}
@@ -450,6 +481,34 @@ func getArtistID(artistName string, idType idType) string {
 		return idVal.String()
 	}
 	return ""
+}
+
+func getArtistInfoFromDb(artistName string) *artistInfo {
+	res, err := dynamoClient.GetItem(&dynamodb.GetItemInput{TableName: aws.String("ArtistInfo"), Key: map[string]*dynamodb.AttributeValue{"ArtistName": {S: aws.String(artistName)}}})
+	if err != nil {
+		//panic(err)
+		log.Println("error getting artist info:", err)
+	}
+	info := artistInfo{}
+	dynamodbattribute.UnmarshalMap(res.Item, &info)
+	return &info
+}
+
+func setArtistInfo(artistName string, info *artistInfo) {
+	val, err := dynamodbattribute.Marshal(info)
+	if err != nil {
+		log.Printf("Error marshalling artist info for artist %v: %v", artistName, err)
+	}
+	goodVal := map[string]*dynamodb.AttributeValue{":spotifyInfo": val.M["SpotifyInfo"]}
+	expr := "set spotifyInfo=:spotifyInfo"
+	put := dynamodb.UpdateItemInput{TableName: aws.String("ArtistInfo"),
+		Key:                       map[string]*dynamodb.AttributeValue{"ArtistName": {S: aws.String(artistName)}},
+		ExpressionAttributeValues: goodVal,
+		UpdateExpression:          aws.String(expr)}
+	_, err = dynamoClient.UpdateItem(&put)
+	if err != nil {
+		log.Printf("error adding artist info to db: %v", err)
+	}
 }
 
 func setArtistID(artistName string, artistID string, idType idType) {
