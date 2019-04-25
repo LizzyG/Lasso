@@ -350,4 +350,17 @@ func preScrape(daysOut int, cacheHours int) {
 		}
 	}
 	allArtists = sliceUniqMap(allArtists)
+	preSearch(allArtists, 24)
+}
+
+func preSearch(artists []string, cacheHours int) {
+	dur := time.Duration(cacheHours) * time.Hour
+	for _, artist := range artists {
+		info := getArtistInfoFromDb(artist)
+		if time.Now().Sub(info.SpotifyInfo.AsOf) > dur {
+			//get the info
+			spotClient := doClientCredsAuth()
+			getSetSpotifyInfo(artist, &spotClient)
+		}
+	}
 }

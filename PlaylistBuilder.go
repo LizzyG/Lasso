@@ -250,8 +250,6 @@ func completeAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *
 	return &client
 }
 
-//this isn't used right now but I'm going to leave it in case
-//we want to do some non-user specific lookups at some point
 func doClientCredsAuth() spotify.Client {
 	config := &clientcredentials.Config{
 		ClientID:     clientID,
@@ -583,4 +581,42 @@ func intersect(arists, liked []string) (c []string) {
 		}
 	}
 	return
+}
+
+//client can be generic application client, not user specific
+func getSetSpotifyInfo(artist string, spotClient *spotify.Client) {
+	var artistID spotify.ID
+	result, err := spotClient.Search(artist, spotify.SearchTypeArtist)
+	if err != nil {
+		log.Printf("Encountered an error searching for artist %v: %v", artist, err)
+		return
+	} else if result.Artists.Total > 0 {
+		for i, match := range result.Artists.Artists {
+			if match.Name == artist {
+				artistID = result.Artists.Artists[i].ID
+			}
+		}
+	}
+
+	//still record that there is no info for this artist so we don't keep looking for it
+	if artistID == "" {
+		info := artistInfo{ArtistName: artist, SpotifyInfo: spotifyInfo{ID: "", TopTrackIds: nil, AsOf: time.Now()}}
+		setArtistInfo(artist, &info)
+		return
+	}
+
+	tracks, err := spotClient.GetArtistsTopTracks(artistID, spotify.CountryUSA)
+	//if we get an error then log if and use the old info, if there was any
+	if err != nil {
+		log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
+		return
+	}
+
+	trackIds := make([]spotify.ID, len(tracks))
+	for i, track := range tracks {
+		trackIds[i] = track.SimpleTrack.ID
+	}
+	//add new info to db
+	info := artistInfo{ArtistName: artist, SpotifyInfo: spotifyInfo{ID: artistID, TopTrackIds: trackIds, AsOf: time.Now()}}
+	setArtistInfo(artist, &info)
 }
