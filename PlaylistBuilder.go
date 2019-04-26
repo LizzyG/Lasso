@@ -13,6 +13,8 @@ import (
 	"sync"
 	"time"
 
+	"lasso/internal/pkg/scrape"
+
 	"github.com/recoilme/slowpoke"
 	"github.com/zmb3/spotify"
 	"golang.org/x/oauth2/clientcredentials"
@@ -40,7 +42,7 @@ var idTypeNames = map[idType]string{spotifyId: "SpotifyID"}
 
 var dbFiles = map[dbFile]string{artistsDb: "db/artists.db"}
 
-const configFilePath = "config.ini"
+const configFilePath = "configs/config.ini"
 
 var (
 	scopes = []string{
@@ -60,8 +62,6 @@ var (
 )
 var auth spotify.Authenticator
 var dynamoClient *dynamodb.DynamoDB
-
-var artists []string
 
 type spotifyInfo struct {
 	ID          spotify.ID
@@ -90,7 +90,7 @@ func init() {
 
 func main() {
 	//set up our log file
-	f, err := os.OpenFile("lasso.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile("logs/lasso.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
@@ -148,7 +148,7 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 		if _, ok := clients[userIDCookie.Value]; ok {
 			today := time.Now().Format("2006-01-02")
 			maxDate := time.Now().Add(time.Hour * 168).Format("2006-01-02")
-			t, err := template.ParseFiles("templates/manage.html")
+			t, err := template.ParseFiles("web/manage.html")
 			if err != nil {
 				log.Printf("err parsing template: %v", err)
 				w.WriteHeader(500)
@@ -159,7 +159,7 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 				Today   string
 				MaxDate string
 				Cities  []string
-			}{userIDCookie.Value, today, maxDate, getSupportedCities()})
+			}{userIDCookie.Value, today, maxDate, scrape.GetSupportedCities()})
 		} else {
 			fmt.Fprintf(w, "no client found for this user: %v", userIDCookie.Value)
 		}
@@ -180,7 +180,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		log.Print("no userId cookie on this request")
 	}
 	url := auth.AuthURL(state)
-	t, _ := template.ParseFiles("templates/index.html")
+	t, _ := template.ParseFiles("web/index.html")
 	t.Execute(w, struct{ URL string }{url})
 }
 
@@ -395,7 +395,8 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "There was an error creating the playlist, please try again later.")
 		return
 	}
-	artists, err = scrapeDates(startDate, endDate, city)
+
+	artists, err := scrape.ScrapeDates(dynamoClient, startDate, endDate, city)
 	if err != nil && len(artists) == 0 {
 		w.WriteHeader(500)
 		fmt.Fprint(w, "There was an error retrieving events, please try again later.")
