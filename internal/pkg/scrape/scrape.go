@@ -146,6 +146,8 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *EventsReco
 	site := "https://www.portlandmercury.com/events/music/" + dateStr
 
 	c := colly.NewCollector()
+	c.SetRequestTimeout(time.Second * 10)
+	c.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36"
 	c.OnHTML("h3.event-row-title>a", func(e *colly.HTMLElement) {
 		text := strings.Trim(e.Text, "\n ")
 		artists = append(artists, strings.Split(text, ",")...)
