@@ -15,6 +15,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/zmb3/spotify"
+	"golang.org/x/oauth2/clientcredentials"
 )
 
 var (
@@ -30,6 +31,7 @@ var (
 	state   = "abc123"                        //this is a security thing to validate the request actually originated with me.  Do something with it later.
 )
 var spotAuth spotify.Authenticator
+var clientID, clientSecret string
 
 type SpotifyInfo struct {
 	ID          spotify.ID
@@ -38,6 +40,8 @@ type SpotifyInfo struct {
 }
 
 func Setup(clientID string, clientSecret string, ip string, port string) {
+	clientID = clientID
+	clientSecret = clientSecret
 	redirectURI := "http://" + ip + ":" + port + "/callback"
 	spotAuth = spotify.NewAuthenticator(redirectURI, scopes...)
 	spotAuth.SetAuthInfo(clientID, clientSecret)
@@ -85,18 +89,17 @@ func ManagePlaylist(userID string) error {
 
 func MakePlaylist(dynamoClient *dynamodb.DynamoDB, userID string, startDate time.Time, endDate time.Time, deleteExisting bool, city string) string {
 	userClient, err := getUserClient(userID)
-	playlistID := setupPlaylist(&userClient, userID, startDate, endDate, deleteExisting)
-	if playlistID == "" {
-		return "There was an error creating the playlist, please try again later."
-	}
-
-	artists, err := scrape.ScrapeDates(dynamoClient, startDate, endDate, city)
+	artists, url, err := scrape.ScrapeDates(dynamoClient, startDate, endDate, city)
 	if err != nil && len(artists) == 0 {
 		//w.WriteHeader(500)
 		return "There was an error retrieving events, please try again later."
 	}
 	if len(artists) == 0 {
 		return "We didn't find any artists in your date range."
+	}
+	playlistID := setupPlaylist(&userClient, userID, startDate, endDate, deleteExisting, url)
+	if playlistID == "" {
+		return "There was an error creating the playlist, please try again later."
 	}
 	ch := make(chan []string)
 	go getLikedIntersect(&userClient, artists, ch)
@@ -115,18 +118,13 @@ func MakePlaylist(dynamoClient *dynamodb.DynamoDB, userID string, startDate time
 		msg = msg + ", but there may be some artists missing because we encountered an error"
 	}
 	if len(likedShows) > 0 {
-		//fmt.Fprintf(w, "Done making the playlist, there are some shows you might like: %v", likedShows)
 		msg = fmt.Sprintf("%v. \n There are some shows you might like: %v", msg, likedShows)
 	}
-	// } else {
-	// 	fmt.Fprint(w, "Done, go check out your cool new playlist")
-	// }
-	//fmt.Fprint(w, "Done, go check out your cool new playlist")43RE3R
 	return msg
 
 }
 
-func setupPlaylist(client *spotify.Client, userID string, startDate time.Time, endDate time.Time, deleteExisting bool) spotify.ID {
+func setupPlaylist(client *spotify.Client, userID string, startDate time.Time, endDate time.Time, deleteExisting bool, url string) spotify.ID {
 	var playlistID spotify.ID
 	myPlaylists, err := client.GetPlaylistsForUser(userID)
 	if err != nil {
@@ -135,22 +133,15 @@ func setupPlaylist(client *spotify.Client, userID string, startDate time.Time, e
 	} else if deleteExisting {
 		for _, p := range myPlaylists.Playlists {
 			if p.Name == "local shows" {
-				//if deleteExisting {
 				unfollowErr := client.UnfollowPlaylist(spotify.ID(p.Owner.ID), p.ID)
 				if unfollowErr != nil {
 					log.Printf("failed to unfollow: %v", unfollowErr)
-				} else {
-					log.Println("unfollowed the existing playlist")
 				}
-				// } else {
-				// 	exists = true
-				// }
 			}
 		}
 	}
-	//if !exists {
 	date := time.Now().Format("2006-01-02 15:04:05")
-	desc := fmt.Sprintf("local shows - created %v for dates %v - %v", date, startDate, endDate)
+	desc := fmt.Sprintf("local shows - created %v for dates %v - %v.  Visit %v for more event details.", date, startDate, endDate, url)
 	playlist, err := client.CreatePlaylistForUser(userID, "local shows", desc, false)
 	if err != nil {
 		log.Printf("Encountered an error creating the playlist: %v", err)
@@ -158,7 +149,6 @@ func setupPlaylist(client *spotify.Client, userID string, startDate time.Time, e
 		log.Println("Created playlist")
 	}
 	playlistID = playlist.ID
-	//}
 	return playlistID
 }
 
@@ -384,4 +374,31 @@ func getSetSpotifyInfo(artist string, spotClient *spotify.Client, dynamoClient *
 	//add new info to db
 	info := SpotifyInfo{ID: artistID, TopTrackIds: trackIds, AsOf: time.Now()}
 	setArtistInfo(dynamoClient, artist, &info)
+}
+
+func doClientCredsAuth() spotify.Client {
+	config := &clientcredentials.Config{
+		ClientID:     clientID,
+		ClientSecret: clientSecret,
+		TokenURL:     spotify.TokenURL,
+	}
+	token, err := config.Token(context.Background())
+	if err != nil {
+		log.Printf("couldn't get token: %v", err)
+		//return nil
+	}
+	client := spotify.Authenticator{}.NewClient(token)
+	return client
+}
+
+func PreSearch(dynamoClient *dynamodb.DynamoDB, artists []string, cacheHours int) {
+	dur := time.Duration(cacheHours) * time.Hour
+	for _, artist := range artists {
+		info := getArtistInfoFromDb(dynamoClient, artist)
+		if time.Now().Sub(info.AsOf) > dur {
+			//get the info
+			spotClient := doClientCredsAuth()
+			getSetSpotifyInfo(artist, &spotClient, dynamoClient)
+		}
+	}
 }

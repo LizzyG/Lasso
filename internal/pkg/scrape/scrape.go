@@ -21,6 +21,7 @@ var cityMap = map[string]scraper{
 type scraper interface {
 	scrapeDate(time.Time, int, chan *EventsRecord, chan error, *EventsRecord)
 	getBlankEventRecord() *EventsRecord
+	getURL() string
 }
 
 type mercScraper struct {
@@ -31,12 +32,20 @@ func (s mercScraper) getBlankEventRecord() *EventsRecord {
 	return &EventsRecord{City: "Portland", EventSource: "PortlandMercury", EventType: s.eventType}
 }
 
+func (s mercScraper) getURL() string {
+	return "https://www.portlandmercury.com/events/" + s.eventType
+}
+
 type sfScraper struct {
 	eventType string
 }
 
 func (s sfScraper) getBlankEventRecord() *EventsRecord {
 	return &EventsRecord{City: "San Francisco", EventSource: "SFWeekly", EventType: s.eventType}
+}
+
+func (s sfScraper) getURL() string {
+	return "https://archives.sfweekly.com/sanfrancisco/EventSearch?eventSection=2205482"
 }
 
 func GetSupportedCities() []string {
@@ -67,7 +76,7 @@ type EventsRecord struct {
 	fromDb      bool `dynamodbav:"-"`
 }
 
-func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time, city string) ([]string, error) {
+func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time, city string) ([]string, string, error) {
 	//Mon Jan 2 15:04:05 MST 2006
 	log.Printf("scrape start: %v", start)
 	log.Printf("scrape end: %v", end)
@@ -87,13 +96,14 @@ func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time
 	errCh := make(chan error)
 	diff := int((end.Sub(start).Hours()) / 24)
 	log.Printf("diff: %v", diff)
+	cityScraper := cityMap[city]
 	for i := 0; i <= diff; i++ {
 		if i%2 == 0 { //sleep sometimes so the website doesn't throttle
 			wait := 2 * i
 			time.Sleep(time.Duration(wait) * time.Second)
 		}
 		log.Printf("going to scrape date %v", midDate)
-		cityScraper := cityMap[city]
+
 		e := cityScraper.getBlankEventRecord()
 		e.Date = midDate
 		getEventFromDb(dynamoClient, e)
@@ -133,7 +143,8 @@ func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time
 		}
 	}
 	allArtists = sliceUniqMap(allArtists)
-	return allArtists, e
+	url := cityScraper.getURL()
+	return allArtists, url, e
 }
 
 func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *EventsRecord, errCh chan error, event *EventsRecord) {
@@ -150,7 +161,11 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *EventsReco
 	c.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36"
 	c.OnHTML("h3.event-row-title>a", func(e *colly.HTMLElement) {
 		text := strings.Trim(e.Text, "\n ")
-		artists = append(artists, strings.Split(text, ",")...)
+		newArtists := strings.Split(text, ",")
+		for i, a := range newArtists {
+			newArtists[i] = strings.TrimSpace(a)
+		}
+		artists = append(artists, newArtists...)
 	})
 	c.OnHTML("li.next>a", func(e *colly.HTMLElement) {
 		if strings.Contains(e.Text, "Next on") {
@@ -312,7 +327,7 @@ func sliceUniqMap(s []string) []string {
 }
 
 //check db for missing/expiring dates for the relevant cities
-func preScrape(dynamoClient *dynamodb.DynamoDB, daysOut int, cacheHours int) {
+func PreScrape(dynamoClient *dynamodb.DynamoDB, daysOut int, cacheHours int) []string {
 	resCh := make(chan *EventsRecord)
 	errCh := make(chan error)
 	startDate := time.Now()
@@ -353,17 +368,5 @@ func preScrape(dynamoClient *dynamodb.DynamoDB, daysOut int, cacheHours int) {
 		}
 	}
 	allArtists = sliceUniqMap(allArtists)
-	//preSearch(allArtists, 24)
+	return allArtists
 }
-
-// func preSearch(artists []string, cacheHours int) {
-// 	dur := time.Duration(cacheHours) * time.Hour
-// 	for _, artist := range artists {
-// 		info := getArtistInfoFromDb(dynamoClient, artist)
-// 		if time.Now().Sub(info.SpotifyInfo.AsOf) > dur {
-// 			//get the info
-// 			spotClient := doClientCredsAuth()
-// 			getSetSpotifyInfo(artist, &spotClient)
-// 		}
-// 	}
-// }

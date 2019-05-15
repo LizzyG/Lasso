@@ -8,27 +8,18 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"strings"
 	"time"
 
 	"lasso/internal/pkg/media"
 	"lasso/internal/pkg/scrape"
 
-	"github.com/recoilme/slowpoke"
 	"github.com/zmb3/spotify"
-	"golang.org/x/oauth2/clientcredentials"
 
 	"github.com/aws/aws-sdk-go/aws"
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-)
-
-type dbFile int
-
-const (
-	artistsDb dbFile = iota
 )
 
 type idType int
@@ -39,8 +30,6 @@ const (
 
 var ch = make(chan *spotify.Client)
 var idTypeNames = map[idType]string{spotifyId: "SpotifyID"}
-
-var dbFiles = map[dbFile]string{artistsDb: "db/artists.db"}
 
 const configFilePath = "configs/config.ini"
 
@@ -78,7 +67,6 @@ func main() {
 	log.Printf("using redirect url %v", "http://localhost:"+port+"/callback")
 	setupCredentials()
 	setupDB()
-	defer closeDb()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Got request for:", r.URL.String())
@@ -112,10 +100,12 @@ func main() {
 		fmt.Fprintf(w, "hello %v", user.ID)
 	})
 
-	http.HandleFunc("/dumpDb", func(w http.ResponseWriter, r *http.Request) {
-		log.Println("Got dumpDb request")
-		dbDump(artistsDb)
-		fmt.Fprint(w, "Dumped")
+	http.HandleFunc("/preScrape", func(w http.ResponseWriter, r *http.Request) {
+		daysOut := 14
+		cacheHours := 24
+		artists := scrape.PreScrape(dynamoClient, daysOut, cacheHours)
+		media.PreSearch(dynamoClient, artists, 48)
+
 	})
 	http.ListenAndServe(":"+port, nil)
 }
@@ -162,21 +152,6 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, struct{ URL string }{redirectURL})
 }
 
-func doClientCredsAuth() spotify.Client {
-	config := &clientcredentials.Config{
-		ClientID:     clientID,
-		ClientSecret: clientSecret,
-		TokenURL:     spotify.TokenURL,
-	}
-	token, err := config.Token(context.Background())
-	if err != nil {
-		log.Printf("couldn't get token: %v", err)
-		//return nil
-	}
-	client := spotify.Authenticator{}.NewClient(token)
-	return client
-}
-
 func setupCredentials() {
 
 	f, err := os.Open(configFilePath)
@@ -218,10 +193,8 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 
 	//get the form data
 	deleteExistingStr := r.FormValue("deleteExisting")
-	deleteExisting, delErr := strconv.ParseBool(deleteExistingStr)
-	if delErr != nil {
-		deleteExisting = false
-	}
+	deleteExisting := deleteExistingStr == "on"
+
 	startStr := r.FormValue("start")
 	endStr := r.FormValue("end")
 	startDate, startErr := time.Parse("2006-01-02", startStr)
@@ -242,42 +215,8 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, msg)
 }
 
-//This isn't really necessary - slowpoke will automatically create the files on demand
-//Using it as a placeholder for when I switch to a different db that might need initialization
 func setupDB() {
-	// for dbName, file := range dbFiles {
-	// 	log.Printf("Initializing %v db file", dbName)
-	// 	slowpoke.Set(file, []byte("testKeyStr"), []byte("testVal"))
-	// }
 	config := &aws.Config{Region: &region}
 	sess := session.Must(session.NewSession(config))
 	dynamoClient = dynamodb.New(sess)
-}
-
-func closeDb() {
-	slowpoke.CloseAll()
-}
-
-// func dbInsert(db dbFile, KeyStr string, val string) {
-// 	slowpoke.Set(dbFiles[db], []byte(KeyStr), []byte(val))
-// }
-
-// func dbGet(db dbFile, KeyStr string) string {
-// 	val, err := slowpoke.Get(dbFiles[db], []byte(KeyStr))
-// 	if err != nil {
-// 		return ""
-// 	}
-// 	return string(val)
-// }
-
-func dbDump(db dbFile) {
-	KeyStrs, err := slowpoke.Keys(dbFiles[db], nil, 0, 0, true)
-	if err != nil {
-		log.Printf("Error dumping db: %v", err)
-		return
-	}
-	for _, KeyStr := range KeyStrs {
-		artistBytes, _ := slowpoke.Get(dbFiles[db], KeyStr)
-		log.Println(string(KeyStr), string(artistBytes))
-	}
 }
