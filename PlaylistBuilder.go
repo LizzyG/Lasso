@@ -101,9 +101,11 @@ func main() {
 	})
 
 	http.HandleFunc("/preScrape", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("got a request for /preScrape")
 		daysOut := 14
 		cacheHours := 24
-		artists := scrape.PreScrape(dynamoClient, daysOut, cacheHours)
+		pdxOnly := false
+		artists := scrape.PreScrape(dynamoClient, daysOut, cacheHours, 15, pdxOnly)
 		media.PreSearch(dynamoClient, artists, 48)
 
 	})

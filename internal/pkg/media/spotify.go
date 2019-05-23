@@ -39,9 +39,9 @@ type SpotifyInfo struct {
 	AsOf        time.Time
 }
 
-func Setup(clientID string, clientSecret string, ip string, port string) {
-	clientID = clientID
-	clientSecret = clientSecret
+func Setup(id string, secret string, ip string, port string) {
+	clientID = id
+	clientSecret = secret
 	redirectURI := "http://" + ip + ":" + port + "/callback"
 	spotAuth = spotify.NewAuthenticator(redirectURI, scopes...)
 	spotAuth.SetAuthInfo(clientID, clientSecret)
@@ -74,6 +74,7 @@ func CompleteAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *
 	})
 	clients[user.ID] = client
 	fmt.Fprintf(w, "you are user %v", user.ID)
+	log.Printf("Spotify user %v has logged in", user.DisplayName)
 	return &client
 }
 
@@ -101,18 +102,25 @@ func MakePlaylist(dynamoClient *dynamodb.DynamoDB, userID string, startDate time
 	if playlistID == "" {
 		return "There was an error creating the playlist, please try again later."
 	}
-	ch := make(chan []string)
+	ch := make(chan []string, 5)
 	go getLikedIntersect(&userClient, artists, ch)
 	likedShows := <-ch
 	close(ch)
 	var wg sync.WaitGroup
 	log.Printf("found %v artists", len(artists))
+	tracksCh := make(chan []spotify.ID, len(artists))
 	for _, artist := range artists {
 		artist = strings.TrimSpace(artist)
 		wg.Add(1)
-		go spotifySearch(&wg, &userClient, artist, playlistID, dynamoClient)
+		go spotifySearch(&wg, &userClient, artist, playlistID, dynamoClient, tracksCh)
 	}
 	wg.Wait()
+	close(tracksCh)
+	var allTracks []spotify.ID
+	for t := range tracksCh {
+		allTracks = append(allTracks, t...)
+	}
+	addTracks(allTracks, &userClient, playlistID)
 	msg := "Done, go check out your cool new playlist"
 	if err != nil {
 		msg = msg + ", but there may be some artists missing because we encountered an error"
@@ -170,9 +178,10 @@ func IsLoggedIn(userID string) (bool, string) {
 
 //SpotifySearch searches for a list of artists on Spotify, and if a sufficient match is
 //found, then that artist's top tracks are added to the playlist using the AddTopArtistTracks method.
-func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, playlistID spotify.ID, dynamoClient *dynamodb.DynamoDB) {
+func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, playlistID spotify.ID, dynamoClient *dynamodb.DynamoDB, tracksCh chan<- []spotify.ID) {
 	defer wg.Done()
 	var artistID spotify.ID
+	var trackIds []spotify.ID
 	//first check the db for the artists id
 
 	//artistID = spotify.ID(getArtistID(artist, spotifyId))
@@ -200,18 +209,14 @@ func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, pl
 		savedTracks := info.TopTrackIds
 
 		//if we didn't have anything saved, or what was saved is old, do the spotify lookup
-		var trackIds []spotify.ID
+
 		if len(savedTracks) == 0 || time.Now().Sub(info.AsOf) > time.Hour*24 {
-			tracks, err := client.GetArtistsTopTracks(artistID, spotify.CountryUSA)
+			trackIds, err := getTopFiveTracks(artistID, client)
 			//if we get an error then log if and use the old info, if there was any
 			if err != nil {
 				log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
 				trackIds = savedTracks
 			} else {
-				trackIds := make([]spotify.ID, len(tracks))
-				for i, track := range tracks {
-					trackIds[i] = track.SimpleTrack.ID
-				}
 				//add new info to db
 				info = &SpotifyInfo{ID: artistID, TopTrackIds: trackIds, AsOf: time.Now()}
 				setArtistInfo(dynamoClient, artist, info)
@@ -220,16 +225,45 @@ func spotifySearch(wg *sync.WaitGroup, client *spotify.Client, artist string, pl
 		if len(trackIds) == 0 && len(savedTracks) > 0 {
 			trackIds = savedTracks
 		}
-		if len(trackIds) > 0 {
-			_, err := client.AddTracksToPlaylist(playlistID, trackIds...)
+
+	} else {
+		//log.Printf("Could not locate artist %v ", artist)
+	}
+	if trackIds == nil {
+		trackIds = make([]spotify.ID, 0)
+	}
+
+	tracksCh <- trackIds
+}
+
+func addTracks(trackIds []spotify.ID, client *spotify.Client, playlistID spotify.ID) {
+	if len(trackIds) > 0 {
+		var min, max int
+		min = 0
+		max = myMin(len(trackIds), 100)
+		for max <= len(trackIds) {
+			tracksToAdd := trackIds[min:max]
+			_, err := client.AddTracksToPlaylist(playlistID, tracksToAdd...)
 			if err != nil {
 
-				log.Printf("Error adding tracks for artist %v: %v", artist, err)
+				log.Printf("Error adding tracks to playlist", err)
 			}
+			min = max + 1
+			if max == len(trackIds) {
+				break
+			} else {
+				max = myMin(max+100, len(trackIds))
+			}
+
 		}
-	} else {
-		log.Printf("Could not locate artist %v ", artist)
 	}
+}
+
+func myMin(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
 }
 
 func getLikedIntersect(client *spotify.Client, artists []string, ch chan []string) {
@@ -360,20 +394,31 @@ func getSetSpotifyInfo(artist string, spotClient *spotify.Client, dynamoClient *
 		return
 	}
 
-	tracks, err := spotClient.GetArtistsTopTracks(artistID, spotify.CountryUSA)
+	trackIds, err := getTopFiveTracks(artistID, spotClient)
 	//if we get an error then log if and use the old info, if there was any
 	if err != nil {
 		log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
 		return
 	}
 
-	trackIds := make([]spotify.ID, len(tracks))
-	for i, track := range tracks {
-		trackIds[i] = track.SimpleTrack.ID
-	}
 	//add new info to db
 	info := SpotifyInfo{ID: artistID, TopTrackIds: trackIds, AsOf: time.Now()}
 	setArtistInfo(dynamoClient, artist, &info)
+}
+
+func getTopFiveTracks(artistID spotify.ID, spotClient *spotify.Client) ([]spotify.ID, error) {
+	tracks, err := spotClient.GetArtistsTopTracks(artistID, spotify.CountryUSA)
+	//if we get an error then log if and use the old info, if there was any
+	if err != nil {
+		log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
+		return nil, err
+	}
+	cnt := myMin(5, len(tracks))
+	trackIds := make([]spotify.ID, cnt)
+	for i := 0; i < cnt; i++ {
+		trackIds[i] = tracks[i].SimpleTrack.ID
+	}
+	return trackIds, nil
 }
 
 func doClientCredsAuth() spotify.Client {
@@ -393,11 +438,11 @@ func doClientCredsAuth() spotify.Client {
 
 func PreSearch(dynamoClient *dynamodb.DynamoDB, artists []string, cacheHours int) {
 	dur := time.Duration(cacheHours) * time.Hour
+	spotClient := doClientCredsAuth()
 	for _, artist := range artists {
 		info := getArtistInfoFromDb(dynamoClient, artist)
 		if time.Now().Sub(info.AsOf) > dur {
 			//get the info
-			spotClient := doClientCredsAuth()
 			getSetSpotifyInfo(artist, &spotClient, dynamoClient)
 		}
 	}

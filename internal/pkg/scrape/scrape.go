@@ -102,7 +102,7 @@ func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time
 			wait := 2 * i
 			time.Sleep(time.Duration(wait) * time.Second)
 		}
-		log.Printf("going to scrape date %v", midDate)
+		//log.Printf("going to scrape date %v", midDate)
 
 		e := cityScraper.getBlankEventRecord()
 		e.Date = midDate
@@ -127,7 +127,7 @@ func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time
 	for !done {
 		select {
 		case a := <-resCh:
-			log.Println("scrapeDates got one channel response")
+			//log.Println("scrapeDates got one channel response")
 			allArtists = append(allArtists, a.Artists...)
 			if !a.fromDb {
 				go addEventToDb(dynamoClient, a)
@@ -302,7 +302,7 @@ func getEventFromDb(dynamoClient *dynamodb.DynamoDB, e *EventsRecord) error {
 	// if _, ok := cityMap[e.City]; !ok {
 	// 	log.Println("Invalid city, will not query db")
 	// }
-	log.Println("querying db for events")
+	//log.Println("querying db for events")
 	KeyStr := getEventKeyStr(e)
 	get := dynamodb.GetItemInput{TableName: aws.String("Events"),
 		Key: map[string]*dynamodb.AttributeValue{"DateStr": {S: aws.String(dateStr)}, "KeyStr": {S: aws.String(KeyStr)}}}
@@ -327,11 +327,17 @@ func sliceUniqMap(s []string) []string {
 }
 
 //check db for missing/expiring dates for the relevant cities
-func PreScrape(dynamoClient *dynamodb.DynamoDB, daysOut int, cacheHours int) []string {
+func PreScrape(dynamoClient *dynamodb.DynamoDB, daysOut int, cacheHours int, timeoutMinutes int, pdxOnly bool) []string {
 	resCh := make(chan *EventsRecord)
 	errCh := make(chan error)
 	startDate := time.Now()
-	cities := GetSupportedCities()
+	var cities []string
+	if pdxOnly {
+		cities = []string{"Portland"}
+	} else {
+		cities = GetSupportedCities()
+	}
+	var allArtists []string
 	total := 0
 	for i := 0; i <= daysOut; i++ {
 		for _, city := range cities {
@@ -344,13 +350,16 @@ func PreScrape(dynamoClient *dynamodb.DynamoDB, daysOut int, cacheHours int) []s
 			if len(e.Artists) == 0 || (time.Now().Sub(e.ScrapeDate) > dur || !e.FullListing) {
 				go scraper.scrapeDate(startDate.AddDate(0, 0, i), 1, resCh, errCh, e)
 				total = total + 1
+			} else {
+				allArtists = append(allArtists, e.Artists...)
 			}
 		}
 	}
 
-	done := false
 	cnt := 0
-	var allArtists []string
+	done := total == cnt //in case there were no go routines launched
+
+	timeout := time.Duration(timeoutMinutes) * time.Minute
 	for !done {
 		select {
 		case event := <-resCh:
@@ -362,7 +371,7 @@ func PreScrape(dynamoClient *dynamodb.DynamoDB, daysOut int, cacheHours int) []s
 			}
 		case err := <-errCh:
 			log.Println("Error pre scraping: ", err)
-		case <-time.After(120 * time.Minute):
+		case <-time.After(timeout):
 			log.Println("Timed out pre scraping")
 			done = true
 		}
