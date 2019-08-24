@@ -5,14 +5,14 @@ import (
 	"context"
 	"fmt"
 	"html/template"
+	"lasso/internal/pkg/media"
+	"lasso/internal/pkg/scrape"
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
-
-	"lasso/internal/pkg/media"
-	"lasso/internal/pkg/scrape"
 
 	"github.com/zmb3/spotify"
 
@@ -44,6 +44,14 @@ type artistInfo struct {
 	SpotifyInfo media.SpotifyInfo
 }
 
+type preScrapeOptions struct {
+	daysOut          int
+	eventCacheHours  int
+	pdxOnly          bool
+	artistCacheHours int
+	timeoutMinutes   int
+}
+
 func init() {
 	ip = os.Getenv("IP")
 	if ip == "" {
@@ -70,6 +78,9 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Got request for:", r.URL.String())
+		if r.URL.Path != "/" {
+			return
+		}
 		homeHandler(w, r)
 	})
 
@@ -80,7 +91,9 @@ func main() {
 	})
 
 	http.HandleFunc("/managePlaylist", func(w http.ResponseWriter, r *http.Request) {
-		log.Println("Got a request to maange the playlist")
+		log.Println("Got a request to manage the playlist")
+		path := r.URL.Path
+		log.Println(path)
 		manageHandler(w, r)
 	})
 
@@ -90,7 +103,12 @@ func main() {
 			fmt.Fprint(w, "This call only allows post requests")
 			return
 		}
+
+		ctx := r.Context
+		log.Printf("makePlaylist context: %v", ctx)
 		log.Println("Got a request to build the playlist")
+		path := r.URL.Path
+		log.Println(path)
 		makePlaylistHandler(w, r)
 	})
 
@@ -102,13 +120,12 @@ func main() {
 
 	http.HandleFunc("/preScrape", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("got a request for /preScrape")
-		daysOut := 14
-		cacheHours := 24
-		pdxOnly := false
-		artists := scrape.PreScrape(dynamoClient, daysOut, cacheHours, 15, pdxOnly)
+		opt := getPreScrapeOptions()
+		artists := scrape.PreScrape(dynamoClient, opt.daysOut, opt.eventCacheHours, opt.timeoutMinutes, opt.pdxOnly)
 		media.PreSearch(dynamoClient, artists, 48)
 
 	})
+
 	http.ListenAndServe(":"+port, nil)
 }
 
@@ -118,7 +135,7 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 		err := media.ManagePlaylist(userIDCookie.Value)
 		if err == nil {
 			today := time.Now().Format("2006-01-02")
-			maxDate := time.Now().Add(time.Hour * 168).Format("2006-01-02")
+			maxDate := time.Now().Add(time.Hour * 720).Format("2006-01-02")
 			t, err := template.ParseFiles("web/manage.html")
 			if err != nil {
 				log.Printf("err parsing template: %v", err)
@@ -155,7 +172,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func setupCredentials() {
-
+	var maxTracks int64
 	f, err := os.Open(configFilePath)
 	defer f.Close()
 	s := bufio.NewScanner(f)
@@ -171,6 +188,8 @@ func setupCredentials() {
 			case "AWS_REGION":
 				region = strings.TrimSpace(parts[1])
 				os.Setenv("AWS_REGION", region)
+			case "Max_Tracks":
+				maxTracks, _ = strconv.ParseInt(strings.TrimSpace(parts[1]), 0, 0)
 			}
 		}
 	}
@@ -181,8 +200,10 @@ func setupCredentials() {
 	if region == "" {
 		region = "us-west-2"
 	}
-
-	media.Setup(clientID, clientSecret, ip, port)
+	if maxTracks == 0 {
+		maxTracks = 5
+	}
+	media.Setup(clientID, clientSecret, ip, port, int(maxTracks))
 }
 
 func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
@@ -221,4 +242,47 @@ func setupDB() {
 	config := &aws.Config{Region: &region}
 	sess := session.Must(session.NewSession(config))
 	dynamoClient = dynamodb.New(sess)
+}
+
+func getPreScrapeOptions() preScrapeOptions {
+	var pdx bool
+	var days, eventHours, artistHours, timeout int64
+	f, err := os.Open(configFilePath)
+	if err == nil {
+		defer f.Close()
+		s := bufio.NewScanner(f)
+		for s.Scan() {
+			line := s.Text()
+			parts := strings.Split(line, "=")
+			if len(parts) == 2 {
+				switch strings.TrimSpace(parts[0]) {
+				case "pdxOnly":
+					pdx, _ = strconv.ParseBool(strings.TrimSpace(parts[1]))
+				case "daysToPreScrape":
+					days, _ = strconv.ParseInt(strings.TrimSpace(parts[1]), 0, 0)
+				case "hoursToCacheEvents":
+					eventHours, _ = strconv.ParseInt(strings.TrimSpace(parts[1]), 0, 0)
+				case "hoursToCacheArtists":
+					artistHours, _ = strconv.ParseInt(strings.TrimSpace(parts[1]), 0, 0)
+				case "timeoutMinutes":
+					timeout, _ = strconv.ParseInt(strings.TrimSpace(parts[1]), 0, 0)
+				}
+			}
+		}
+	}
+	//set defaults in case they weren't included or errored parsing
+	if days == 0 {
+		days = 14
+	}
+	if eventHours == 0 {
+		eventHours = 24
+	}
+	if artistHours == 0 {
+		artistHours = 48
+	}
+	if timeout == 0 {
+		timeout = 30
+	}
+	ret := preScrapeOptions{eventCacheHours: int(eventHours), artistCacheHours: int(artistHours), pdxOnly: pdx, daysOut: int(days), timeoutMinutes: int(timeout)}
+	return ret
 }

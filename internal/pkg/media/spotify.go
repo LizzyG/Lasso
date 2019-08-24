@@ -32,6 +32,7 @@ var (
 )
 var spotAuth spotify.Authenticator
 var clientID, clientSecret string
+var maxTracks int
 
 type SpotifyInfo struct {
 	ID          spotify.ID
@@ -39,12 +40,13 @@ type SpotifyInfo struct {
 	AsOf        time.Time
 }
 
-func Setup(id string, secret string, ip string, port string) {
+func Setup(id string, secret string, ip string, port string, maxNumTracks int) {
 	clientID = id
 	clientSecret = secret
 	redirectURI := "http://" + ip + ":" + port + "/callback"
 	spotAuth = spotify.NewAuthenticator(redirectURI, scopes...)
 	spotAuth.SetAuthInfo(clientID, clientSecret)
+	maxTracks = maxNumTracks
 }
 
 func CompleteAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *spotify.Client {
@@ -413,7 +415,7 @@ func getTopFiveTracks(artistID spotify.ID, spotClient *spotify.Client) ([]spotif
 		log.Printf("Encountered an error getting tracks for artist %v: %v", artistID, err)
 		return nil, err
 	}
-	cnt := myMin(5, len(tracks))
+	cnt := myMin(maxTracks, len(tracks))
 	trackIds := make([]spotify.ID, cnt)
 	for i := 0; i < cnt; i++ {
 		trackIds[i] = tracks[i].SimpleTrack.ID
@@ -421,7 +423,7 @@ func getTopFiveTracks(artistID spotify.ID, spotClient *spotify.Client) ([]spotif
 	return trackIds, nil
 }
 
-func doClientCredsAuth() spotify.Client {
+func DoClientCredsAuth() spotify.Client {
 	config := &clientcredentials.Config{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
@@ -438,7 +440,7 @@ func doClientCredsAuth() spotify.Client {
 
 func PreSearch(dynamoClient *dynamodb.DynamoDB, artists []string, cacheHours int) {
 	dur := time.Duration(cacheHours) * time.Hour
-	spotClient := doClientCredsAuth()
+	spotClient := DoClientCredsAuth()
 	for _, artist := range artists {
 		info := getArtistInfoFromDb(dynamoClient, artist)
 		if time.Now().Sub(info.AsOf) > dur {
