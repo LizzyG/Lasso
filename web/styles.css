@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web&display=swap');
+
+body {
+    background-color: #029088c2;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    margin: 1em auto;
+    font-size: 20px;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 30px;
+    animation: fade-me-in 3s;
+}
+
+a {
+    color: #ffca00
+}
+
+h1 {
+    color: #ffca00;
+    font-family: 'Fredoka One', cursive;
+    margin-top: 0;
+    animation: citrus-me-in infinite 20s;
+}
+
+input[type=submit] {
+    background-color: #ffca00;
+    color: #029088c2;
+    font-weight: bolder;
+    font-size: 1em;
+    padding: 1em;
+    margin: 1em;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    font-family: 'Fredoka One', cursive;
+    border-radius: 5px;
+    transition-property: color;
+    transition-duration: 500ms;
+}
+
+input[type=submit]:hover {
+    color: black;
+}
+
+#brought-by {
+    margin-top: 8em;
+    font-size: .8em; text-align:right;
+}
+#brought-by > span {
+    padding-right:5em;
+}
+#brought-by > img {
+    width:8em;
+}
+
+@keyframes fade-me-in {
+  /* You could think of as "step 1" */
+  0% {
+    opacity: 0;
+  }
+  /* You could think of as "step 2" */
+  100% {
+      opacity: 1;
+  }
+}
+@keyframes citrus-me-in {
+  /* You could think of as "step 1" */
+  0% {
+    color: rgba(230,165,0,1);
+  }
+  /* You could think of as "step 2" */
+  50% {
+      color: rgba(255,225,0,1);
+  }
+  100% {
+      color: rgba(230,165,0,1);
+  }
+}
