@@ -125,7 +125,6 @@ func main() {
 		media.PreSearch(dynamoClient, artists, 48)
 
 	})
-
 	http.ListenAndServe(":"+port, nil)
 }
 
@@ -134,8 +133,9 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 
 		err := media.ManagePlaylist(userIDCookie.Value)
 		if err == nil {
-			today := time.Now().Format("2006-01-02")
-			maxDate := time.Now().Add(time.Hour * 720).Format("2006-01-02")
+			today :=time.Now().Add(time.Hour * -12).Format("2006-01-02")
+			//today := time.Now().Format("2006-01-02")
+			maxDate := time.Now().Add(time.Hour * 168).Format("2006-01-02")
 			t, err := template.ParseFiles("web/manage.html")
 			if err != nil {
 				log.Printf("err parsing template: %v", err)
@@ -161,7 +161,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	if userIDCookie, _ := r.Cookie("user_id"); userIDCookie != nil {
 		userID = userIDCookie.Value
 	}
-	loggedIn, redirectURL := media.IsLoggedIn(userID)
+	loggedIn, redirectURL := media.IsLoggedIn(userID, dynamoClient)
 	if loggedIn {
 		http.Redirect(w, r, "/managePlaylist", 302)
 		return

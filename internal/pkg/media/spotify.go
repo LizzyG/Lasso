@@ -2,6 +2,7 @@ package media
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"lasso/internal/pkg/scrape"
@@ -12,9 +13,11 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/zmb3/spotify"
+	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
 )
 
@@ -32,6 +35,8 @@ var (
 )
 var spotAuth spotify.Authenticator
 var clientID, clientSecret string
+var dynamoClient *dynamodb.DynamoDB
+var awsRegion string
 var maxTracks int
 
 type SpotifyInfo struct {
@@ -40,17 +45,29 @@ type SpotifyInfo struct {
 	AsOf        time.Time
 }
 
-func Setup(id string, secret string, ip string, port string, maxNumTracks int) {
+func Setup(id string, secret string, ip string, port string, region string, maxNumTracks int) {
+	log.Println("Doing Spotify setup")
 	clientID = id
 	clientSecret = secret
 	redirectURI := "http://" + ip + ":" + port + "/callback"
 	spotAuth = spotify.NewAuthenticator(redirectURI, scopes...)
 	spotAuth.SetAuthInfo(clientID, clientSecret)
 	maxTracks = maxNumTracks
+	awsRegion = region
 }
 
 func CompleteAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *spotify.Client {
+	oauth2.SetAuthURLParam("access_type", "offline")
 	tok, err := spotAuth.Token(state, r)
+
+	values := r.URL.Query()
+	if e := values.Get("error"); e != "" {
+		log.Println("error getting code", e)
+	} else {
+		code := values.Get("code")
+		log.Println("code: ", code)
+	}
+
 	if err != nil {
 		//http.Error(w, "Couldn't get token", http.StatusForbidden)
 		log.Printf("auth error: %v", err)
@@ -75,6 +92,7 @@ func CompleteAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *
 		Expires: time.Now().Add(120 * time.Minute),
 	})
 	clients[user.ID] = client
+	saveToken(getDb(), user.ID, tok, "Spotify")
 	fmt.Fprintf(w, "you are user %v", user.ID)
 	log.Printf("Spotify user %v has logged in", user.DisplayName)
 	return &client
@@ -171,10 +189,45 @@ func getUserClient(userID string) (spotify.Client, error) {
 	return client, err
 }
 
-func IsLoggedIn(userID string) (bool, string) {
+func IsLoggedIn(userID string, dynamoClient *dynamodb.DynamoDB) (bool, string) {
+	if userID == "" {
+		return false, spotAuth.AuthURL(state)
+	}
 	if _, ok := clients[userID]; ok {
 		return true, ""
 	}
+	if dynamoClient == nil {
+		log.Println("dynamo client is null in IsLoggedIn")
+	}
+	log.Println("userId: ", userID)
+	token := retrieveToken(dynamoClient, userID, "Spotify")
+	if token != nil {
+		log.Printf("Got token for user %v: %v", userID, token)
+
+		client := spotAuth.NewClient(token)
+		client.AutoRetry = true
+		_, err := client.CurrentUser()
+		if err != nil {
+			log.Println("Error with client using refresh token: ", err)
+			t2, err2 := spotAuth.Exchange(token.RefreshToken)
+			if err2 != nil {
+				log.Println("Error exchanging retry token: ", err2)
+			} else {
+				client := spotAuth.NewClient(t2)
+				_, err3 := client.CurrentUser()
+				if err3 != nil {
+					log.Println("error with client using refresh token: ", err2)
+				} else {
+					log.Println("SUCCESS")
+				}
+			}
+			return false, spotAuth.AuthURL(state)
+		}
+		clients[userID] = client
+		return true, ""
+
+	}
+	log.Println("Token was empty for user ", userID)
 	return false, spotAuth.AuthURL(state)
 }
 
@@ -248,7 +301,7 @@ func addTracks(trackIds []spotify.ID, client *spotify.Client, playlistID spotify
 			_, err := client.AddTracksToPlaylist(playlistID, tracksToAdd...)
 			if err != nil {
 
-				log.Printf("Error adding tracks to playlist", err)
+				log.Println("Error adding tracks to playlist", err)
 			}
 			min = max + 1
 			if max == len(trackIds) {
@@ -318,6 +371,44 @@ func setArtistInfo(dynamoClient *dynamodb.DynamoDB, artistName string, info *Spo
 	if err != nil {
 		log.Printf("error adding artist info to db: %v", err)
 	}
+}
+
+func saveToken(dynamoClient *dynamodb.DynamoDB, userID string, token *oauth2.Token, issuer string) {
+	log.Println("access token: ", token.AccessToken)
+	log.Println("refreshToken: ", token.RefreshToken)
+	log.Println("expires at: ", token.Expiry)
+	bytes, err := json.Marshal(token)
+	if err != nil {
+		log.Println("Error marshalling token: ", err)
+		return
+	}
+	str := string(bytes)
+
+	values := map[string]*dynamodb.AttributeValue{"userId": {S: aws.String(userID)}, "token": {S: aws.String(str)}, "issuer": {S: aws.String(issuer)}}
+	input := dynamodb.PutItemInput{TableName: aws.String("Tokens"),
+		Item: values}
+	_, err = dynamoClient.PutItem(&input)
+	if err != nil {
+		log.Printf("failed to store token for user %v: %v \n", userID, err)
+	}
+}
+
+func retrieveToken(dynamoClient *dynamodb.DynamoDB, userID string, issuer string) *oauth2.Token {
+	input := dynamodb.GetItemInput{TableName: aws.String("Tokens"), Key: map[string]*dynamodb.AttributeValue{"userId": {S: aws.String(userID)}, "issuer": {S: aws.String(issuer)}}}
+
+	output, err := dynamoClient.GetItem(&input)
+	if err != nil {
+		log.Printf("failed to retrieve token for user %v: %v \n", userID, err)
+		return nil
+	}
+	tokenStr := output.Item["token"].S
+	log.Printf("Got token %v for user %v", *tokenStr, userID)
+	token := oauth2.Token{}
+	err = json.Unmarshal([]byte(*tokenStr), &token)
+	if err != nil {
+		fmt.Println("Error unmarshalling: ", err)
+	}
+	return &token
 }
 
 // func setArtistID(artistName string, artistID string, idType idType) {
@@ -448,4 +539,13 @@ func PreSearch(dynamoClient *dynamodb.DynamoDB, artists []string, cacheHours int
 			getSetSpotifyInfo(artist, &spotClient, dynamoClient)
 		}
 	}
+}
+
+func getDb() *dynamodb.DynamoDB {
+	if dynamoClient == nil {
+		config := &aws.Config{Region: &awsRegion}
+		sess := session.Must(session.NewSession(config))
+		dynamoClient = dynamodb.New(sess)
+	}
+	return dynamoClient
 }
