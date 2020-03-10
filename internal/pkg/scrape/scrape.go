@@ -74,6 +74,7 @@ type EventsRecord struct {
 	ScrapeDate  time.Time
 	FullListing bool
 	fromDb      bool `dynamodbav:"-"`
+	venueMap    map[string][]string
 }
 
 func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time, city string) ([]string, string, error) {
@@ -150,23 +151,48 @@ func ScrapeDates(dynamoClient *dynamodb.DynamoDB, start time.Time, end time.Time
 func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *EventsRecord, errCh chan error, event *EventsRecord) {
 	dateStr := date.Format("2006-01-02")
 	artists := make([]string, 0)
+	venueMap := make(map[string][]string, 0)
 	if page <= 1 {
 		page = 1
 	}
 
 	site := "https://www.portlandmercury.com/events/music/" + dateStr
 
+	//class='event-row' - the whole event
+	//class='event-row-venue'
+	//class='event-row-title'
 	c := colly.NewCollector()
 	c.SetRequestTimeout(time.Second * 10)
 	c.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36"
-	c.OnHTML("h3.event-row-title>a", func(e *colly.HTMLElement) {
-		text := strings.Trim(e.Text, "\n ")
-		newArtists := strings.Split(text, ",")
-		for i, a := range newArtists {
-			newArtists[i] = strings.TrimSpace(a)
+	c.OnHTML("div.event-row", func(e *colly.HTMLElement) {
+		small := e.ChildText("small")
+		if small != "Sponsored" {
+			artistEl := e.ChildText("h3.event-row-title>a")
+			newArtists := strings.Split(artistEl, ",")
+			for i, a := range newArtists {
+				newArtists[i] = strings.TrimSpace(a)
+			}
+			artists = append(artists, newArtists...)
+			venueEl := e.ChildText("span.event-row-venue>a")
+			if len(venueEl)%2 == 0 { //colly bug that repeats text so Alberta Rose Theatre is returned as 'Alberta Rose TheatreAlberta Rose Theatre'
+				p1 := venueEl[0 : len(venueEl)/2]
+				p2 := venueEl[len(venueEl)/2:]
+				if p1 == p2 {
+					venueEl = p1
+				}
+			}
+			venueMap[venueEl] = artists
+			log.Println("venue element: ", venueEl)
 		}
-		artists = append(artists, newArtists...)
 	})
+	// c.OnHTML("h3.event-row-title>a", func(e *colly.HTMLElement) {
+	// 	text := strings.Trim(e.Text, "\n ")
+	// 	newArtists := strings.Split(text, ",")
+	// 	for i, a := range newArtists {
+	// 		newArtists[i] = strings.TrimSpace(a)
+	// 	}
+	// 	artists = append(artists, newArtists...)
+	// })
 	c.OnHTML("li.next>a", func(e *colly.HTMLElement) {
 		if strings.Contains(e.Text, "Next on") {
 			log.Printf("there's another page for date %v", dateStr)
@@ -177,6 +203,7 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *EventsReco
 			if err != nil {
 				log.Printf("error visiting the site: %v", err)
 				event.Artists = append(event.Artists, artists...)
+				event.venueMap = venueMap
 				event.ScrapeDate = time.Now()
 				event.FullListing = false
 				resCh <- event
@@ -188,6 +215,7 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *EventsReco
 			//clear out any old artists that may have been in the event because we got the full thing with no errors
 			event.Artists = nil
 			event.Artists = append(event.Artists, artists...)
+			event.venueMap = venueMap
 			event.ScrapeDate = time.Now()
 			event.FullListing = true
 			resCh <- event
@@ -206,23 +234,62 @@ func (s mercScraper) scrapeDate(date time.Time, page int, resCh chan *EventsReco
 	}
 }
 
+type eventSite struct {
+	url       string
+	headliner string
+	venue     string
+}
+
 func (s sfScraper) scrapeDate(date time.Time, page int, ch chan *EventsRecord, errCh chan error, e *EventsRecord) {
 	dateStr := date.Format("2006-01-02")
 	artists := make([]string, 0)
 	site := "https://archives.sfweekly.com/sanfrancisco/EventSearch?eventSection=2205482&date=" + dateStr //2019-04-05"
+	eventSites := make([]eventSite, 0)
 	c := colly.NewCollector()
 	c.SetRequestTimeout(time.Second * 20)
 
-	c.OnHTML("#ConcertResults>table>thead>tr>td>a", func(e *colly.HTMLElement) {
-		attr := e.Attr("href")
-		if strings.Contains(attr, "Event") {
-			text := strings.Trim(e.Text, "\n ")
-			if text != "" {
-				artists = append(artists, text)
+	c.OnHTML("#ConcertResults>table>thead>tr", func(el *colly.HTMLElement) {
+		eventRow := eventSite{}
+		//cols := el.ChildTexts("td>a")
+		el.ForEach("td>a", func(i int, link *colly.HTMLElement) {
+			url := link.Attr("href")
+			if strings.Contains(url, "Event") {
+				//text := strings.Trim(link.Text, "\n ")
+				text := strings.TrimSpace(link.Text)
+				if text != "" {
+					artists = append(artists, text)
+				}
+				eventRow.url = url
+				eventRow.headliner = text
+				log.Println("headliner: ", text)
+				log.Println("url: ", url)
 			}
-			//need to also follow the event link to get openers
-		}
+			if strings.Contains(url, "Location") {
+				//venue := strings.Trim(el.Text, "\n ")
+				venue := strings.TrimSpace(link.Text)
+				eventRow.venue = venue
+				log.Println("venue: ", venue)
+			}
+		})
+		eventSites = append(eventSites, eventRow)
 	})
+
+	// c.OnHTML("#ConcertResults>table>thead>tr>td>a", func(e *colly.HTMLElement) {
+	// 	attr := e.Attr("href")
+	// 	if strings.Contains(attr, "Event") {
+	// 		text := strings.Trim(e.Text, "\n ")
+	// 		if text != "" {
+	// 			artists = append(artists, text)
+	// 		}
+	// 		//need to also follow the event link to get openers
+	// 	}
+	// 	if strings.Contains(attr, "Location") {
+	// 		venue := strings.Trim(e.Text, "\n ")
+	// 		log.Println("old venue: ", venue)
+	// 	}
+	// })
+
+	//TODO: visit the eventSites before returning
 	c.OnHTML("#gridFooter", func(e *colly.HTMLElement) {
 		ch <- &EventsRecord{City: "San Francisco", EventSource: "SFWeekly", Date: date, Artists: artists, ScrapeDate: time.Now(), FullListing: true, EventType: "Music"}
 	})
