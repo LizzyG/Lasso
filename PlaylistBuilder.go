@@ -133,7 +133,7 @@ func manageHandler(w http.ResponseWriter, r *http.Request) {
 
 		err := media.ManagePlaylist(userIDCookie.Value)
 		if err == nil {
-			today :=time.Now().Add(time.Hour * -12).Format("2006-01-02")
+			today := time.Now().Add(time.Hour * -12).Format("2006-01-02")
 			//today := time.Now().Format("2006-01-02")
 			maxDate := time.Now().Add(time.Hour * 168).Format("2006-01-02")
 			t, err := template.ParseFiles("web/manage.html")
@@ -203,7 +203,7 @@ func setupCredentials() {
 	if maxTracks == 0 {
 		maxTracks = 5
 	}
-	media.Setup(clientID, clientSecret, ip, port, int(maxTracks))
+	media.Setup(clientID, clientSecret, ip, port, region, int(maxTracks))
 }
 
 func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
