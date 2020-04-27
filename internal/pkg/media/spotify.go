@@ -87,9 +87,9 @@ func CompleteAuth(ctx context.Context, w http.ResponseWriter, r *http.Request) *
 	user, _ := client.CurrentUser()
 	log.Printf("user id is %v", user.ID)
 	http.SetCookie(w, &http.Cookie{
-		Name:    "user_id",
-		Value:   user.ID,
-		Expires: time.Now().Add(120 * time.Minute),
+		Name:  "user_id",
+		Value: user.ID,
+		//Expires: time.Now().Add(120 * time.Minute),
 	})
 	clients[user.ID] = client
 	saveToken(getDb(), user.ID, tok, "Spotify")
