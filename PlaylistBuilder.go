@@ -20,6 +20,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/neo4j/neo4j-go-driver/neo4j"
 )
 
 type idType int
@@ -75,6 +76,13 @@ func main() {
 	log.Printf("using redirect url %v", "http://localhost:"+port+"/callback")
 	setupCredentials()
 	setupDB()
+
+	http.HandleFunc("/neo", func(w http.ResponseWriter, r *http.Request) {
+		err = graphDbTest()
+		if err != nil {
+			log.Println("Error talking to graph db: ", err)
+		}
+	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Got request for:", r.URL.String())
@@ -285,4 +293,38 @@ func getPreScrapeOptions() preScrapeOptions {
 	}
 	ret := preScrapeOptions{eventCacheHours: int(eventHours), artistCacheHours: int(artistHours), pdxOnly: pdx, daysOut: int(days), timeoutMinutes: int(timeout)}
 	return ret
+}
+
+func graphDbTest() error {
+	log.Println("graphDbTest")
+	// // handle driver lifetime based on your application lifetime requirements
+	// // driver's lifetime is usually bound by the application lifetime, which usually implies one driver instance per application
+	driver, err := neo4j.NewDriver("bolt://localhost:7687", neo4j.BasicAuth("neo4j", "test", ""))
+	if err != nil {
+		return err
+	}
+	defer driver.Close()
+	log.Println("driver got")
+	session, err := driver.Session(neo4j.AccessModeWrite)
+	if err != nil {
+		return err
+	}
+	defer session.Close()
+	log.Println("got session")
+	result, err := session.Run("CREATE (n:Item { id: $id, name: $name }) RETURN n.id, n.name", map[string]interface{}{
+		"id":   1,
+		"name": "Item 1",
+	})
+	if err != nil {
+		return err // handle error
+	}
+	log.Println("did stuff")
+	for result.Next() {
+		fmt.Printf("Created Item with Id = '%d' and Name = '%s'\n", result.Record().GetByIndex(0).(int64), result.Record().GetByIndex(1).(string))
+	}
+	if err = result.Err(); err != nil {
+		return err // handle error
+	}
+	log.Println("all done")
+	return nil
 }
