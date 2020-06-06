@@ -77,10 +77,12 @@ func main() {
 	setupCredentials()
 	setupDB()
 
+	log.Println("Setting up handlers")
 	http.HandleFunc("/neo", func(w http.ResponseWriter, r *http.Request) {
-		err = graphDbTest()
+		err = graphDbTest(w,r)
 		if err != nil {
 			log.Println("Error talking to graph db: ", err)
+			fmt.Fprintf(w,err.Error())
 		}
 	})
 
@@ -112,8 +114,8 @@ func main() {
 			return
 		}
 
-		ctx := r.Context
-		log.Printf("makePlaylist context: %v", ctx)
+		//ctx := r.Context
+		//log.Printf("makePlaylist context: %v", ctx)
 		log.Println("Got a request to build the playlist")
 		path := r.URL.Path
 		log.Println(path)
@@ -133,6 +135,7 @@ func main() {
 		media.PreSearch(dynamoClient, artists, 48)
 
 	})
+	log.Println("Listening")
 	http.ListenAndServe(":"+port, nil)
 }
 
@@ -184,6 +187,7 @@ func setupCredentials() {
 	f, err := os.Open(configFilePath)
 	defer f.Close()
 	s := bufio.NewScanner(f)
+	log.Println("reading config")
 	for s.Scan() {
 		line := s.Text()
 		parts := strings.Split(line, "=")
@@ -203,7 +207,7 @@ func setupCredentials() {
 	}
 	err = s.Err()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("error reading config: ",err)
 	}
 	if region == "" {
 		region = "us-west-2"
@@ -211,7 +215,9 @@ func setupCredentials() {
 	if maxTracks == 0 {
 		maxTracks = 5
 	}
+	log.Println("Setting up media")
 	media.Setup(clientID, clientSecret, ip, port, region, int(maxTracks))
+	log.Println("Done setting up media")
 }
 
 func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
@@ -247,9 +253,11 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func setupDB() {
+	log.Println("Setting up db with region ",region)
 	config := &aws.Config{Region: &region}
 	sess := session.Must(session.NewSession(config))
 	dynamoClient = dynamodb.New(sess)
+	log.Println("Done setting up db")
 }
 
 func getPreScrapeOptions() preScrapeOptions {
@@ -295,18 +303,21 @@ func getPreScrapeOptions() preScrapeOptions {
 	return ret
 }
 
-func graphDbTest() error {
+func graphDbTest(w http.ResponseWriter, r *http.Request) error {
 	log.Println("graphDbTest")
 	// // handle driver lifetime based on your application lifetime requirements
 	// // driver's lifetime is usually bound by the application lifetime, which usually implies one driver instance per application
-	driver, err := neo4j.NewDriver("bolt://localhost:7687", neo4j.BasicAuth("neo4j", "test", ""))
+	driver, err := neo4j.NewDriver("bolt://neo4j:7687", neo4j.BasicAuth("neo4j", "test", ""), func(c *neo4j.Config) {c.Encrypted = false})
 	if err != nil {
+		log.Println("error getting driver: ", err)
+		fmt.Fprintf(w,"error getting driver: "+err.Error())
 		return err
 	}
 	defer driver.Close()
 	log.Println("driver got")
 	session, err := driver.Session(neo4j.AccessModeWrite)
 	if err != nil {
+		fmt.Fprintf(w,"driver.Session error: "+err.Error())
 		return err
 	}
 	defer session.Close()
@@ -316,6 +327,7 @@ func graphDbTest() error {
 		"name": "Item 1",
 	})
 	if err != nil {
+		fmt.Fprintf(w,"Error creating item: "+err.Error())
 		return err // handle error
 	}
 	log.Println("did stuff")
@@ -323,8 +335,10 @@ func graphDbTest() error {
 		fmt.Printf("Created Item with Id = '%d' and Name = '%s'\n", result.Record().GetByIndex(0).(int64), result.Record().GetByIndex(1).(string))
 	}
 	if err = result.Err(); err != nil {
+		fmt.Fprintf(w,"Error getting results: "+err.Error())
 		return err // handle error
 	}
 	log.Println("all done")
+	fmt.Fprintf(w,"success")
 	return nil
 }
