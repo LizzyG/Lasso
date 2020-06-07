@@ -5,8 +5,6 @@ import (
 	"context"
 	"fmt"
 	"html/template"
-	"lasso/internal/pkg/media"
-	"lasso/internal/pkg/scrape"
 	"log"
 	"net/http"
 	"os"
@@ -14,12 +12,15 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lizzyg/lasso/internal/pkg/media"
+	"github.com/lizzyg/lasso/internal/pkg/scrape"
 	"github.com/zmb3/spotify"
 
 	"github.com/aws/aws-sdk-go/aws"
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/neo4j/neo4j-go-driver/neo4j"
 )
 
 type idType int
@@ -76,6 +77,15 @@ func main() {
 	setupCredentials()
 	setupDB()
 
+	log.Println("Setting up handlers")
+	http.HandleFunc("/neo", func(w http.ResponseWriter, r *http.Request) {
+		err = graphDbTest(w, r)
+		if err != nil {
+			log.Println("Error talking to graph db: ", err)
+			fmt.Fprintf(w, err.Error())
+		}
+	})
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Got request for:", r.URL.String())
 		if r.URL.Path != "/" {
@@ -104,8 +114,8 @@ func main() {
 			return
 		}
 
-		ctx := r.Context
-		log.Printf("makePlaylist context: %v", ctx)
+		//ctx := r.Context
+		//log.Printf("makePlaylist context: %v", ctx)
 		log.Println("Got a request to build the playlist")
 		path := r.URL.Path
 		log.Println(path)
@@ -125,6 +135,7 @@ func main() {
 		media.PreSearch(dynamoClient, artists, 48)
 
 	})
+	log.Println("Listening")
 	http.ListenAndServe(":"+port, nil)
 }
 
@@ -176,6 +187,7 @@ func setupCredentials() {
 	f, err := os.Open(configFilePath)
 	defer f.Close()
 	s := bufio.NewScanner(f)
+	log.Println("reading config")
 	for s.Scan() {
 		line := s.Text()
 		parts := strings.Split(line, "=")
@@ -195,7 +207,7 @@ func setupCredentials() {
 	}
 	err = s.Err()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("error reading config: ", err)
 	}
 	if region == "" {
 		region = "us-west-2"
@@ -203,7 +215,9 @@ func setupCredentials() {
 	if maxTracks == 0 {
 		maxTracks = 5
 	}
+	log.Println("Setting up media")
 	media.Setup(clientID, clientSecret, ip, port, region, int(maxTracks))
+	log.Println("Done setting up media")
 }
 
 func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
@@ -239,9 +253,11 @@ func makePlaylistHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func setupDB() {
+	log.Println("Setting up db with region ", region)
 	config := &aws.Config{Region: &region}
 	sess := session.Must(session.NewSession(config))
 	dynamoClient = dynamodb.New(sess)
+	log.Println("Done setting up db")
 }
 
 func getPreScrapeOptions() preScrapeOptions {
@@ -285,4 +301,44 @@ func getPreScrapeOptions() preScrapeOptions {
 	}
 	ret := preScrapeOptions{eventCacheHours: int(eventHours), artistCacheHours: int(artistHours), pdxOnly: pdx, daysOut: int(days), timeoutMinutes: int(timeout)}
 	return ret
+}
+
+func graphDbTest(w http.ResponseWriter, r *http.Request) error {
+	log.Println("graphDbTest")
+	// // handle driver lifetime based on your application lifetime requirements
+	// // driver's lifetime is usually bound by the application lifetime, which usually implies one driver instance per application
+	driver, err := neo4j.NewDriver("bolt://neo4j:7687", neo4j.BasicAuth("neo4j", "test", ""), func(c *neo4j.Config) { c.Encrypted = false })
+	if err != nil {
+		log.Println("error getting driver: ", err)
+		fmt.Fprintf(w, "error getting driver: "+err.Error())
+		return err
+	}
+	defer driver.Close()
+	log.Println("driver got")
+	session, err := driver.Session(neo4j.AccessModeWrite)
+	if err != nil {
+		fmt.Fprintf(w, "driver.Session error: "+err.Error())
+		return err
+	}
+	defer session.Close()
+	log.Println("got session")
+	result, err := session.Run("CREATE (n:Item { id: $id, name: $name }) RETURN n.id, n.name", map[string]interface{}{
+		"id":   1,
+		"name": "Item 1",
+	})
+	if err != nil {
+		fmt.Fprintf(w, "Error creating item: "+err.Error())
+		return err // handle error
+	}
+	log.Println("did stuff")
+	for result.Next() {
+		fmt.Printf("Created Item with Id = '%d' and Name = '%s'\n", result.Record().GetByIndex(0).(int64), result.Record().GetByIndex(1).(string))
+	}
+	if err = result.Err(); err != nil {
+		fmt.Fprintf(w, "Error getting results: "+err.Error())
+		return err // handle error
+	}
+	log.Println("all done")
+	fmt.Fprintf(w, "success")
+	return nil
 }
