@@ -6,3 +6,14 @@ docker login
 ssh -i ~/DockerEc2.pem ec2-user@ec2-52-11-117-0.us-west-2.compute.amazonaws.com
 docker pull lizzyg/lasso:latest
 docker push lizzg/lasso:latest
+docker run -it 63be7da5de86         # to get conosle to debug
+docker run \
+    --name testneo4j \
+    -p7474:7474 -p7687:7687 \
+    -d \
+    -v $HOME/neo4j/data:/data \
+    -v $HOME/neo4j/logs:/logs \
+    -v $HOME/neo4j/import:/var/lib/neo4j/import \
+    -v $HOME/neo4j/plugins:/plugins \
+    --env NEO4J_AUTH=neo4j/test \
+    neo4j:latest

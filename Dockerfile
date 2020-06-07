@@ -1,31 +1,19 @@
 FROM golang:latest as stage1
 
-WORKDIR /go/src/lasso
+WORKDIR /Users/lizg/go/src/github.com/lizzyg/lasso
 
 COPY . .
 
 RUN apt-get update
 RUN apt-get install -y git
-#RUN apk add openssl
-#RUN apk add --no-cache curl g++ pkgconfig git openssl-dev
-#RUN apt-get install -y --no-cache curl g++ git openssl-dev
-#RUN apt-get install -y libssl1.1
 
 RUN wget https://github.com/neo4j-drivers/seabolt/releases/download/v1.7.4/seabolt-1.7.4-Linux-ubuntu-18.04.deb
-#RUN tar zxvf ~/Downloads/seabolt.tar.gz --strip-components=1 -C /seabolt-1.7.4-Linux-ubuntu-18.04.deb
 RUN dpkg -i seabolt-1.7.4-Linux-ubuntu-18.04.deb
 
-# Install latest seabolt
-# RUN curl -s https://api.github.com/repos/neo4j-drivers/seabolt/releases/latest \
-# 	| grep browser_download_url \
-# 	| grep alpine-3.8 \
-# 	| grep -v sha256 \
-# 	| cut -d '"' -f 4 \
-# 	| xargs curl -qL -o - \
-# 	| tar -C / -zxv --strip-components=1
 RUN go get -d -v ./...
 RUN go install -v ./...
-RUN go build lasso
+#RUN go build lasso
+RUN go build .
 RUN apt-get install -y vim
 RUN apt-get install -y less
 EXPOSE 8080
